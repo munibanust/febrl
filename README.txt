@@ -13,3 +13,4 @@ instructions on installation and use.
 
 The Febrl Web site is at http://datamining.anu.edu.au/projects/linkage.html
 
+(test end line added by rohanb)
