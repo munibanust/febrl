@@ -1925,7 +1925,7 @@ class ProjectLog:
 # =============================================================================
 
 class LogPrinter:
-  """Class that replaces sys.stdout.
+  """Class that replaces sys.stdout
 
      Each normal print statement is analysed in the 'write' method, if it
      starts with a 'error:', 'warning:' or '1:', '2:', '3:' it will also be
@@ -1952,7 +1952,7 @@ class LogPrinter:
     else:
       self.level_print = False  # Don't print level messages
 
-  def write(self, msg): # - - - - - - - - - - - - - - - - - - - - - - - - - -
+  def write(self, msg): # - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     #if (len(msg) > 0) and (msg[-1] != os.linesep):  # Append a line separator
     #  msg += os.linesep
@@ -2041,18 +2041,22 @@ class LogPrinter:
 
         if (msg_level <= self.project_log.verbose_level):
           for msg_line in msg_list:
-            sys.__stdout__.write(parallel.prompt + msg_line + os.linesep)
+            sys.__stdout__.write(parallel.prompt+msg_line+os.linesep)
           sys.__stdout__.flush()
 
     else:  # Print 'normal' print commands  - - - - - - - - - - - - - - - - - -
 
       msg_list = msg.split(os.linesep)
 
-      if (msg_list not in [[os.linesep], [''], ['','']]):
+      for msg_line in msg_list:
 
-        for msg_line in msg_list:
-          sys.__stdout__.write(parallel.prompt + msg_line + os.linesep)
-        sys.__stdout__.flush()
+        if ((len(msg_line) == 1) and (ord(msg_line) != 10)) or \
+            (len(msg_line) > 1):
+          if (sys.platform[:3] == 'win'): # No line separator needed on Windows
+            sys.__stdout__.write(parallel.prompt+msg_line)
+          else:
+            sys.__stdout__.write(parallel.prompt+msg_line+os.linesep)
+      sys.__stdout__.flush()
 
 # =============================================================================
 # The following are the main routines for standardisation and record linkage as
