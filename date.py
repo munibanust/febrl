@@ -1,733 +1,386 @@
 # =============================================================================
-# date.py - Routines for date parsing, comparing and linkage.
+# date.py - Routines for date conversions and parsing.
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
 # AUSTRALIAN NATIONAL UNIVERSITY OPEN SOURCE LICENSE (ANUOS LICENSE)
-# VERSION 1.0
+# VERSION 1.1
 #
-# The contents of this file are subject to the ANUOS License Version 1.0 (the
+# The contents of this file are subject to the ANUOS License Version 1.1 (the
 # "License"); you may not use this file except in compliance with the License.
 # Software distributed under the License is distributed on an "AS IS" basis,
 # WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
 # the specific language governing rights and limitations under the License.
 # The Original Software is "date.py".
 # The Initial Developers of the Original Software are Dr Peter Christen
-# (Department of Computer Science, Australian National University), Dr Tim
+# (Department of Computer Science, Australian National University) and Dr Tim
 # Churches (Centre for Epidemiology and Research, New South Wales Department
-# of Health) and Drs Markus Hegland, Stephen Roberts and Ole Nielsen
-# (Mathematical Sciences Insitute, Australian National University). Copyright
-# (C) 2002 the Australian National University and others. All Rights Reserved.
+# of Health). Copyright (C) 2002, 2003 the Australian National University and
+# others. All Rights Reserved.
 # Contributors:
+# - Peter Viechnicki, Research Department, Vredenburg Corp. Lanham, MD, USA
+#   E-Mail: pviechnicki@vredenburg.com
+#   Fixed bug in str_to_date, added '%U' directive
 #
 # =============================================================================
 
-"""Module date.py - Routines for date parsing, comparing and linkage.
+"""Module date.py - Routines for date conversions and parsing.
 
    PUBLIC FUNCTIONS:
-     parse_datestr        Parse a date string and split into [day,month,year]
-     date_diff            Compare two dates and return their difference in
-                          days and percentage
-     date_comp            Compare two dates, and return number of
-                          transpositions and substitutions
-     date_linkage_weight  Compute the linkage weight for a pair of dates
-     epoch_to_date        Convert a Unix epoch day number into a date
-     date_to_epoch        Convert a date into a Unix epoch day integer
+     epoch_to_date        Convert a epoch day number into a date
+     date_to_epoch        Convert a date into a epoch day integer
      date_to_age          Convert a date into an age (relative to a fix date)
-     str2date             A routine that converts a string into a date using
+     str_to_date          A routine that converts a string into a date using
                           a format string
-     test                 Test routine which does basic tests for all functions
+     get_today            Return today's date as a [day,month,year] tuple.
+
+   The date conversion routines are based on the 'normalDate.py' module by
+   Jeff Bauer, see:
+
+      http://starship.python.net/crew/jbauer/normalDate/
+   
+   Note that the epoch date used is NOT the UNIX epoch date (1 January 1970),
+   but instead the 1 January 1900.
+
+   Note that dates are returned as a tuple of strings, with day and month being
+   of length 2 (i.e. '01' etc.), and year being of length 4 (e.g. '2003').
 
    See doc strings of individual functions for detailed documentation.
-
-   See also the relevant section in the config.py module.
 """
 
-# -----------------------------------------------------------------------------
+# =============================================================================
+# Imports go here
 
-import types
-import time
+import math
 import string
+import time
 
-import config
-import inout
-import mymath
+# =============================================================================
+
+# A dictionary of month name abbreviations, used in date.str_to_date() routine
+
+month_abbrev_dict = {'jan':'01', 'feb':'02', 'mar':'03', 'apr':'04', \
+                     'may':'05', 'jun':'06', 'jul':'07', 'aug':'08', \
+                     'sep':'09', 'oct':'10', 'nov':'11', 'dec':'12'}
+
+# Define a character replace table for data strings - - - - - - - - - - - -
+#
+string_replace = ["'.,:-=_/\\", \
+                  "         "]
+
+# Characters in the first list are replaced by the corresponding character in
+# the second list
+
+replace_table = string.maketrans(string_replace[0], string_replace[1])
+
+# =============================================================================
+# Some simple funcions used for date conversions follow
+# (based on functions from the 'normalDate.py' module by Jeff Bauer, see:
+# http://starship.python.net/crew/jbauer/normalDate/)
+
+days_in_month = [[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], \
+                 [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]]
+
+def first_day_of_year(year):
+  """Calculate the day number (relative to 1 january 1900) of the first day in
+     the given year.
+  """
+
+  if (year == 0):
+    print 'error:A year value of 0 is not possible'
+    raise Exception
+
+  elif (year < 0):
+    first_day = (year * 365) + int((year - 1) / 4) - 693596
+  else:  # Positive year
+    leap_adj = int ((year + 3) / 4)
+    if (year > 1600):
+      leap_adj = leap_adj - int((year + 99 - 1600) / 100) + \
+                 int((year + 399 - 1600) / 400)
+
+    first_day = year * 365 + leap_adj - 693963
+
+    if (year > 1582):
+      first_day -= 10
+
+  return first_day
 
 # -----------------------------------------------------------------------------
 
-def parse_datestr(datestr):
-  """Normalise a date string and split into year, month and day.
-
-  USAGE:
-    [year,month,day,status] = parse_datestr(datestr)
-
-  ARGUMENTS:
-    datestr  Input date as a string. Various formats possible:
-                'DD/MM/YYYY', 'DD/MM/YY', 'DD,MM,YYYY', 'DD,MM,YY',
-                'D Mon YY', etc.
-             See config.py for a list of supported date formats.
-
-  DESCRIPTION:
-    The function tries to parse date information from the input string.
-    If not successful, an error status is returned.
-
-    The formats are given in the config.py module, where a list of formats
-    (date_formats) can be defined by the user.
-
-    The return value of status is 'OK' (if the date string has been parsed
-    successfully) or 'ER' (if it wasn't possible to parse the date string).
-    In the latter case, the values for day, mont hand year are all set to -1.
-
-  EXAMPLE:
-    datestr = ' 1 January 2001  '
-    [day,month,year,status] = parse_datestr(datestr)
+def is_leap_year(year):
+  """Determine if the given year is a leap year. Returns 0 (no) or 1 (yes).
   """
 
-  if (type(datestr) != types.StringType):
-    inout.log_message('Input argument is not of string type: '+str(datestr),\
-                      'err')
-    raise TypeError(parse_datestr)
-
-  # Remove leading and trailing whitespaces - - - - - - - - - - - - - - - - - -
-  #
-  datestr = datestr.strip()
-
-  # Apply replace table - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  #
-  string_replace = ["'.,:-=_/\\", \
-                    "         "]
-  # Characters in the first list are replaced by
-  # the corresponding character in the second list
-
-  replace_table = string.maketrans(string_replace[0], string_replace[1])
-  tmp_str = datestr.translate(replace_table)
-
-  # Number of defined date formats
-  num_date_formats = len(config.date_parse_formats)
-
-  parsed = 0  # Flag for successful date parsing
-  i = 0  # Interation counter
-  
-  # Try one date format after the other until success or none worked  - - - - -
-  #
-  while (parsed != 1) and (i < num_date_formats):
-
-    date_try = str2date(tmp_str,config.date_parse_formats[i])
-    if (len(date_try) == 3):
-      parsed = 1  # Parsed successful
+  if (year < 1600):
+    if ((year % 4) != 0):
+      return 0
     else:
-      inout.log_message('Date format string "'+(config.date_parse_formats[i])+\
-                        '" did not match date: '+tmp_str,'v2')
-    i=i+1
+      return 1
 
-  if (parsed == 1):  # Date successfully parsed - - - - - - - - - - - - - - - -
-    day =   date_try[0]
-    month = date_try[1]
-    year =  date_try[2]
+  elif ((year % 4) != 0):
+    return 0
 
-    if (year < 100): # Year was most probably only two digits, expand into four
-      if (year < config.date_pivot_year):  # Map into four digit year
-        year = year+2000
-      else:  # For years between 04 and 99
-        year = year+1900
+  elif ((year % 100) != 0):
+    return 1
 
-    inout.log_message('  Date parsed: Day='+str(day)+', month='+str(month)+ \
-                      ', year='+str(year),'v1')
-    result = [day,month,year,'OK']
+  elif ((year % 400) != 0):
+    return 0
 
   else:
-    inout.log_message(' Input argument is not in a valid date format: '+ \
-                      str(datestr),'warn')
-    result = [-1,-1,-1,'ER']
+    return 1
 
-  return result
-
-# -----------------------------------------------------------------------------
-
-def date_diff(date1, date2):
-  """Compate two dates and return their difference in days and percentage.
-
-  USAGE:
-    [day_diff, perc_diff] = date_diff(date1, date2)
-
-  ARGUMENTS:
-    date1  Date tuple/list in format [day,month,year]
-    date2  Date tuple/list in format [day,month,year]
- 
-  DESCRIPTION:
-    Returns the absolute day difference between the two input dates, as well as
-    a percentage difference relative to a date that is defined in config.py
-    (if this date is not set, the current system date ('today') is taken).
-
-    If the absolute day difference is negative, the first date is before the
-    second date, if the day difference is positive then the first date is
-    after the second date.
-    The percentage difference returned is always positive.
-  """
-
-  # Get fix date from config.py or make fix date 'today'  - - - - - - - - - - -
-  #
-  if (not config.date_perc_fix_date) or (config.date_perc_fix_date == 'today'):
-    sys_time = time.localtime(time.time())  # Get current system date
-    fix_date = [sys_time[2],sys_time[1],sys_time[0]]
-  else:
-    parsed_date = parse_datestr(config.date_perc_fix_date) # config.py fix date
-    fix_date = parsed_date[0:3]
-
-  inout.log_message('Date percentage comparison fix date: '+str(fix_date),'v2')
-
-  # Get epoch number for both input dates - - - - - - - - - - - - - - - - - - -
-  #
-  date1_epoch = date_to_epoch(date1[0],date1[1],date1[2])
-  date2_epoch = date_to_epoch(date2[0],date2[1],date2[2])
-
-  day_diff = date1_epoch - date2_epoch  # Get absolute day difference
-  
-  if (day_diff == 0):  # Check if the dates are equal
-    perc_diff = 0  # No percentage difference
-
-  else:  # The two dates are not equal - - - - - - - - - - - - - - - - - - - -
-    fix_epoch = date_to_epoch(fix_date[0],fix_date[1],fix_date[2])
-
-    date1_abs = date1_epoch - fix_epoch
-    date2_abs = date2_epoch - fix_epoch
-
-    if (date1_abs == 0) or (date2_abs == 0):
-      diff = 100.0  # Set percentage to a very high level
-    elif ((date1_abs < 0) and (date2_abs >= 0)) or \
-       ((date2_abs < 0) and (date1_abs >= 0)):
-      date1_abs = abs(date1_abs)
-      date2_abs = abs(date2_abs)
-      diff = float(date1_abs + date2_abs) / float(min(date1_abs, date2_abs))
-    else:
-      diff = float(abs(date1_abs - date2_abs)) /  \
-             float(min(abs(date1_abs), abs(date2_abs)))
-
-    perc_diff = diff*100.0
-
-  return [day_diff, perc_diff]
-
-# -----------------------------------------------------------------------------
-
-def date_comp(date1,date2): 
-  """Compare two dates, and return number of transpositions and substitutions.
-
-  USAGE:
-    [trans, subst] = date_comp(date1, date2)
-
-  ARGUMENTS:
-    date1  Date tuple/list in format [day,month,year]
-    date2  Date tuple/list in format [day,month,year]
- 
-  DESCRIPTION:
-    Computes and returns the number of characters that are transposed and
-    substituted between the two dates.
-
-    Transpositions are only considered between neighbouring digits.
-  """
-
-  # Make strings out of input dates - - - - - - - - - - - - - - - - - - - - - -
-  #
-  day1_str = string.zfill(str(date1[0]),2)
-  day2_str = string.zfill(str(date2[0]),2)
-  month1_str = string.zfill(str(date1[1]),2)
-  month2_str = string.zfill(str(date2[1]),2)
-  year1_str = str(date1[2])
-  year2_str = str(date2[2])
-
-  trans = [0,0,0]  # Number of transpositions for days, months and years
-  subst = [0,0,0]  # Number of substitutions for days, months and years
-
-  # Check in days - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  #
-  if (day1_str[0] != day1_str[1]) and \
-     (day1_str[0] == day2_str[1]) and (day1_str[1] == day2_str[0]):
-    trans[0] = trans[0]+1
-  else:  # No transposition in days, check for substitutions
-    if (day1_str[0] != day2_str[0]):
-      subst[0] = subst[0]+1
-    if (day1_str[1] != day2_str[1]):
-      subst[0] = subst[0]+1
-
-  # Check in months - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  #
-  if (month1_str[0] != month1_str[1]) and \
-     (month1_str[0] == month2_str[1]) and (month1_str[1] == month2_str[0]):
-    trans[1] = trans[1]+1
-  else:  # No transposition in months, check for substitutions
-    if (month1_str[0] != month2_str[0]):
-      subst[1] = subst[1]+1
-    if (month1_str[1] != month2_str[1]):
-      subst[1] = subst[1]+1
-
-  # Check in years - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  #
-  if (year1_str[0] != year1_str[1]) and \
-     (year1_str[0] == year2_str[1]) and (year1_str[1] == year2_str[0]):
-    trans[2] = trans[2]+1  # Transposition between first two digits
-
-    if (year1_str[2] != year1_str[3]) and \
-       (year1_str[2] == year2_str[3]) and (year1_str[3] == year2_str[2]):
-      trans[2] = trans[2]+1  # Transposition between last two digits
-    else:  # No transposition in last two year digits, check for substitutions
-      if (year1_str[2] != year2_str[2]):
-        subst[2] = subst[2]+1
-      if (year1_str[3] != year2_str[3]):
-        subst[2] = subst[2]+1
-
-  else:  # No transposition in first two year digits
-    if (year1_str[0] != year2_str[0]):  # Check for substitution in first digit
-      subst[2] = subst[2]+1
-
-    if (year1_str[1] != year1_str[2]) and \
-       (year1_str[1] == year2_str[2]) and (year1_str[2] == year2_str[1]):
-      trans[2] = trans[2]+1  # Transposition between middle two digits
-
-      if (year1_str[3] != year2_str[3]):  # Check substitution in last digit 
-        subst[2] = subst[2]+1
-
-    else:  # No transposition in middle two digits
-      if (year1_str[1] != year2_str[1]):  # Check for substitution in 2. digit
-        subst[2] = subst[2]+1
-
-      if (year1_str[2] != year1_str[3]) and \
-         (year1_str[2] == year2_str[3]) and (year1_str[3] == year2_str[2]):
-        trans[2] = trans[2]+1  # Transposition between last two digits
-      else: # No transposition in last two year digits, check for substitutions
-        if (year1_str[2] != year2_str[2]):
-          subst[2] = subst[2]+1
-        if (year1_str[3] != year2_str[3]):
-          subst[2] = subst[2]+1
-
-  return [trans, subst]
-
-# -----------------------------------------------------------------------------
-
-def date_linkage_weight(date1,date2):
-  """Compute the linkage weight for a pair of dates.
-
-  USAGE:
-    [link_weight] = date_linkage_weights(date1, date2)
-
-  ARGUMENTS:
-    date1  Date tuple/list in format [day,month,year]
-    date2  Date tuple/list in format [day,month,year]
- 
-  DESCRIPTION:
-    Compute the linkage weight according to probablistic linkage theory.
-    
-    Match (M) and non-match (U) probabilities are given in config.py and can
-    be modified by the user. Seperate probabilities are given for day, month
-    and year.
-
-    Four different linkage wieghts are computed:
-    1) According to the number of substitutions
-    2) According to the number of transpositions
-    3) According to the absolute day difference
-    4) According to the percentage day difference
-
-    The final linkage weight that is returned can ba any combination of these
-    four weights according to setting given in config.py
-
-    If one of the dates is not valid (status 'ER' or one of the elements is -1,
-    the maximum diagreement weight is returned.
-  """
-
-  # Compute initial linking weights for date components
-  #
-  # TODO: Move this into config or somewhere, as this is 'static' and needs to
-  #       be done once only
-  #
-  day_agree_weight = \
-    mymath.log2(config.date_day_m_prob / config.date_day_u_prob)
-  month_agree_weight = \
-    mymath.log2(config.date_month_m_prob / config.date_month_u_prob)
-  year_agree_weight = \
-    mymath.log2(config.date_year_m_prob / config.date_year_u_prob)
-
-  day_disagree_weight = \
-    mymath.log2((1.0-config.date_day_m_prob) / (1.0-config.date_day_u_prob))
-  month_disagree_weight = \
-    mymath.log2((1.0-config.date_month_m_prob) /(1.0-config.date_month_u_prob))
-  year_disagree_weight  = \
-    mymath.log2((1.0-config.date_year_m_prob) / (1.0-config.date_year_u_prob))
-
-  total_agree_weight = day_agree_weight +  month_agree_weight + \
-                       year_agree_weight
-  total_disagree_weight = day_disagree_weight + month_disagree_weight + \
-                          year_disagree_weight
-  
-  day_weight_range = day_agree_weight + abs(day_disagree_weight)
-  month_weight_range = month_agree_weight + abs(month_disagree_weight)
-  year_weight_range = year_agree_weight + abs(year_disagree_weight)
-  total_weight_range = total_agree_weight + abs(total_disagree_weight)
-
-  if (config.verbose > 0):
-    print '  Dates day agreement weight:', day_agree_weight
-    print '  Dates day disagreement weight:', day_disagree_weight
-    print '  Dates day weight range:', day_weight_range
-
-    print '  Dates month agreement weight:', month_agree_weight
-    print '  Dates month disagreement weight:', month_disagree_weight
-    print '  Dates month weight range:', month_weight_range
-
-    print '  Dates year agreement weight:', year_agree_weight
-    print '  Dates year disagreement weight:', year_disagree_weight
-    print '  Dates year weight range:', year_weight_range
-
-    print '  Dates total agreement weight:', total_agree_weight
-    print '  Dates total disagreement weight:', total_disagree_weight
-    print '  Dates total weight range:', total_weight_range
-
-
-  # Special case: The dates are equal, no further checking required - - - - - -
-  #
-  if (date1 == date2):
-    return total_agree_weight
-
-  # Special case: A date is not valid (unsuccessful parsing) - - - - - - - - -
-  #
-  if (-1 in date1) or (-1 in date2) or ('ER' in date1) or ('ER' in date2):
-    return total_disagree_weight
-
-  # Get day and percentage differences, substitutions and transpositions
-  #
-  [day_diff, perc_diff] = date_diff(date1,date2)
-  [trans, subst] = date_comp(date1,date2)
-
-  # Check substitutions - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  #
-  if (config.date_comp_max_subst != ''):  # Consider substitutions
-    if (subst[0] == 0):  # No substitutions in days
-      subst_day_weight = day_agree_weight  # Set to agreement weight
-
-    elif (subst[0] <= config.date_comp_max_subst[0]):
-      penalty_fac = float(subst[0]) / \
-                    (1.0 + config.date_comp_max_subst[0])
-      subst_day_weight = day_agree_weight - penalty_fac * day_weight_range
-
-    else:  # Too many substitutions in day field
-      subst_day_weight = day_disagree_weight  # Set to disagreement weight
-
-    if (subst[1] == 0):  # No substitutions in month
-      subst_month_weight = month_agree_weight  # Set to agreement weight
-
-    elif (subst[1] <= config.date_comp_max_subst[1]):
-      penalty_fac = float(subst[1]) / \
-                    (1.0 + config.date_comp_max_subst[1])
-      subst_month_weight = month_agree_weight - penalty_fac*month_weight_range
-
-    else:  # Too many substitutions in month field
-      subst_month_weight = month_disagree_weight  # Set to disag. weight
-
-    if (subst[2] == 0):  # No substitutions in year
-      subst_year_weight = year_agree_weight  # Set to agreement weight
-
-    elif (subst[2] <= config.date_comp_max_subst[2]):
-      penalty_fac = float(subst[2]) / \
-                    (1.0 + config.date_comp_max_subst[2])
-      subst_year_weight = year_agree_weight - penalty_fac * year_weight_range
-
-    else:  # Too many substitutions in year field
-      subst_year_weight = year_disagree_weight  # Set to disag. weight
-
-    subst_weight = subst_day_weight + subst_month_weight + subst_year_weight
-
-  else: # Don't consider month substitution
-    subst_weight = ''  # Set to a non-numerical value
-
-  # Check transpositions - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  #
-  if (config.date_comp_max_trans != ''):  # Consider transpositions
-    if (trans[0] == 0):  # No transpositions in days
-      trans_day_weight = day_agree_weight  # Set to agreement weight
-
-    elif (trans[0] <= config.date_comp_max_trans[0]):
-      penalty_fac = float(trans[0]) / \
-                    (1.0 + config.date_comp_max_trans[0])
-
-      trans_day_weight = day_agree_weight - penalty_fac * day_weight_range
-
-    else:  # Too many transpositions in day field
-      trans_day_weight = day_disagree_weight  # Set to disagreement weight
-
-    if (trans[1] == 0):  # No transpositions in month
-      trans_month_weight = month_agree_weight  # Set to agreement weight
-
-    elif (trans[1] <= config.date_comp_max_trans[1]):
-      penalty_fac = float(trans[1]) / \
-                    (1.0 + config.date_comp_max_trans[1])
-      trans_month_weight = month_agree_weight - penalty_fac*month_weight_range
-
-    else:  # Too many transpositions in month field
-      trans_month_weight = month_disagree_weight  # Set to disag. weight
-
-    if (trans[2] == 0):  # No transpositions in year
-      trans_year_weight = year_agree_weight  # Set to agreement weight
-
-    elif (trans[2] <= config.date_comp_max_trans[2]):
-      penalty_fac = float(trans[2]) / \
-                    (1.0 + config.date_comp_max_trans[2])
-      trans_year_weight = year_agree_weight - penalty_fac * year_weight_range
-
-    else:  # Too many transpositions in year field
-      trans_year_weight = year_disagree_weight  # Set to disag. weight
-
-    trans_weight = trans_day_weight + trans_month_weight + trans_year_weight
-
-  else: # Don't consider month transposition
-    trans_weight = ''  # Set to a non-numerical value
-
-  # Check absolute day differences - - - - - - - - - - - - - - - - - - - - - -
-  #
-  if (day_diff < 0) and (config.date_comp_max_day_before != ''):
-    if (-day_diff <= config.date_comp_max_day_before):
-      penalty_fac = float(-day_diff) / \
-                    (1.0 + config.date_comp_max_day_before)
-      day_diff_weight = total_agree_weight - penalty_fac * total_weight_range
-
-    else:  # Day difference too large
-      day_diff_weight = total_disagree_weight  # Set to disagr. weight
-   
-  elif (day_diff > 0) and (config.date_comp_max_day_after != ''):
-    if (day_diff <= config.date_comp_max_day_after):
-      penalty_fac = float(day_diff) / \
-                    (1.0 + config.date_comp_max_day_after)
-      day_diff_weight = total_agree_weight - penalty_fac * total_weight_range
-
-    else:  # Day difference too large
-      day_diff_weight = total_disagree_weight  # Set to disagr. weight
-
-  else:
-    day_diff_weight = ''  # Set to a non-numerical value
-
-  # Check percentage day differences - - - - - - - - - - - - - - - - - - - - -
-  #
-  if (day_diff < 0) and (config.date_comp_max_perc_before != ''):
-    if (perc_diff <= config.date_comp_max_perc_before):
-      penalty_fac = perc_diff / (1.0 + config.date_comp_max_perc_before)
-      perc_diff_weight = total_agree_weight - penalty_fac * total_weight_range
-
-    else:  # Percentage difference too large
-      perc_diff_weight = total_disagree_weight  # Set to disagr. weight
-   
-  elif (day_diff > 0) and (config.date_comp_max_perc_after != ''):
-    if (perc_diff <= config.date_comp_max_perc_after):
-      penalty_fac = perc_diff / (1.0 + config.date_comp_max_perc_after)
-      perc_diff_weight = total_agree_weight - penalty_fac * total_weight_range
-
-    else:  # Percentage difference too large
-      perc_diff_weight = total_disagree_weight  # Set to disagr. weight
-
-  else:
-    perc_diff_weight = ''  # Set to a non-numerical value
-
-  msg = ['  Substitution weight:         '+str(subst_weight), \
-         '  Transposition weight:        '+str(trans_weight), \
-         '  Day difference weight:       '+str(day_diff_weight), \
-         '  Percentage difference weight:'+str(perc_diff_weight)]
-  inout.log_message(msg,'v2')
-
-  # Create list with all numerical weight values  - - - - - - - - - - - - - - -
-  #
-  final_weights = []
-  if (subst_weight != ''):
-    final_weights.append(subst_weight)
-  if (trans_weight != ''):
-    final_weights.append(trans_weight)
-  if (day_diff_weight != ''):
-    final_weights.append(day_diff_weight)
-  if (perc_diff_weight != ''):
-    final_weights.append(perc_diff_weight)
-
-  # Compute final date weight according to setting from config.py - - - - - - -
-  #
-  if (config.date_linkage_weight_comp == 'min'):
-    date_weight = min(final_weights)
-
-  elif (config.date_linkage_weight_comp == 'max'):
-    date_weight = max(final_weights)
-
-  elif (type(config.date_linkage_weight_comp) == types.ListType) and \
-       (len(config.date_linkage_weight_comp) == 4):
-
-    # Compute weighted final date weight
-    #
-    date_weight = 0.0
-    if (subst_weight != ''):
-      date_weight += subst_weight * config.date_linkage_weight_comp[0]
-    if (trans_weight != ''):
-      date_weight += trans_weight * config.date_linkage_weight_comp[1]
-    if (day_diff_weight != ''):
-      date_weight += day_diff_weight * config.date_linkage_weight_comp[2]
-    if (perc_diff_weight != ''):
-      date_weight += perc_diff_weight * config.date_linkage_weight_comp[3]
-
-  else:
-    inout.log_message('Illegal value or type for '+
-                      '"config.date_linkage_weight_comp": '+ \
-                      config.date_linkage_weight_comp,'err')
-    raise TypeError(date_linkage_weights)
-
-  return date_weight
-
-# -----------------------------------------------------------------------------
+# =============================================================================
 
 def epoch_to_date(daynum):
-  """Convert a Unix epoch day number into a date [year, month, day].
+  """Convert an epoch day number into a date [day, month, year], with
+     day, month and year being strings of length 2, 2, and 4, respectively.
+     (based on a function from the 'normalDate.py' module by Jeff Bauer, see:
+     http://starship.python.net/crew/jbauer/normalDate/)
 
   USAGE:
     [year, month, day] = epoch_to_date(daynum)
 
   ARGUMENTS:
-    daynum  A integer giving the Unix epoch day (0 = 1970-01-01)
+    daynum  A integer giving the epoch day (0 = 1 January 1900)
 
   DESCRIPTION:
-    Function for converting a number of days since Unix epoch time (integer
-    value) into a date tuple [day, month, year].
+    Function for converting a number of days (integer value) since epoch time
+    1 January 1900 (integer value) into a date tuple [day, month, year].
 
   EXAMPLES:
-    [year, month, day] = epoch_to_date(0)       # 1970-01-01
-    [year, month, day] = epoch_to_date(11736)   # 2002-02-18
+    [day, month, year] = epoch_to_date(0)      # returns ['01','01','1900']
+    [day, month, year] = epoch_to_date(37734)  # returns ['25','04','2003']
   """
 
-  import time
-  import types
+  if (not (isinstance(daynum, int) or isinstance(daynum, long))):
+    print 'error:Input value for "daynum" is not of integer type: %s' % \
+          (str(daynum))
+    raise Exception
 
-  if (type(daynum) != types.IntType) and (type(daynum) != types.LongType):
-    inout.log_message('Input argument is not of integer type: '+str(daynum), \
-                      'err')
-    raise TypeError(epoch_to_date)
+  if (daynum >= -115860):
+    year = 1600 + int(math.floor((daynum + 109573) / 365.2425))
+  elif (daynum >= -693597):
+    year = 4 + int(math.floor((daynum + 692502) / 365.2425))
+  else:
+    year = -4 + int(math.floor((daynum+695058) / 365.2425))
 
-  datetuple  = time.gmtime(daynum*24*3600)
+  days = daynum - first_day_of_year(year) + 1
 
-  return [datetuple[0], datetuple[1], datetuple[2]]
+  if (days <= 0):
+    year -= 1  
+    days = daynum - first_day_of_year(year) + 1
 
-# -----------------------------------------------------------------------------
+  days_in_year = 365 + is_leap_year(year)  # Adjust for a leap year
+
+  if (days > days_in_year):
+    year += 1
+    days = daynum - first_day_of_year(year) + 1
+
+  # Add 10 days for dates between 15 October 1582 and 31 December 1582
+  #
+  if (daynum >= -115860) and (daynum <= -115783):
+    days += 10
+
+  day_count = 0
+  month = 12
+  leap_year_flag = is_leap_year(year)
+
+  for m in range(12):
+    day_count += days_in_month[leap_year_flag][m]
+    if (day_count >= days):
+      month = m + 1
+      break
+
+  # Add up the days in the prior months
+  #
+  prior_month_days = 0
+  for m in range(month-1):
+    prior_month_days += days_in_month[leap_year_flag][m]
+
+  day = days - prior_month_days
+
+  day_str =   string.zfill(str(day),2)  # Add '0' if necessary
+  month_str = string.zfill(str(month),2)  # Add '0' if necessary
+  year_str =  str(year)  # Is always four digits long
+
+  # A log message for high volume log output (level 3)  - - - - - - - - - - - -
+  #
+  print '3:    Epoch: %i -> Day:%s, month:%s, year:%s' % \
+        (daynum, day_str, month_str, year_str)
+
+  return [day_str, month_str, year_str]
+
+# =============================================================================
 
 def date_to_epoch(day, month, year):
-  """ Convert a date [day, month, year] into a Unix epoch day number.
+  """ Convert a date [day, month, year] into an epoch day number.
+     (based on a function from the 'normalDate.py' module by Jeff Bauer, see:
+     http://starship.python.net/crew/jbauer/normalDate/)
 
   USAGE:
     daynum = date_to_epoch(year, month, day)
 
   ARGUMENTS:
-    day    Day value (integer number)
-    month  Month value (integer number)
-    year   Year value (integer number)
+    day    Day value (string or integer number)
+    month  Month value (string or integer number)
+    year   Year value (string or integer number)
 
   DESCRIPTION:
-    Function for converting a date into a Unix epoch day number
-    (integer value).
-
-    Based on a Perl script.. source unknown
+    Function for converting a date into a epoch day number (integer value)
+    since 1 january 1900.
 
   EXAMPLES:
-    day1 = date_to_epoch(18, 02, 2002)  # 11736
-    day2 = date_to_epoch(01, 01, 1970)  # 0
+    day = date_to_epoch('01', '01', '1900')  # returns 0
+    day = date_to_epoch('25', '04', '2003')  # returns 37734
   """
 
-  import types
+  # Convert into integer values
+  #
+  try:
+    day_int = int(day)
+  except:
+    print 'error:"day" value is not an integer'
+    raise Exception
+  try:
+    month_int = int(month)
+  except:
+    print 'error:"month" value is not an integer'
+    raise Exception
+  try:
+    year_int = int(year)
+  except:
+    print 'error:"year" value is not an integer'
+    raise Exception
 
-  if (type(year) != types.IntType) and (type(year) != types.LongType) and \
-     (type(month) != types.IntType) and (type(month) != types.LongType) and \
-     (type(day) != types.IntType) and (type(day) != types.LongType):
-    inout.log_message('Input argument is of illegal type', 'err')
-    raise TypeError(date_to_epoch)
+  # Test if values are within range
+  #
+  if (year_int <= 1000):
+    print 'error:Input value for "year" is not a positive integer ' + \
+          'number: %i' % (year)
+    raise Exception
 
-  # What is all of this about?
-  if (month < 3):
-    year = year - 1
-  if (month > 2):
-    month = month - 3
-  else:
-    month = month + 9
+  leap_year_flag = is_leap_year(year_int)
 
-  c = year / 100.0
-  ya = year - ( 100 * c )
+  if (month_int <= 0) or (month_int > 12):
+    print 'error:Input value for "month" is not a possible day number: %i' % \
+          (month)
+    raise Exception
 
-  return int(((146097*c)/4) + ((1461*ya)/4) + \
-             (((153*month)+2)/5) + day - 719469)
+  if (day_int <= 0) or (day_int > days_in_month[leap_year_flag][month_int-1]):
+    print 'error:Input value for "day" is not a possible day number: %i' % \
+          (day)
+    raise Exception
 
-# -----------------------------------------------------------------------------
+  days = first_day_of_year(year_int) + day_int - 1
 
-def date_to_age(day, month, year):
-  """Convert a date into an age (relative to a fix date given in config.py)
+  for m in range(month_int-1):
+    days += days_in_month[leap_year_flag][m]
+
+  if (year_int == 1582):
+    if (month_int > 10) or ((month_int == 10) and (day_int > 4)):
+      days -= 10
+
+  return days
+
+# =============================================================================
+
+def date_to_age(day, month, year, fix_date='today'):
+  """Convert a date into an age (relative to a fix date)
 
   USAGE:
     age = date_to_age(day, month, year)
+    age = date_to_age(day, month, year, fix_date)
 
   ARGUMENTS:
-    day    Day value (integer number)
-    month  Month value (integer number)
-    year   Year value (integer number)
+    day       Day value (integer number)
+    month     Month value (integer number)
+    year      Year value (integer number)
+    fix_date  The date relative for which the age is computed. Can be a date
+              tuple, the string 'today' (which is the default), or an integer
+              (epoch day number)
 
   DESCRIPTION:
-    Returns the age in years as a positive floating-point number, or a negative
-    error number. 
-
-    The fix date is defined in config.py as: 'date_age_fix_date'
-    (either set to a specific date or to 'today').
+    Returns the age in years as a positive floating-point number.
+    If the date is after the fix date a negative age is returned.
   """
 
-  # Get fix date from config.py or make fix date 'today'  - - - - - - - - - - -
+  # Check if fix date is given, otherwise calculate it  - - - - - - - - - - - -
   #
-  if (not config.date_age_fix_date) or (config.date_age_fix_date == 'today'):
+  if (fix_date == 'today'):
     sys_time = time.localtime(time.time())  # Get current system date
-    fix_date = [sys_time[2], sys_time[1], sys_time[0]]
-  else:
-    parsed_date = parse_datestr(config.date_age_fix_date) # config.py fix date
-    fix_date = parsed_date[0:3]
+    fix_day =   string.zfill(str(sys_time[2]),2)
+    fix_month = string.zfill(str(sys_time[1]),2)
+    fix_year =  str(sys_time[0])
 
-  inout.log_message('Date age computation fix date: '+str(fix_date),'v2')
+  elif (isinstance(fix_date, list) and (len(fix_date) == 3)):
+    fix_day =   string.zfill(str(fix_date[0]),2)
+    fix_month = string.zfill(str(fix_date[1]),2)
+    fix_year =  str(fix_date[2])
+
+  elif (isinstance(fix_date, int)):
+    fix_epoch = fix_date
+
+  else:
+    print 'error:"fix_date" is not in a valid form: %s' % (str(fix_date))
+    raise Exception
 
   # Get epoch number for input date and fix date  - - - - - - - - - - - - - - -
   #
   date_epoch = date_to_epoch(day, month, year)
-  fix_epoch  = date_to_epoch(fix_date[0], fix_date[1], fix_date[2])
+
+  if (not isinstance(fix_date, int)):
+    fix_epoch  = date_to_epoch(fix_day, fix_month, fix_year)
 
   day_diff = fix_epoch - date_epoch  # Get day difference
 
-  # Check for valid day difference and compute age  - - - - - - - - - - - - - -
+  # Compute approximate age - - - - - - - - - - - - - - - - - - - - - - - - - -
   #
-  if (day_diff < 0):
-    inout.log_message(['Age computation not possible:', \
-                       '  Fix date:  '+str(fix_date), \
-                       '  This date: '+str([day,month,year])],'warn')
-    age = -1.0  # Given date is before fix date -> Age computation not possible
+  age = float(day_diff) / 365.25  # Can be positive or negative
 
-  else:  # Approximation of age - - - - - - - - - - - - - - - - - - - - - - - -
-    age = float(day_diff) / 365.25
+  # A log message for high volume log output (level 3)  - - - - - - - - - - - -
+  #
+  print '3:    Date: %s with fix date: %s -> Age: %.3f' % \
+        (str([day,month,year]), str(fix_date), age)
 
   return age
 
-# -----------------------------------------------------------------------------
+# =============================================================================
 
-def str2date(datestr, formatstr):
+def str_to_date(date_str, format_str, pivot_year):
   """A routine that converts a string into a date using a format string.
 
   USAGE:
-    [year,month,day] = str2date(datestr, formatstr)
+    [day,month,year] = str_to_date(datestr, formatstr)
 
   ARGUMENTS:
-    datestr    Input date as a string
-    formatstr  A format string, must be made of three directives, which can
-               either be written one after the other or being separated by
-               a space between them (e.g. "%d%b%Y" or "%m %d %y")
-               Possible format directives are (similar to Python 'strptime'
-               format directives):
-                 %b  Abbreviated month name (Jan, Feb, Mar, etc.)
-                 %B  Full month name (January, February, etc.)
-                 %d  Day of the month as a decimal number [01,31]
-                 %m  Month as a decimal number [01,12]
-                 %y  Year without century as a decimal number [00,99]
-                 %Y  Year with century as a decimal number
+    datestr     Input date as a string
+    formatstr   A format string, must be made of three directives, which can
+                either be written one after the other or being separated by
+                a space between them (e.g. "%d%b%Y" or "%m %d %y")
+                Possible format directives are (similar to Python 'strptime'
+                format directives):
+                  %b  Abbreviated month name (Jan, Feb, Mar, etc.)
+                  %B  Full month name (January, February, etc.)
+                  %d  Day of the month as a decimal number [01,31]
+                  %m  Month as a decimal number [01,12]
+                  %y  Year without century as a decimal number [00,99]
+                  %Y  Year with century as a decimal number
+                  %U  'UNK' or 'UNKNOWN' (for day)
+    pivot_year  If a two-digit year is given, the pivot year is used to
+                detemine if it is expanded into 19XX or 20XX. Two-digits years
+                smaller than the pivot year will be expanded into 20XX, years
+                larger and equal than the pivot year will be expanded into 19xx
+                Example: pivot_year = 03:  68 -> 1968
+                                           03 -> 1903
+                                           02 -> 2002
 
   DESCRIPTION:
     This routine parses the input date string according to the given format
-    and extracts a [day,month,year] triplet if possible.
+    and extracts a [day,month,year] triplet if possible. The output is a list
+    of three strings, with both day and month having length 2, and year having
+    length 4. Example: ['01','02','2003']
 
     If the routine can't parse the date string successfully an empty
     list is returned.
@@ -735,38 +388,52 @@ def str2date(datestr, formatstr):
     Valid four digit year values must be in the interval [1850,2005].
   """
 
-  formatstr = formatstr.strip()
-  datestr   = datestr.strip().lower()
+  # Apply character replace table - - - - - - - - - - - - - - - - - - - - - - -
+  #
+  date_str = date_str.translate(replace_table)
 
-  if (datestr =='') or (formatstr ==''):
+  # Remove leading and trailing whitespaces and make lower case - - - - - - - -
+  #
+  format_str = format_str.strip()
+  date_str   = date_str.strip().lower()
+
+  # Replace triple and double spaces with one space only  - - - - - - - - - - -
+  #
+  date_str = date_str.replace('   ',' ')
+  date_str = date_str.replace('  ',' ')
+  date_str = date_str.replace('  ',' ')
+
+  # Now check the date and format strings - - - - - - - - - - - - - - - - - - -
+  #
+  if (date_str =='') or (format_str ==''):
     return []  # No date or no format string given
 
-  elif (' ' in formatstr) and (' ' in datestr):
-    date_list   = datestr.split()
-    format_list = formatstr.split()
+  elif (' ' in format_str) and (' ' in date_str):
+    date_list   = date_str.split()
+    format_list = format_str.split()
 
-  elif (' ' not in formatstr) and (' ' not in datestr):
+  elif (' ' not in format_str) and (' ' not in date_str):
     date_list   = []
     format_list = []
 
-    workformatstr = formatstr
-    workdatestr   = datestr
-    while (workformatstr != ''):
-      if (workformatstr[:2] == '%Y'):  # Four digit year
-        format_list.append(workformatstr[:2])
-        workformatstr = workformatstr[2:]
-        date_list.append(workdatestr[:4])
-        workdatestr = workdatestr[4:]
+    work_format_str = format_str
+    work_date_str   = date_str
+    while (work_format_str != ''):
+      if (work_format_str[:2] == '%Y'):  # Four digit year
+        format_list.append(work_format_str[:2])
+        work_format_str = work_format_str[2:]
+        date_list.append(work_date_str[:4])
+        work_date_str = work_date_str[4:]
 
-      elif (workformatstr[:2] in ['%m','%d','%y']):  # 2-digit year/month/day 
-        format_list.append(workformatstr[:2])
-        workformatstr = workformatstr[2:]
-        date_list.append(workdatestr[:2])
-        workdatestr = workdatestr[2:]
+      elif (work_format_str[:2] in ['%m','%d','%y']):  # 2-digit year/month/day
+        format_list.append(work_format_str[:2])
+        work_format_str = work_format_str[2:]
+        date_list.append(work_date_str[:2])
+        work_date_str = work_date_str[2:]
 
       else:
-        inout.log_message('Illegal format string without spaces:'+formatstr, \
-                          'err')
+        print 'error:Illegal format string without spaces: "%s"' % (formatstr)
+        raise Exception
 
   else:  # A space in either date or format string but not in both
     return []  # Illegal combination of format string and date string
@@ -785,17 +452,21 @@ def str2date(datestr, formatstr):
     if (directive in ['%b','%B']):  # Month abbreviation or name
       if (len(date_list[0]) >= 3):
         # Get month number (between 1..12) or -1 if not a valid month
-        month = config.month_abbrev_dict.get(date_list[0][:3],-1)
+        month = month_abbrev_dict.get(date_list[0][:3],-1)
 
     elif (directive == '%d'):  # Day of the month number
       try:
         day = int(date_list[0])  # Convert into an integer number
+        if (day < 1) or (day > 31):
+          day = -1
       except:
         day = -1  # Day is no integer
 
     elif (directive == '%m'):  # Month number (between 1..12)
       try:
         month = int(date_list[0])  # Convert into an integer number
+        if (month < 1) or (month > 12):
+          month = -1
       except:
         month = -1  # Month is no integer
 
@@ -808,12 +479,11 @@ def str2date(datestr, formatstr):
         except:
           year = -1  # year is no integer
 
-        # Convert year into four digit value according to user defined pivot
-        # year from 'project.py' module (wrapped into 'config.py')
+        # Convert year into four digit value according to value of pivot_year
         #
-        if (year >= 0) and (year < config.date_pivot_year):
+        if (year >= 0) and (year < pivot_year):
           year = year+2000
-        elif (year >= config.date_pivot_year) and (year < 100):
+        elif (year >= pivot_year) and (year < 100):
           year = year+1900
 
     elif (directive == '%Y'):  # Four digit year with century
@@ -825,10 +495,19 @@ def str2date(datestr, formatstr):
         except:
           year = -1  # year is no integer
 
-    else:
-      inout.log_message('Illegal format directive: '+directive, 'err')
+    elif (directive == '%U'): # New date expression for UNKNOWN
+                              # (Peter Viechnicki)
+      # print "New %U: date_list[0] = ", date_list[0]
+      if (date_list[0] == 'unk' or date_list[0] == 'unknown'):
+        day = 'UNK'
+      else:
+        day = -1
 
-    date_list = date_list[1:]  # Remove processed first element
+    else:
+      print 'error:Illegal format directive: "%s"' % (directive)
+      raise Exception
+
+    date_list =   date_list[1:]    # Remove processed first element
     format_list = format_list[1:]
 
   if (day == -1) or (month == -1) or (year == -1):  # No date parsed
@@ -836,72 +515,56 @@ def str2date(datestr, formatstr):
 
   # Now do some test on the range of the values - - - - - - - - - - - - - - - -
   #
-  if ((year % 4) == 0) and ((year % 100) == 0) and ((year % 400) == 0):
-    leap_year = 1
+  if ((year % 4) == 0):
+    if ((year % 100) == 0):
+      if ((year % 400) == 0):
+        leap_year = True
+      else:
+        leap_year = False
+    else:
+      leap_year = True
   else:
-    leap_year = 0
+    leap_year = False
 
-  valid = 1  # Set date to valid
+  valid = True
 
-  if (month == 2):
-    if (leap_year == 1) and (day > 29):
-      valid = -1  # Illegal day number in February in a leap year
-    elif  (day > 28):
-      valid = -1  # Illegal day number in February in a normal year
-  elif (month in [1,3,5,7,8,10,12]) and (day > 31):
-      valid = -1  # Illegal day number in 31-day months
-  elif (day > 30):
-      valid = -1  # Illegal day number in 30-day months
+  if (day != 'UNK'):  # Only test day value if known
+    if (month == 2):
+      if (leap_year == True) and (day > 29):
+        valid = False  # Illegal day number in February in a leap year
+      elif (leap_year == False) and (day > 28):
+        valid = False  # Illegal day number in February in a normal year
+    elif (month in [1,3,5,7,8,10,12]) and (day > 31):
+      valid = False  # Illegal day number in 31-day months
+    elif (month in [4,6,9,11]) and (day > 30):
+      valid = False  # Illegal day number in 30-day months
 
-  if (valid == -1):
-     return []
+  if (valid == False):
+    return []
+
   else:
-    return[day,month,year]
+    day_str =   string.zfill(str(day),2)
+    month_str = string.zfill(str(month),2)
+    year_str =  str(year)
 
-# -----------------------------------------------------------------------------
+    return [day_str,month_str,year_str]
 
-def test():
+# =============================================================================
 
-  test_dates = [['Sep 1, 68',      '18 Jan 2002'], \
-                ['17:2:2002',      '2002-02-25'], \
-                ['18,03,2001',     '21.12.1999'], \
-                ['February 18,19', '23\\July\\1968'], \
-                ['18-02-2002',     '5/03/01'], \
-                ['19680429',       '600810'],
-                ['3:05:2000',      '30.11.1989'], \
-                ['01011970',       "1. January '70"], \
-                ['10019170',       '01011970'], \
-                ['10011790',       '01011970'], \
-                ['13 Feb 1945',    'Feb 13, \'45'], \
-                ['April 29 1968',  '29-4=68'], \
-                ['11-01-1972',     'January 10. 1972'], \
-                ['23 May 1934',    '28 March 34'], \
-                ['11 Jun 1899',    '11 Jul 1989'], \
-                ['12111968', '      21111969'], \
-                ]
+def get_today():
+  """Return today's date as a [day,month,year] tuple, with three string (both
+     day and month having length 2, and year having length 4).
+  """
 
-  for datepair in test_dates:
-    date1 = parse_datestr(datepair[0])
-    date2 = parse_datestr(datepair[1])
-    print 'Date1:', datepair[0], '->', date1
-    print 'Date2:', datepair[1], '->', date2
+  sys_time = time.localtime(time.time())  # Get current system time and date
+  today = [string.zfill(str(sys_time[2]),2), \
+           string.zfill(str(sys_time[1]),2), \
+           str(sys_time[0])]
 
-    [day_diff, perc_diff] = date_diff(date1,date2)
-    [tr,sub] = date_comp(date1,date2)
-    age1 = date_to_age(date1[0],date1[1],date1[2])
-    age2 = date_to_age(date2[0],date2[1],date2[2])
-    
-    print '  Day difference:       ', day_diff
-    print '  Percentage difference:', perc_diff
-    print '  Transpositions:       ', tr
-    print '  Substitutions:        ', sub
-    print '  Age 1:                ', age1
-    print '  Age 2:                ', age2
-    #print
+  # A log message for high volume log output (level 3)  - - - - - - - - - - - -
+  #
+  print '3:    Today is %s' % (str(today))
 
-    fw = date_linkage_weight(date1,date2)
-    print 'Linkage weight:', fw
-    print
-    print
+  return today
 
 # =============================================================================

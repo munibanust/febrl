@@ -1,9 +1,33 @@
-# State list for locality and name Hidden Markov Models (HMM)
+# =============================================================================
+# hmm-states.txt - State list for address and name Hidden Markov Models (HMM)
+#
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# See http://datamining.anu.edu.au/projects/linkage.html
+#
+# =============================================================================
+# AUSTRALIAN NATIONAL UNIVERSITY OPEN SOURCE LICENSE (ANUOS LICENSE)
+# VERSION 1.1
+#
+# The contents of this file are subject to the ANUOS License Version 1.1 (the
+# "License"); you may not use this file except in compliance with the License.
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+# the specific language governing rights and limitations under the License.
+# The Original Software is "hmm-states.txt".
+# The Initial Developers of the Original Software are Dr Peter Christen
+# (Department of Computer Science, Australian National University) and Dr Tim
+# Churches (Centre for Epidemiology and Research, New South Wales Department
+# of Health). Copyright (C) 2002, 2003 the Australian National University and
+# others. All Rights Reserved.
+# Contributors:
+#
+# =============================================================================
+# State list for address and name Hidden Markov Models (HMM)
 #
 # Peter Christen, 26/08/2002
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Possible states for locality are:
+# Possible states for addresses are:
 #
 # wfnu     Wayfare number
 # wfna1    Wayfare name 1
@@ -39,7 +63,7 @@
 # PC,N4,NU,AN,TR,CR,LN,LQ,ST,IN,IT,WT,WN,UT,HY,SL,CO,VB,PA,UN,RU
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Possible states for name are:
+# Possible states for names are:
 #
 # titl     Title
 # baby     Baby of, son of, daugther of

@@ -1,143 +1,68 @@
 # =============================================================================
-# encode.py - Routines for Soundex, NYSIIS and Double-Metaphone name encodings.
+# encode.py - Routines for Soundex, NYSIIS and Double-Metaphone string
+#             encodings.
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
 # AUSTRALIAN NATIONAL UNIVERSITY OPEN SOURCE LICENSE (ANUOS LICENSE)
-# VERSION 1.0
+# VERSION 1.1
 #
-# The contents of this file are subject to the ANUOS License Version 1.0 (the
+# The contents of this file are subject to the ANUOS License Version 1.1 (the
 # "License"); you may not use this file except in compliance with the License.
 # Software distributed under the License is distributed on an "AS IS" basis,
 # WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
 # the specific language governing rights and limitations under the License.
 # The Original Software is "encode.py".
 # The Initial Developers of the Original Software are Dr Peter Christen
-# (Department of Computer Science, Australian National University), Dr Tim
+# (Department of Computer Science, Australian National University) and Dr Tim
 # Churches (Centre for Epidemiology and Research, New South Wales Department
-# of Health) and Drs Markus Hegland, Stephen Roberts and Ole Nielsen
-# (Mathematical Sciences Insitute, Australian National University). Copyright
-# (C) 2002 the Australian National University and others. All Rights Reserved.
+# of Health). Copyright (C) 2002, 2003 the Australian National University and
+# others. All Rights Reserved.
 # Contributors:
 #
 # =============================================================================
 
 """Module encode.py - Routines for Soundex, Phonex, NYSIIS and Double-Metaphone
-                      name encodings.
+                      string encodings.
 
-   Provides routines for different name encodings (as well as for encodings
+   Provides routines for different string encodings (as well as for encodings
    of reversed names).
 
-   PUBLIC FUNCTIONS:
-     encode  Various phonetic name encodings for a string or a list of strings
-     test    Simple test routine
-
-   Possible encodings (input argument for encode routine) are:
+   ROUTINES
      soundex      Soundex
      mod_soundex  Modified Soundex
      phonex       Phonex
      nysiis       NYSIIS
      dmetaphone   Double-Metaphone
 
-   Use encode.test() to print some example encodings.
-
    See doc strings of individual routines for detailed documentation.
+
+   Note that all encoding routines assume the input string only contains
+   letters and whitespaces, , but not digits or other ASCII characters.
+
+   If called from command line, a test routine is run which prints example
+   encodings for various strings.
 """
 
-# -----------------------------------------------------------------------------
+# =============================================================================
+# Imports go here
 
-import types
 import string
 
-import config
-import inout
+# =============================================================================
 
-# -----------------------------------------------------------------------------
-
-def encode(s, code, reverse=None, maxlen=4):
-  """Various phonetic name encodings for a string or a list of strings.
-
-  USAGE:
-    name_code = encode(s, code, reverse=None, maxlen=4)
-
-  ARGUMENTS:
-    s        Either a string containing a name or a list of name strings.
-    code     One of the possible name encodings:
-             'soundex', 'mod_soundex', 'phonex', 'nysiis', or 'dmetaphone'
-    reverse  Can be set to '1' if the code of the reversed name string
-             should be computed. Default is 'None'
-    maxlen   Maximal length of the returned code. Default is '4'.
-             If a code is longer than 'maxlen' it is truncated
-
-  DESCRIPTION:
-    Computes the phonetic name encodings for the input name or names. If the
-    input is a list of names, the result returned is a list of encodings. If
-    the input is one name only (as string), the result is returned as a string
-    as well.
-
-    By setting the input argument 'reverse' to '1' it is possible to compute
-    the code of the reversed input string.
-
-  EXAMPLES:
-    code1 = encode('miller', 'soundex')
-    code2 = encode('miller', 'phonex', reverse=1)
-    code3 = encode(['miller', 'meyer'], 'dmetaphone', maxlen=6)
-  """
-
-  # Check input argument type - - - - - - - - - - - - - - - - - - - - - - - - -
-  #
-  if (type(s) == types.StringType):
-    s = [s]  # Make a list with one element
-    orgtype = 's'
-  elif (type(s) == types.ListType) or (type(s) == types.TupleType):
-    orgtype = 'l'
-  else:
-    inout.log_message('Illegal data type for input: '+str(s),'err')
-    raise TypeError(encode)
-
-  reslist = []
-  for s2 in s:
-    if (type(s2) != types.StringType):
-      inout.log_message('Illegal data type for input: '+str(s2),'err')
-      raise TypeError(encode)
-    if (reverse):  # Reverse string
-      rev = list(s2)
-      rev.reverse()
-      s2 = ''.join(rev)
-
-    if (code == 'soundex'):
-      reslist.append(do_soundex(s2,maxlen))
-    elif (code == 'mod_soundex'):
-      reslist.append(do_mod_soundex(s2,maxlen))
-    elif (code == 'phonex'):
-      reslist.append(do_phonex(s2,maxlen))
-    elif (code == 'nysiis'):
-      reslist.append(do_nysiis(s2,maxlen))
-    elif (code == 'dmetaphone'):
-      reslist.append(do_dmetaphone(s2,maxlen))
-    else:
-      inout.log_message('Illegal encode type value: '+code,'err')
-      raise Exception(encode)
-
-  if (orgtype == 's'):
-    return reslist[0]
-  else:
-    return reslist
-
-# -----------------------------------------------------------------------------
-
-def do_soundex(s, maxlen):
+def soundex(s, maxlen=4):
   """Compute the soundex code for a string.
 
   USAGE:
-    code = do_soundex(s, maxlen):
+    code = soundex(s, maxlen):
 
   ARGUMENTS:
     s        A string containing a name.
     maxlen   Maximal length of the returned code. If a code is longer than
-             'maxlen' it is truncated
+             'maxlen' it is truncated. Default value is 4.
 
   DESCRIPTION:
     For more information on Soundex see:
@@ -150,11 +75,12 @@ def do_soundex(s, maxlen):
   transtable = string.maketrans('abcdefghijklmnopqrstuvwxyz', \
                                 '01230120022455012623010202')
   # deletechars='aeiouhwy '
+  deletechars = ' '
 
   if (not s):
     return maxlen*'0'  # Or 'z000' for compatibility with other implementations
 
-  s2 = string.translate(s[1:],transtable)
+  s2 = string.translate(s[1:],transtable,deletechars)
 
   s3 = s[0]  # Keep first character of original string
 
@@ -170,22 +96,25 @@ def do_soundex(s, maxlen):
   #
   s4 = s4+maxlen*'0'
 
-  inout.log_message('Soundex code of: '+s+' is '+s4[:maxlen],'v2')
+  # A log message for high volume log output (level 3) - - - - - - - - - - - -
+  #
+  print '3:  Soundex encoding for string: "%s"' % (s)
+  print '3:    Code: %s' % (s4[:maxlen])
 
   return s4[:maxlen]  # Return first maxlen characters
 
-# -----------------------------------------------------------------------------
+# =============================================================================
 
-def do_mod_soundex(s, maxlen):
+def mod_soundex(s, maxlen=4):
   """Compute the modified soundex code for a string.
 
   USAGE:
-    code = do_mod_soundex(s, maxlen):
+    code = mod_soundex(s, maxlen):
 
   ARGUMENTS:
     s        A string containing a name.
     maxlen   Maximal length of the returned code. If a code is longer than
-             'maxlen' it is truncated
+             'maxlen' it is truncated. Default value is 4.
 
   DESCRIPTION:
     For more information on the modified Soundex see:
@@ -214,22 +143,25 @@ def do_mod_soundex(s, maxlen):
   #
   s4 = s3+maxlen*'0'
 
-  inout.log_message('Modified soundex code of: '+s+' is '+s4[:maxlen],'v2')
+  # A log message for high volume log output (level 3) - - - - - - - - - - - -
+  #
+  print '3:  Mod Soundex encoding for string: "%s"' % (s)
+  print '3:    Code: %s' % (s4[:maxlen])
 
   return s4[:maxlen]
 
-# -----------------------------------------------------------------------------
+# =============================================================================
 
-def do_phonex(s, maxlen):
+def phonex(s, maxlen=4):
   """Compute the phonex code for a string.
 
   USAGE:
-    code = do_phonex(s, maxlen):
+    code = phonex(s, maxlen):
 
   ARGUMENTS:
     s        A string containing a name.
     maxlen   Maximal length of the returned code. If a code is longer than
-             'maxlen' it is truncated
+             'maxlen' it is truncated. Default value is 4.
 
   DESCRIPTION:
     Based on the algorithm as described in:
@@ -241,8 +173,6 @@ def do_phonex(s, maxlen):
       http://www.cs.ncl.ac.uk/~brian.randell/home.informal/
              Genealogy/NameMatching.pdf
   """
-
-  inout.log_message('Input string: '+s,'v2')
 
   if (not s):
     return maxlen*'0'  # Or 'z000' for compatibility with other implementations
@@ -276,8 +206,6 @@ def do_phonex(s, maxlen):
     s = 'g'+s[1:]
   elif (s[0] == 'z'):
     s = 's'+s[1:]
-
-  inout.log_message('Pre-processed string: '+s,'v2')
 
   # Modified soundex coding - - - - - - - - - - - - - - - - - - - - - - - - - -
   #
@@ -330,28 +258,34 @@ def do_phonex(s, maxlen):
   #
   code += maxlen*'0'
 
-  inout.log_message('Phonex code: '+code[:maxlen],'v2')
+  # A log message for high volume log output (level 3) - - - - - - - - - - - -
+  #
+  print '3:  Phonex encoding for string: "%s"' % (s)
+  print '3:    Code: %s' % (code[:maxlen])
 
   return code[:maxlen]  # Return first maxlen characters
 
-# -----------------------------------------------------------------------------
+# =============================================================================
 
-def do_nysiis(s, maxlen):
+def nysiis(s, maxlen=4):
   """Compute the NYSIIS code for a string.
 
   USAGE:
-    code = do_nysiis(s, maxlen):
+    code = nysiis(s, maxlen):
 
   ARGUMENTS:
     s        A string containing a name.
     maxlen   Maximal length of the returned code. If a code is longer than
-             'maxlen' it is truncated
+             'maxlen' it is truncated. Default value is 4.
 
   DESCRIPTION:
     For more information on NYSIIS see:
     - http://www.dropby.com/indexLF.html?content=/NYSIIS.html
     - http://www.nist.gov/dads/HTML/nysiis.html
   """
+
+  if (not s):
+    return ''
 
   # Remove trailing S or Z
   #
@@ -360,7 +294,7 @@ def do_nysiis(s, maxlen):
 
   # Translate first characters of string  
   #
-  if (s[:3] == 'mac'):     # Initial 'MAC' -> 'MC'
+  if (s[:3] == 'mac'):  # Initial 'MAC' -> 'MC'
     s = 'mc'+s[3:]
   elif (s[:2] == 'pf'):  # Initial 'PF' -> 'F'
     s = s[1:]
@@ -377,12 +311,18 @@ def do_nysiis(s, maxlen):
   if (s[2:].find('ev') > -1):
     s = s[:-2]+s[2:].replace('ev','ef')
 
+  if (not s):
+    return ''
+
   first = s[0]  # Save first letter for final code
 
-  # Replace all vowels with A
+  # Replace all vowels with A and delete whitespaces
   #
   voweltable = string.maketrans('eiou', 'aaaa')
-  s2 = string.translate(s,voweltable)
+  s2 = string.translate(s,voweltable, ' ')
+
+  if (not s2):  # String only contained whitespaces
+    return ''
 
   # Remove all W that follow an A
   #
@@ -438,22 +378,25 @@ def do_nysiis(s, maxlen):
   if (first in 'aeiou'):
     resstr = first+resstr[1:]
 
-  inout.log_message('NYSIIS code of '+s+' is '+resstr[:maxlen],'v2')
+  # A log message for high volume log output (level 3) - - - - - - - - - - - -
+  #
+  print '3:  NYSIIS encoding for string: "%s"' % (s)
+  print '3:    Code: %s' % (resstr[:maxlen])
 
   return resstr[:maxlen]
 
-# -----------------------------------------------------------------------------
+# =============================================================================
 
-def do_dmetaphone(s, maxlen):
+def dmetaphone(s, maxlen=4):
   """Compute the Double Metaphone code for a string.
 
   USAGE:
-    code = do_dmetaphone(s, maxlen):
+    code = dmetaphone(s, maxlen):
 
   ARGUMENTS:
     s        A string containing a name.
     maxlen   Maximal length of the returned code. If a code is longer than
-             'maxlen' it is truncated
+             'maxlen' it is truncated. Default value is 4.
 
   DESCRIPTION:
     Based on:
@@ -466,6 +409,9 @@ def do_dmetaphone(s, maxlen):
     - http://aspell.sourceforge.net/metaphone/
     - http://www.nist.gov/dads/HTML/doubleMetaphone.html
   """
+
+  if (not s):
+    return ''
 
   primary = ''
   secondary = ''
@@ -1265,60 +1211,72 @@ def do_dmetaphone(s, maxlen):
     # If both codes are the same set the second's length to 0 so it's not used
     secondary_len = 0
 
-  msg = ['Primary double-metaphone code of '+s+' is '+primary]
-  if secondary_len > 0:
-    msg.append('Secondary double-metaphone code of '+s+' is '+secondary)
-  inout.log_message(msg,'v2')
+  # if (secondary_len > 0):
+  #   return [primary[:maxlen], secondary[:maxlen]]
+  # else:
+  #   return [primary[:maxlen]]
 
-  if (secondary_len > 0):
-    return [primary[:maxlen], secondary[:maxlen]]
-  else:
-    return [primary[:maxlen]]
+  # A log message for high volume log output (level 3) - - - - - - - - - - - -
+  #
+  print '3:  Double Metaphone encoding for string: "%s"' %(s)
+  print '3:    Code: %s, secondary code: %s' % \
+        (primary[:maxlen], secondary[:maxlen])
 
-# -----------------------------------------------------------------------------
+  return primary[:maxlen]  # Only return primary encoding
 
-def test():
-  """Simple test routine.
-  """
+# =============================================================================
 
-  print '            Name     Phonex   Soundex  ModSoundex      NYSIIS  ',
-  print '       D-Metaphone'
+#
+# Do some tests if called from command line
+#
+
+if (__name__ == '__main__'):
+
+  print 'Febrl module "encode.py"'
+  print '------------------------'
+  print
 
   print 'Original names:'
+  print '            Name     Phonex   Soundex  ModSoundex      NYSIIS  ',
+  print '  D-Metaphone'
+  print '---------------------------------------------------------------'+ \
+        '--------------'
 
   namelist = ['peter','christen','ole','nielsen','markus','hegland',\
               'stephen','steve','roberts','tim','churches','xiong',\
               'ng','miller','millar','foccachio','van de hooch', \
               'xiao ching','asawakun','prapasri','von der felde','vest',
-              'west','oioi','ohio','oihcca', 'nielsen', 'kim', 'lim']
+              'west','oioi','ohio','oihcca', 'nielsen', 'kim', 'lim', \
+              'computer','record','linkage','probabilistic']
 
   for n in namelist:
-    soundex_my     = encode(n, 'soundex',maxlen=6)
-    soundex_mod_my = encode(n, 'mod_soundex',maxlen=6)
-    phonex_my     = encode(n, 'phonex',maxlen=6)
-    nysiis_my     = encode(n, 'nysiis',maxlen=6)
-    dmeta_my      = encode(n, 'dmetaphone',maxlen=6)
+    soundex_my     = soundex(n)
+    soundex_mod_my = mod_soundex(n)
+    phonex_my     = phonex(n)
+    nysiis_my     = nysiis(n)
+    dmeta_my      = dmetaphone(n)
 
-    print '%16s %11s %11s %11s %11s %20s'% \
+    print '%16s %10s %9s %11s %11s %15s'% \
           (n, phonex_my, soundex_my, soundex_mod_my, nysiis_my, dmeta_my)
 
   print
   print 'Reversed names:'
+  print '            Name     Phonex   Soundex  ModSoundex      NYSIIS  ',
+  print '  D-Metaphone'
+  print '---------------------------------------------------------------'+ \
+        '--------------'
 
   for n in namelist:
     rn = list(n)
     rn.reverse()
     rn = ''.join(rn)
-    soundex_my     = encode(n, 'soundex',reverse=1,maxlen=6)
-    soundex_mod_my = encode(n, 'mod_soundex',reverse=1,maxlen=6)
-    phonex_my     = encode(n, 'phonex',reverse=1,maxlen=6)
-    nysiis_my     = encode(n, 'nysiis',reverse=1,maxlen=6)
-    dmeta_my      = encode(n, 'dmetaphone',reverse=1,maxlen=6)
+    soundex_my     = soundex(rn)
+    soundex_mod_my = mod_soundex(rn)
+    phonex_my     = phonex(rn)
+    nysiis_my     = nysiis(rn)
+    dmeta_my      = dmetaphone(rn)
 
-    print '%16s %11s %11s %11s %11s %20s'% \
+    print '%16s %10s %9s %11s %11s %15s'% \
           (rn, phonex_my, soundex_my, soundex_mod_my, nysiis_my, dmeta_my)
 
-# -----------------------------------------------------------------------------
-
-
-
+# =============================================================================
