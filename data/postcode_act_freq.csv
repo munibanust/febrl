@@ -1,0 +1,68 @@
+# =============================================================================
+# postcode_act_freq.csv - Frequency table for postcodes in the ACT
+#
+# Source: Australian Whitepages (http://www.whitepages.com.au)
+#         (May 2001)
+#
+# Last update: 11/04/2002, Peter Christen
+#
+# =============================================================================
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# See http://datamining.anu.edu.au/projects/linkage.html
+#
+# AUSTRALIAN NATIONAL UNIVERSITY OPEN SOURCE LICENSE (ANUOS LICENSE)
+# VERSION 1.1
+#
+# The contents of this file are subject to the ANUOS License Version 1.1 (the
+# "License"); you may not use this file except in compliance with the License.
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+# the specific language governing rights and limitations under the License.
+# The Original Software is "postcode_act_freq.csv".
+# The Initial Developers of the Original Software are Dr Peter Christen
+# (Department of Computer Science, Australian National University) and Dr Tim
+# Churches (Centre for Epidemiology and Research, New South Wales Department
+# of Health). Copyright (C) 2002, 2003 the Australian National University and
+# others. All Rights Reserved.
+# Contributors:
+#
+# =============================================================================
+
+# =============================================================================
+#
+# This table is in a two-column comma separated format, with the first column
+# being the names and the second a corresponding frequency count. 
+#
+# =============================================================================
+
+2582,3
+2584,2
+2586,25
+2600,2946
+2601,498
+2602,10760
+2603,3377
+2604,3380
+2605,4500
+2606,3478
+2607,5570
+2608,3
+2609,259
+2611,9311
+2612,4153
+2614,7707
+2615,13282
+2617,8599
+2618,448
+2620,268
+2621,78
+2900,426
+2902,5706
+2903,3463
+2904,4554
+2905,9270
+2906,4820
+2911,36
+2912,54
+2913,6470
+2914,945
