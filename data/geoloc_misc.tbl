@@ -1,0 +1,69 @@
+# =============================================================================
+# geoloc_misc.tbl - Lookup-table for various locality words
+#
+# Source: - NSW Health Department pattern and classification files
+#
+# Last update: 30/08/2002, Peter Christen
+#
+# =============================================================================
+# Freely extensible biomedical record linkage (Febrl) Version 0.1
+# See http://datamining.anu.edu.au/projects/linkage.html
+#
+# =============================================================================
+# AUSTRALIAN NATIONAL UNIVERSITY OPEN SOURCE LICENSE (ANUOS LICENSE)
+# VERSION 1.0
+#
+# The contents of this file are subject to the ANUOS License Version 1.0 (the
+# "License"); you may not use this file except in compliance with the License.
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+# the specific language governing rights and limitations under the License.
+# The Original Software is "geoloc_misc.tbl".
+# The Initial Developers of the Original Software are Dr Peter Christen
+# (Department of Computer Science, Australian National University), Dr Tim
+# Churches (Centre for Epidemiology and Research, New South Wales Department
+# of Health) and Drs Markus Hegland, Stephen Roberts and Ole Nielsen
+# (Mathematical Sciences Insitute, Australian National University). Copyright
+# (C) 2002 the Australian National University and others. All Rights Reserved.
+# Contributors:
+#
+# =============================================================================
+
+tag=<SL>  # Tag for slash
+
+                 / :
+
+tag=<IT>
+  no fixed address : n f add, n f address, no f add, no f address,
+                     no fixed addr, nfa, n f a, no fixed abode
+
+tag=<WN>
+              the : the
+
+    the boulevard : the boulevarde, the boulvard, the boulvarde
+       the avenue : the ave, the av
+       the drive  : the drv
+      the circuit : the crct
+       the circle : the crcl, the crcle
+       the common :
+        the corso :
+       the parade : the pde, the prde
+ the grand parade : the grnd pde, the grand pde
+      the bastion : 
+       the strand : the strnd, the strd
+         the mall : the mal
+     the crescent : the cres, the cresnt, the cresent
+         the mews : 
+        the grove : the grv
+        the close : the cl, the cls
+    the colonnade : the clde
+    the concourse : the con
+    the esplanade : the espl, the espld, the esplnde
+      the parkway : the prkwy, the pkway, the pkwy
+        the place : the plc
+        the plaza : the plz
+    the promenade : the prom, the prmde
+  the quarterdeck : the qtrdeck, the quarter deck, the qtr deck
+          the row : 
+       the square : the sq, the sqre
+         the walk : the wlk

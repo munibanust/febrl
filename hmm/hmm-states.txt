@@ -1,0 +1,70 @@
+# State list for locality and name Hidden Markov Models (HMM)
+#
+# Peter Christen, 26/08/2002
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Possible states for locality are:
+#
+# wfnu     Wayfare number
+# wfna1    Wayfare name 1
+# wfna2    Wayfare name 2
+# wfql     Wayfare qualifier
+# wfty     Wayfare type
+# unnu     Unit number
+# unty     Unit type
+# prna1    Property name 1
+# prna2    Property name 2
+# inna1    Institution name 1
+# inna2    Institution name 2
+# inty     Institution type
+# panu     Postal address number
+# paty     Postal address type
+# hyph     Hyphen
+# sla      Slash
+# coma     Comma
+# opbr     Opening bracket
+# clbr     Closing bracket
+# loc1     Locality name 1
+# loc2     Locality name 2
+# locql    Locality qualifier
+# pc       Postcode
+# ter1     Territory name 1
+# ter2     Territory name 2
+# cntr1    Country name 1
+# cntr2    Country name 2
+# rubb     Rubbish state
+#
+# The possible tags for locality are:
+#
+# PC,N4,NU,AN,TR,CR,LN,LQ,ST,IN,IT,WT,WN,UT,HY,SL,CO,VB,PA,UN,RU
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Possible states for name are:
+#
+# titl     Title
+# baby     Baby of, son of, daugther of
+# knwn     Known as
+# andor    And or or
+# gname1   Given name 1
+# gname2   Given name 2
+# ghyph    Given name hyphen
+# gopbr    Given name opening bracket
+# gclbr    Given name closing bracket
+# agname1  Alternative given name 1
+# agname2  Alternative given name 2
+# coma     Comma
+# sname1   Surname 1
+# sname2   Surname 2
+# shyph    Surname hyphen
+# sopbr    Surname opening bracket
+# sclbr    Surname closing bracket
+# asname1  Alternative surname 1
+# asname2  Alternative surname 2
+# pref1    Name prefix 1
+# pref2    Name prefix 2
+# rubb     Rubbish state
+#
+# The possible tags for name are:
+#
+# NU,AN,TI,PR,II,GF,GM,SN,ST,SP,HY,CO,NE,BO,VB,UN,RU
+

@@ -1,0 +1,69 @@
+# =============================================================================
+# territory.tbl - Lookup-table for territory names
+#
+# Source: - NSW Health Department pattern and classification files
+#
+# Last update: 01/08/2002, Peter Christen
+#
+# =============================================================================
+# Freely extensible biomedical record linkage (Febrl) Version 0.1
+# See http://datamining.anu.edu.au/projects/linkage.html
+#
+# =============================================================================
+# AUSTRALIAN NATIONAL UNIVERSITY OPEN SOURCE LICENSE (ANUOS LICENSE)
+# VERSION 1.0
+#
+# The contents of this file are subject to the ANUOS License Version 1.0 (the
+# "License"); you may not use this file except in compliance with the License.
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+# the specific language governing rights and limitations under the License.
+# The Original Software is "territory.tbl".
+# The Initial Developers of the Original Software are Dr Peter Christen
+# (Department of Computer Science, Australian National University), Dr Tim
+# Churches (Centre for Epidemiology and Research, New South Wales Department
+# of Health) and Drs Markus Hegland, Stephen Roberts and Ole Nielsen
+# (Mathematical Sciences Insitute, Australian National University). Copyright
+# (C) 2002 the Australian National University and others. All Rights Reserved.
+# Contributors:
+#
+# =============================================================================
+
+tag=<TR>  # Tag for territory words
+
+other territories : o/t, other territory, other terr
+
+australian capital territory : act, a c t, australian capital t,
+                               australian capital ter,
+                               australian capital terr,
+                               australia capital t, australia capital ter,
+                               australia capital terr, australia c t, 
+                               australia capital territory,
+                               australia c ter, australia c terr,
+                               australia c territory, australian c t,
+                               australian c ter, australian c terr,
+                               austr capit ter, austr capit terr
+
+             new south wales : n s w, new s w, new south w, nsw, n south w,
+                               n south wales, new south wa, n south wa,
+                               new s wa, n s wales, new s wales
+
+          northern territory : n t, n ter, n terr, n territory, north t,
+                               north ter, north terr, north territory,
+                               northern t, northern ter, northern terr,
+                               nt, no t, no ter, no terr, no territory
+
+                  queensland : q l d, q land, queen land, queens land, qld,
+                               queenland
+
+             south australia : s a, s australia, s australian, sa,
+                               south australian, southern australia,
+                               southern australian
+
+                    tasmania : tas
+
+                    victoria : vi, vict, vic
+
+           western australia : w australia, w australian, wa,
+                               western australian, west australia,
+                               west australian

@@ -1,0 +1,218 @@
+# =============================================================================
+# geoloc_corr.lst - Correction list for locality component
+#
+# Source: - NSW Health Department AutoStan pattern and classification files
+#
+# Last update: 12/09/2002, Peter Christen
+#
+# Entries in the file are of the form:
+#
+#          replacement := values
+#
+# where 'values' can be one word or character or a comma separated list of
+# words or characters. Each value will be replaced by the 'replacement'
+# string on the left side.
+# Both the replacement string and each of the value strings must be enclosed
+# in either single or double quotes.
+#
+# =============================================================================
+# Freely extensible biomedical record linkage (Febrl) Version 0.1
+# See http://datamining.anu.edu.au/projects/linkage.html
+#
+# =============================================================================
+# AUSTRALIAN NATIONAL UNIVERSITY OPEN SOURCE LICENSE (ANUOS LICENSE)
+# VERSION 1.0
+#
+# The contents of this file are subject to the ANUOS License Version 1.0 (the
+# "License"); you may not use this file except in compliance with the License.
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+# the specific language governing rights and limitations under the License.
+# The Original Software is "geoloc_corr.lst".
+# The Initial Developers of the Original Software are Dr Peter Christen
+# (Department of Computer Science, Australian National University), Dr Tim
+# Churches (Centre for Epidemiology and Research, New South Wales Department
+# of Health) and Drs Markus Hegland, Stephen Roberts and Ole Nielsen
+# (Mathematical Sciences Insitute, Australian National University). Copyright
+# (C) 2002 the Australian National University and others. All Rights Reserved.
+# Contributors:
+#
+# =============================================================================
+
+# Remove characters and words from input
+                 ' ' := '.', '?', '~', '-', '_', ':', ';', '^', '=', ' na ',
+                        ' n/a ', ' n.a.', ' c/o ', ' c/- ', 'also ', ' name ',
+                        ' only ', ' abbrev ', ' locked ', ' on ', ' of ',
+                        ' unk ', ' unkn ', ' missing ', '*', 
+                        ' unknown ', ' fc ', ' bc ', ' c / ', ' xx '
+
+# Correct words and symbols
+   ' roman catholic ' := ' r/c ', ' r / c ', ' rc '
+' church of england ' := ' c/e ', ' c / e ', ' c of e '
+ ' no fixed address ' := ' nfa ', 'n/f/a ', ' n.f.a.', ' n f a '
+     ' nursing home ' := ' n / home '
+  ' other territory ' := ' o/t ', ' o.t.'
+	      ' and ' := '+', '&'
+	        ' / ' := '\', '/'
+	        ' | ' := '<', '>', '(', ')', '[', ']', '{', '}', '"', "'"
+
+# Remove ' from o'brian etc
+                 ' a' := " a'"
+                 ' o' := " o'"
+                 ' d' := " d'"
+                 ' l' := " l'"
+                 ' i' := " i'"
+                 '-a' := "-a'"
+                 '-d' := "-d'"
+                 '-o' := "-o'"
+                 '-l' := "-l'"
+                 '-i' := "-i'"
+                 's ' := "'s "
+
+# Correct roman numbers
+                ' i ' := ' 1 '
+               ' ii ' := ' 2 '
+              ' iii ' := ' 3 '
+               ' iv ' := ' 4 '
+                ' v ' := ' 5 '
+               ' vi ' := ' 6 '
+              ' vii ' := ' 7 '
+             ' viii ' := ' 8 '
+               ' ix ' := ' 9 '
+                ' x ' := ' 10 '
+               ' xi ' := ' 11 '
+              ' xii ' := ' 12 '
+               ' xv ' := ' 15 '
+               ' xx ' := ' 20 '
+
+# Correct ordinal numbers
+            ' first ' := ' 1st '
+           ' second ' := ' 2nd '
+            ' third ' := ' 3rd '
+           ' fourth ' := ' 4th '
+            ' fifth ' := ' 5th '
+            ' sixth ' := ' 6th '
+          ' seventh ' := ' 7th '
+           ' eighth ' := ' 8th '
+            ' ninth ' := ' 9th '
+            ' tenth ' := ' 10th '
+         ' eleventh ' := ' 11th '
+          ' twelfth ' := ' 12th '
+       ' thirteenth ' := ' 13th '
+       ' fourteenth ' := ' 14th '
+        ' fifteenth ' := ' 15th '
+        ' sixteenth ' := ' 16th '
+      ' seventeenth ' := ' 17th '
+       ' eighteenth ' := ' 18th '
+       ' nineteenth ' := ' 19th '
+        ' twentieth ' := ' 20th '
+        ' thirtieth ' := ' 30th '
+         ' fortieth ' := ' 40th '
+         ' fiftieth ' := ' 50th '
+         ' sixtieth ' := ' 60th '
+       ' seventieth ' := ' 70th '
+        ' eightieth ' := ' 80th '
+        ' ninetieth ' := ' 90th '
+        ' hundredth ' := ' 100th '
+
+# Australian state and territory words
+        ' australia ' := ' aus ', ' aust ', ' austr ', ' autr '
+          ' capital ' := ' cap ', ' capit ', ' capitol ', ' capt '
+             ' land ' := ' lnd '
+        ' territory ' := ' teritory '
+            ' wales ' := ' wals ', ' wal '
+
+# Geographical locations
+           ' alpine ' := ' alpint ', ' apline '
+             ' cove ' := ' coe '
+           ' county ' := ' cnty ', ' coun '
+            ' creek ' := ' ck ', ' crk '
+             ' dale ' := ' dell '
+              ' dam ' := ' dame '
+             ' dock ' := ' dck ', ' dk '
+          ' fairway ' := ' fawy '
+            ' falls ' := ' fals ', ' flls ', ' fls '
+            ' field ' := ' fiedls ', ' field ', ' fields ', ' fiels ',
+                         ' filds ', ' filed ', ' fileds ', ' flds '
+           ' forest ' := ' fores ', ' forrest ', ' frest '
+            ' glade ' := ' gld '
+           ' grange ' := ' gra '
+            ' green ' := ' grn ', ' greeen '
+            ' gully ' := ' gly ', ' glly '
+             ' head ' := ' hd '
+            ' heads ' := ' hds '
+             ' hill ' := ' gill ', ' hil ', ' hilll ', ' hiull '
+            ' hills ' := ' hillss ', ' hils ', ' hiolls ', ' hlls ', ' holls '
+            ' inlet ' := ' inley ', ' innlet '
+           ' island ' := ' ils ', ' is ', ' isl '
+             ' lake ' := ' lk ', ' lke '
+            ' lakes ' := ' lks ', ' lkes '
+          ' lookout ' := ' lkt '
+          ' meander ' := ' mndr '
+           ' meadow ' := ' mdw ', ' meado ', ' medow '
+          ' meadows ' := ' mdws ', ' medows '
+           ' midway ' := ' midwy '
+            ' mount ' := ' mnt ', ' mout ', ' mt '
+             ' oaks ' := ' oak ', ' oakes '
+          ' outlook ' := ' otlk '
+        ' parklands ' := ' parkland ', ' pkld ', ' pklds '
+             ' pass ' := ' ps '
+           ' plains ' := ' plain ', ' planes ', ' plians ', ' plns '
+          ' plateau ' := ' plat ', ' platau ', ' platea ', ' platteau ',
+                         ' platue ', ' plt ', ' pltu '
+             ' pier ' := ' pir '
+            ' polar ' := ' pola '
+             ' port ' := ' prt '
+            ' range ' := ' rnge '
+            ' ridge ' := ' ridg ', ' rdge '
+            ' river ' := ' riv ', ' rivr ', ' rvr '
+          ' riviera ' := ' rvra '
+            ' rocky ' := ' rockey '
+            ' sands ' := ' sandes '
+            ' slope ' := ' slpe '
+            ' sound ' := ' snd '
+            ' stony ' := ' stoney '
+             ' vale ' := ' vle '
+           ' valley ' := ' valey ', ' vlley ', ' vally ', ' vlly ', ' vly ',
+                         ' valleys ', ' vlys '
+            ' wells ' := ' wls ', ' well '
+
+# Various words
+           ' access ' := ' acc ', ' accs '
+            ' amble ' := ' ambl '
+        ' anchorage ' := ' ancg '
+         ' approach ' := ' app '
+           ' artery ' := ' art '
+            ' bayou ' := ' bayoo '
+            ' brace ' := ' brce '
+           ' branch ' := ' br ', ' brnch '
+            ' break ' := ' braek ', ' brk '
+        ' deviation ' := ' devn '
+            ' elbow ' := ' elb '
+        ' foreshore ' := ' fhsr '
+        ' formation ' := ' form '
+            ' front ' := ' frnt '
+         ' frontage ' := ' frtg '
+           ' ground ' := ' grnd '
+              ' key ' := ' ky '
+       ' centennial ' := ' centenial '
+           ' double ' := ' doule '
+             ' hall ' := ' ahll ', ' haqll '
+             ' keys ' := ' keyes '
+            ' kings ' := ' king ', ' kingl ', ' kingsl ', ' kinks ', ' kins '
+             ' nest ' := ' neest '
+          ' neutral ' := ' neutrl '
+         ' pleasant ' := ' plaesant ', ' pleasent ', ' pleasnt ', ' plesant '
+       ' quadrangle ' := ' qdgl '
+         ' quadrant ' := ' qdrt '
+           ' ramble ' := ' rmbl '
+            ' reach ' := ' rch '
+            ' ronde ' := ' rnde '
+         ' rosebowl ' := ' rsbl '
+            ' round ' := ' rnd '
+           ' siding ' := ' sdng '
+           ' stairs ' := ' strs '
+            ' steps ' := ' stps '
+         ' triangle ' := ' tri '
+             ' view ' := ' veiw ', ' vw ', ' views ', ' vws '
+            ' vista ' := ' vis ', ' vist ', ' vst ', ' vsta '

@@ -1,0 +1,76 @@
+# =============================================================================
+# unit_type.tbl - Lookup-table for unit type names
+#
+# Sources: - NSW Health Department pattern and classification files
+#          - US Postal Service Official Abbreviations
+#            http://www.usps.com/ncsc/lookups/usps_abbreviations.html
+#          - Address Component Abbreviations from AS.4590 - 1999
+#            (Australian Standard for Interchange of Client Information)
+#
+# Last update: 30/08/2002, Peter Christen
+#
+# =============================================================================
+# Freely extensible biomedical record linkage (Febrl) Version 0.1
+# See http://datamining.anu.edu.au/projects/linkage.html
+#
+# =============================================================================
+# AUSTRALIAN NATIONAL UNIVERSITY OPEN SOURCE LICENSE (ANUOS LICENSE)
+# VERSION 1.0
+#
+# The contents of this file are subject to the ANUOS License Version 1.0 (the
+# "License"); you may not use this file except in compliance with the License.
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+# the specific language governing rights and limitations under the License.
+# The Original Software is "unit_type.tbl".
+# The Initial Developers of the Original Software are Dr Peter Christen
+# (Department of Computer Science, Australian National University), Dr Tim
+# Churches (Centre for Epidemiology and Research, New South Wales Department
+# of Health) and Drs Markus Hegland, Stephen Roberts and Ole Nielsen
+# (Mathematical Sciences Insitute, Australian National University). Copyright
+# (C) 2002 the Australian National University and others. All Rights Reserved.
+# Contributors:
+#
+# =============================================================================
+
+tag=<UT>  # Tag for unit type words
+
+       apartment : apartement, apt, aprt, appartment, appartement
+           annex : anex, anx, annx, annexe
+        basement : bsmt, bsment, bsm
+           block : blck, blk
+        building : bdg, bldg, blg
+         cottage : ctge
+      department : dept
+          duplex : dup
+       extension : ext, extn
+         factory : fy
+            farm : frm
+            flat : flats, flt, ft, fl
+           floor : flr
+     groundfloor : g, gl, gf, lg, ug
+           house : hs, hse, hous
+          hangar : hngr
+           kiosk : ksk
+           level : lev, levl, lvel, lvl
+           lobby : lbby
+             lot : l
+      maisonette : msnt
+          office : o, off, offc, ofc
+       penthouse : ph, pths
+            room : rm
+            shed : shd
+            shop : shp
+            site : 
+           space : spc
+           stall : sl, stl, stll
+         station : 
+          studio : stu
+           suite : ste
+       townhouse : tnhs
+         trailer : trlr
+            unit : u, un, unt
+             van : 
+           villa : vl, vlla, villas, vlls
+            ward : wd, wrd
+       warehouse : we, whs

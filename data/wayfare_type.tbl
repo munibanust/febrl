@@ -1,0 +1,139 @@
+# =============================================================================
+# wayfare_type.tbl - Lookup-table for wayfare type words
+#
+# Sources: - NSW Health Department pattern and classification files
+#          - US Postal Service Official Abbreviations
+#            http://www.usps.com/ncsc/lookups/usps_abbreviations.html
+#          - Address Component Abbreviations from AS.4590 - 1999
+#            (Australian Standard for Interchange of Client Information)
+#
+# Last update: 30/08/2002, Peter Christen
+#
+# =============================================================================
+# Freely extensible biomedical record linkage (Febrl) Version 0.1
+# See http://datamining.anu.edu.au/projects/linkage.html
+#
+# =============================================================================
+# AUSTRALIAN NATIONAL UNIVERSITY OPEN SOURCE LICENSE (ANUOS LICENSE)
+# VERSION 1.0
+#
+# The contents of this file are subject to the ANUOS License Version 1.0 (the
+# "License"); you may not use this file except in compliance with the License.
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+# the specific language governing rights and limitations under the License.
+# The Original Software is "wayfare_type.tbl".
+# The Initial Developers of the Original Software are Dr Peter Christen
+# (Department of Computer Science, Australian National University), Dr Tim
+# Churches (Centre for Epidemiology and Research, New South Wales Department
+# of Health) and Drs Markus Hegland, Stephen Roberts and Ole Nielsen
+# (Mathematical Sciences Insitute, Australian National University). Copyright
+# (C) 2002 the Australian National University and others. All Rights Reserved.
+# Contributors:
+#
+# =============================================================================
+
+tag=<WT>  # Tag for wayfare type words
+
+# Wayfare type words
+           alley : aly, ally, allee, allyway, allwy, alwy
+          arcade : arc
+          avenue : av, ave, ave.,aven, avenu, avn, avnu, avnue, avenues
+           basin : basn
+             bay : ba, baby, bat
+           beach : baech, bch, beech
+            bend : bnd
+           bluff : blf, bluf, bluffs
+         bottoms : bottom, bot, bottm, btm, bttm, bttms, btms, bottms
+       boulevard : bd, bde, bl, blv, blvd, blvde, blvrd, boulavard,
+                   boul, boulv, bvd, boulevarde
+          bridge : brdg, brdge, brg, bdge
+        broadway : bdwy, brdway
+          bypass : bypa
+           byway : bywy
+               c : 
+        causeway : csway, cswy, causewy, caus, cause
+       centreway : cnwy
+          circle : cir, circel, clt
+         circuit : crct, circ, cct, cirt
+           close : cl, cls, clse
+       colonnade : clde
+       concourse : con
+          corner : cnr, crn, crnr
+           court : crt, ct
+       courtyard : ctyd
+        crescent : cr, cred, cres, crs, cresent, crecent
+           crest : crst
+           cross : crss
+        crossing : crsg
+       crossroad : crd
+        crossway : cowy, crwy
+       cruiseway : cuwy
+               d : 
+           drive : dr, drv, dv, dve
+        driveway : drwy, drvwy
+       esplanade : esp, espl
+          estate : est, ests, estates
+      expressway : exp, expwy
+       firetrack : ftrk
+       firetrail : fitr
+         footway : ftwy
+         freeway : frwy, fw, fwy
+          garden : gdn, grd, grdn
+         gardens : gdns, grds, grdns
+            gate : gte
+           gates : gtes
+           grove : gr, grve
+         harbour : habour, harbor
+        highroad : hrd
+         highway : hgwy, hw, hway, hwy, hi
+     interchange : intg
+    intersection : intn
+        junction : jct, jnc, jnct, jtn, jubction, junct
+              la : 
+            lane : ln, lne
+         laneway : lnwy
+          lagoon : lgn, lagon
+           manor : mnr
+            mews : mws
+        motorway : mwy
+          parade : pde, prd
+            park : pk, prk
+         parkway : parkwy, pky, pkway, prkwy, prkway, pkw, pkwy
+            path : pth
+         pathway : phwy
+           place : pl, pla
+           plaza : plz, plza, pz, piaz, piazza
+          pocket : pkt, pokt, pckt
+           point : piont, pnt, pt
+       promenade : prom
+            quay : quy, qy, quays, qys
+         reserve : res, resrv, resv, rsrv, rserv, rserve, rsrve
+        ridgeway : rgwy
+        riverway : rvwy
+            road : r, raod, rd, rds, roads
+         roadway : rdwy
+           route : rt, rte
+             row : 
+             rue :
+      serviceway : swy
+          square : sq, sqr
+    statehighway : shwy
+          strand : stra, strnd
+          street : st, str, streets, stret, strets, sty
+           strip : strp
+          subway : sbwy
+         terrace : ter, terr, tce, terace, terrac, terrance, terrrace
+    thoroughfare : thor
+         tollway : tlwy
+           track : trk
+           trail : tr, trl
+        trunkway : tkwy
+       underpass : upas
+         viaduct : vdct, viadct
+            walk : wlk, walks
+         walkway : wkwy
+          waters : water, wtr, wtrs
+             way : wy, ways
+           wharf : whrf
+            yard : yrd

@@ -1,0 +1,2595 @@
+# =============================================================================
+# geoloc-sample-training-data.csv - Sample address HMM training data
+#
+# =============================================================================
+# Freely extensible biomedical record linkage (Febrl) Version 0.1
+# See http://datamining.anu.edu.au/projects/linkage.html
+#
+# =============================================================================
+# AUSTRALIAN NATIONAL UNIVERSITY OPEN SOURCE LICENSE (ANUOS LICENSE)
+# VERSION 1.0
+#
+# The contents of this file are subject to the ANUOS License Version 1.0 (the
+# "License"); you may not use this file except in compliance with the License.
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+# the specific language governing rights and limitations under the License.
+# The Original Software is "geoloc-sample-training-data.csv".
+# The Initial Developers of the Original Software are Dr Peter Christen
+# (Department of Computer Science, Australian National University), Dr Tim
+# Churches (Centre for Epidemiology and Research, New South Wales Department
+# of Health) and Drs Markus Hegland, Stephen Roberts and Ole Nielsen
+# (Mathematical Sciences Insitute, Australian National University). Copyright
+# (C) 2002 the Australian National University and others. All Rights Reserved.
+# Contributors:
+#
+# =============================================================================
+# The following training examples were derived from the address details of 
+# 1400 randomly selected records (that is, a representative, unbiased sample)
+# from NSW deaths certificates for the period 1988 to 2002, augmented by about
+# 150 examples of "unusual" addresses discovered through inspection of low-
+# frequency tag/state patterns in a random sample of 200,000 death certificate
+# records.
+# From line 1586 on this file contains 1,000 training records derived from
+# addresses held on the NSW Midwives Data Collection.
+#
+# Created 23/08/2002, Tim Churches
+
+   UN:prna1, UN:prna2, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, CO:coma, LN:loc1, PC:pc
+   IT:inty, CO:coma, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   WN:wfna1, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:prna1, NU:wfnu, LQ:wfna1, LQ:wfna2, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, WN:wfna1, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LQ:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LQ:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, LN:loc1, TR:ter1, PC:pc
+   UN:prna1, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UT:wfna1, WT:wfty, LN:loc1, LQ:locql, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:prna1, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   AN:wfnu, LN:wfna1, WT:wfty, CO:coma, LN:loc1, LQ:locql, LN:loc2, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   VB:opbr, VB:opbr, UN:prna1, VB:clbr, VB:clbr, CO:coma, LN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, LQ:locql, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LQ:locql, LN:loc1, PC:pc
+   WN:wfna1, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   WT:wfql, UN:wfna1, LQ:wfql, UN:wfna2, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, CO:coma, LN:loc1, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   VB:opbr, VB:opbr, LQ:prna1, UN:prna2, VB:clbr, VB:clbr, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:loc1, CO:coma, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LQ:locql, ST:loc1, PC:pc
+   LQ:prna1, UN:prna2, LN:loc1, LQ:locql, LN:loc2, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   WT:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   PA:paty, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:prna1, UN:prna2, UN:prna2, CR:cntr1, TR:ter1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, N4:pc
+   UN:unnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   UT:unty, NU:unnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LQ:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, UN:inna2, CO:coma, UN:wfna1, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UT:unty, NU:unnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, N4:pc
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfna2, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, UN:wfna2, WT:wfty, CO:coma, UN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LQ:locql, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, UN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, LQ:locql, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, WN:wfna1, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, WN:wfna1, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   VB:opbr, UN:prna1, VB:clbr, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inna2, IT:inty, CO:coma, LN:loc1, PC:pc
+   UN:inna1, WT:inna2, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   WT:inna1, IT:inna2, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   UN:prna1, UN:prna2, CO:coma, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   WT:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   LQ:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, LQ:locql, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, CO:coma, UN:loc1, UN:loc2, TR:ter1, TR:ter2, N4:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, CO:coma, UN:inna1, UN:inna2, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, UN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UT:unty, NU:unnu, TR:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, CO:coma, WN:wfna1, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UT:unty, NU:unnu, UN:inna1, IT:inna2, CO:coma, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfna2, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, LN:wfna2, WT:wfty, CO:coma, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   WT:inna1, UN:inna2, IT:inty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   WT:wfql, UN:wfna1, LN:wfna2, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, WN:wfna1, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LQ:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   AN:unnu, UN:inna1, IT:inty, CO:coma, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, UT:inty, CO:coma, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LQ:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   AN:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:prna1, LN:loc1, LN:loc2, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:unnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   LN:loc1, LN:loc2, LN:loc2, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   AN:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, TR:ter1, TR:ter2, N4:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, TR:ter2, N4:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, N4:pc
+   PA:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, WT:inna2, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:prna1, UN:prna2, CO:coma, LN:loc1, LQ:locql, LN:loc2, TR:ter1, PC:pc
+   LN:loc1, PA:paty, CO:coma, UN:loc2, UN:loc2, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, CO:coma, LN:loc1, LQ:locql, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   VB:opbr, VB:opbr, UN:prna1, VB:clbr, VB:clbr, CO:coma, LN:loc1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   VB:opbr, VB:opbr, UN:prna1, VB:clbr, VB:clbr, CO:coma, LN:loc1, LQ:locql, LN:loc2, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, TR:ter1, PC:pc
+   PA:unnu, PC:sla, CO:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inna2, IT:inty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LQ:inna1, ST:inna2, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   WT:wfql, UN:wfna1, CO:coma, UN:loc1, TR:ter1, PC:pc
+   UN:inna1, UN:inna2, UN:inna2, UN:inna2, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   PA:paty, NU:panu, LN:wfna1, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   LQ:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, UN:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, TR:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UT:unty, NU:unnu, UN:wfna1, UN:wfna2, UN:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   WT:wfql, LN:wfna1, WT:wfty, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, LQ:locql, TR:ter1, PC:pc
+   AN:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UT:unty, NU:unnu, WT:unnu, UT:unty, CO:coma, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, NU:wfnu, ST:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   ST:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:prna1, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, UT:loc2, CO:coma, TR:ter1, N4:pc
+   UT:unty, NU:unnu, UT:unty, WT:unnu, CO:coma, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, UN:loc1, TR:ter1, TR:ter2, N4:pc
+   UN:inna1, UN:inna2, IT:inty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   PA:paty, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LQ:locql, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   AN:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, LN:wfna2, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:prna1, UT:prna2, CO:coma, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, CO:coma, UN:inna1, IT:inna2, IT:inty, CO:coma, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, CO:coma, UN:inna1, UN:inna2, IT:inty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   ST:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:loc1, PC:inty
+   LN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   PA:paty, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, LN:inna2, UT:inty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, WT:inna2, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   WN:inna1, LN:inna2, IT:inty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, UN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:prna1, UN:prna2, CO:coma, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LQ:wfna1, LQ:wfna2, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:inna1, IT:inna2, CO:coma, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UT:unty, NU:unnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, LQ:locql, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, UN:wfna2, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, CO:coma, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UT:unty, NU:unnu, WN:inna1, UN:inna2, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, CO:coma, TR:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   ST:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UT:unty, UN:prna1, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   WT:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, UN:ter1, PC:pc
+   UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, UN:wfna2, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, LQ:wfna2, UN:wfna2, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   PA:paty, NU:panu, WN:wfna1, LQ:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, LN:inna2, UN:inna2, SL:inty, UN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:prna1, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, CO:coma, WN:prna1, UN:prna2, CO:coma, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, CO:coma, UN:loc1, WT:loc1, UN:loc2, TR:ter1, UN:pc
+   UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UT:unty, NU:unnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, UN:loc2, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, CO:coma, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, UN:inna2, UN:inna2, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   UN:inna1, IT:inty, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   LN:inna1, LQ:inna2, IT:inna2, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc
+   UT:unty, NU:unnu, ST:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IT:unty, NU:unnu, SL:sla, NU:wfnu, WN:wfna1, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfna2, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:prna1, UN:prna2, UN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   LN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   ST:inna1, IT:inty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   WT:inna1, UN:inna2, IT:inty, LN:loc1, PC:pc
+   UT:unty, NU:unnu, LN:inna1, WT:inty, NU:wfnu, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:prna1, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, UN:inna1, WT:inna2, AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, LN:inna2, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   WT:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   PA:paty, PC:panu, UN:wfna1, WT:wfty, UN:loc1, LQ:locql, UN:loc2, TR:ter1, N4:pc
+   UN:wfna1, LQ:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, NU:wfnu, UN:loc1, UN:loc2, CO:coma, CR:cntr1, NU:pc, AN:pc
+   NU:wfnu, UN:wfna1, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UT:inty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:prna1, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, UN:wfna2, UN:wfna2, WT:wfty, LN:loc1, N4:pc
+   LN:loc1, LQ:locql, LN:loc2, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, UN:inty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LQ:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, UN:inty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, N4:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   ST:inna1, UN:inty, LN:loc1, WT:locql, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IT:inna2, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, UN:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   ST:inna1, IT:inty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, CO:coma, TR:ter1, N4:pc
+   LN:inna1, IT:inty, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   ST:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UT:unty, NU:unnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   PA:paty, NU:panu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, TR:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, WN:wfna1, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   VB:opbr, UN:prna1, UT:prna2, VB:clbr, LQ:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, UN:inna2, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   PA:paty, AN:panu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UT:unty, NU:unnu, WN:prna1, UN:prna2, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, CO:coma, TR:ter1, PC:pc
+   LN:inna1, IT:inty, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   IT:inty
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, N4:pc
+   UN:inna1, IT:inna2, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UT:unty, NU:unnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, CO:coma, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, IT:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   VB:opbr, UN:prna1, UN:prna2, VB:clbr, PA:paty, NU:panu, LN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, UN:inna1, IT:inty, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, UN:loc1, LQ:locql, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:prna1, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, WN:wfna1, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, TR:ter1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inna2, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:wfna1, WT:wfty, LN:loc1, UN:loc2, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   UT:unty, NU:unnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   UN:inna1, IT:inty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, WN:wfna1, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   VB:opbr, UN:prna1, UN:prna2, VB:clbr, PA:paty, NU:panu, LN:loc1, PC:pc
+   PA:paty, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, WT:inna2, IT:inty, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, UN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, UN:loc1, N4:pc
+   UN:inna1, LQ:inna2, IT:inty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   UN:prna1, SL:sla, UN:prna2, UN:loc1, CR:cntr1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   VB:opbr, UN:prna1, VB:clbr, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   PC:wfnu, UN:wfna1, WT:wfty, UN:loc1, TR:ter1, N4:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, N4:pc
+   UN:inna1, IT:inty, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, WT:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, CO:coma, UN:loc2, CO:coma, CR:cntr1, AN:pc, NU:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, IT:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, VB:opbr, LQ:inna1, UN:inna2, IT:inty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   ST:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   LN:inna1, UN:inna2, UN:inna2, IT:inty, LN:loc1, PC:pc
+   UN:inna1, IT:inna2, IT:inty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, WT:inna2, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UT:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:prna1, WT:prna2, NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:prna1, UN:prna2, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, PC:pc
+   LQ:inna1, IT:inty, WN:inna2, UN:inna2, NU:wfnu, ST:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LQ:wfna1, LQ:wfna2, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:wfql, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, TR:ter1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, UN:loc2, N4:pc
+   UN:inna1, UN:inna2, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   N4:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UT:inty, UN:wfna1, WT:wfna2, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, WN:wfna1, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, LN:inna2, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   UT:unty, NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UT:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UT:inna2, IT:inty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, LN:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, UN:inna2, IT:inty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   LN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UT:unty, NU:unnu, NU:wfnu, UN:wfna1, WT:wfna2, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   AN:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LN:loc2, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LQ:inna1, IT:inty, WN:inna2, UN:inna2, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UT:unty, NU:unnu, UN:inna1, WT:inna2, IT:inty, LN:loc1, PC:pc
+   UT:unty, NU:unnu, IT:inna1, UN:inna1, ST:inna2, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, LQ:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inna2, IT:inty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc
+   AN:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UT:unty, NU:unnu, UN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfna2, UN:wfna2, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LQ:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   WT:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LQ:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:prna1, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   TR:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   LN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   LN:inna1, UT:inty, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   VB:opbr, VB:opbr, UN:inna1, VB:clbr, VB:clbr, IT:inty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, N4:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:inna1, LN:inna2, IT:inty, CO:coma, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:prna1, LN:loc1, LQ:locql, LN:loc2, TR:ter1, PC:pc
+   UN:prna1, LN:loc1, LQ:locql, LN:loc2, TR:ter1, PC:pc
+   UN:prna1, LN:loc1, LQ:locql, LN:loc2, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, LN:inna2, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:unnu, NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, TR:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, N4:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LQ:wfql, CO:coma, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, CO:coma, NU:wfnu, LN:wfna1, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, WT:loc2, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, UN:wfna2, WT:wfty, CO:coma, UN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, N4:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, UN:wfna2, WT:wfty, UN:loc1, CO:coma, TR:ter1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   AN:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, WT:inna2, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, LQ:locql, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   N4:unnu, SL:sla, NU:wfnu, WT:wfty, CO:coma, UN:loc1, CO:coma, UN:ter1, UN:ter1, CO:coma, CR:cntr1, TR:ter2, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LQ:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, TR:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, LQ:locql, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LQ:wfql, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, LN:inna2, IT:inty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   UT:unty, NU:unnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, LQ:locql, LN:loc2, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   WT:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, LN:inna2, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, CO:coma, WT:wfty, UN:wfna1, LQ:wfql, UN:wfna2, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:prna1, LQ:prna2, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   VB:opbr, VB:opbr, UN:prna1, VB:clbr, VB:clbr, CO:coma, LN:loc1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LQ:locql, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UT:unty, NU:unnu, CO:coma, WN:prna1, UN:prna2, CO:coma, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   VB:opbr, VB:opbr, UN:prna1, VB:clbr, VB:clbr, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   UN:prna1, UN:prna2, CO:coma, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, UN:wfna2, WT:wfty, CO:coma, LN:loc1, TR:ter1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UT:unty, NU:unnu, LN:wfna1, UT:wfna2, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, LQ:locql, TR:ter1, PC:pc
+   PC:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   WT:wfna1, WT:wfty, LN:loc1, WT:loc2, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LQ:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LQ:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UT:unty, NU:unnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   NU:unnu, UN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LQ:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, CO:coma, LN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UT:unty, NU:unnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:loc1, LQ:wfty, LN:loc2, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, LN:inna2, IT:inty, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   ST:inna1, IT:inty, CO:coma, UN:loc1, TR:ter1, PC:pc
+   ST:inna1, IT:inty, CO:coma, WT:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, CO:coma, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LQ:locql, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, AN:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, N4:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, UN:inna2, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   VB:opbr, VB:opbr, LN:prna1, VB:clbr, VB:clbr, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   WT:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, N4:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, WN:wfna1, UN:wfna2, CO:coma, LN:loc1, TR:ter1, PC:pc
+   ST:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, CO:coma, UN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, UN:inna2, IT:inty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, CO:coma, TR:ter1, N4:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UT:unty, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   WN:wfna1, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, TR:ter2, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfna2, WT:wfty, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   AN:wfnu, UN:wfna1, LQ:wfna2, UN:wfna2, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   AN:unnu, UN:inna1, WT:inna2, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   IT:unty, UN:unnu, UN:inna1, UN:inna2, IT:inty, CO:coma, LN:loc1, PC:pc
+   IT:unty, UN:unnu, UN:inna1, UN:inna2, IT:inty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   LN:loc1, LQ:locql, LN:loc2, PC:pc
+   NU:unnu, SL:sla, AN:wfnu, UN:inna1, IT:inty, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, SL:sla, AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:unnu, WN:wfna1, CO:coma, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, UN:loc1, WT:loc2, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, ST:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, UN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, ST:loc1, UN:loc1, UN:loc2, TR:ter1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, WT:loc1, PC:pc
+   NU:unnu, UT:unty, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, WN:wfna1, UN:wfna2, LN:loc1, PC:pc
+   UN:wfna1, LN:wfna2, WT:wfty, LN:loc1, PC:pc
+   UN:unnu, N4:wfnu, UN:wfna1, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   UN:wfna1, UN:wfna2, LN:wfna2, WT:wfty, LQ:locql, LN:loc1, PC:pc
+   UN:inna1, UN:inna2, IN:inty, LN:loc1, PC:pc
+   UN:prna1, LQ:locql, LN:loc1, PC:pc
+   UT:unty, NU:unnu, LN:inna1, UN:inna2, IT:inty, UN:wfna1, WT:wfty, UN:loc1, PC:pc
+   UT:unty, NU:unnu, LQ:wfna1, UN:wfna1, UN:wfna1, LN:loc1, TR:ter1, PC:pc
+   UT:unty, NU:unnu, UN:prna1, WT:prna2, UN:wfna2, WT:wfty, UN:loc1, CO:coma, TR:ter1, N4:pc
+   VB:opbr, UN:prna1, VB:clbr, WN:wfna1, LN:loc1, PC:pc
+   VB:opbr, UN:inna1, VB:clbr, IT:inty, LN:loc1, PC:pc
+   WN:prna1, UN:prna2, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   ST:inna1, VB:clbr, LQ:inna2, IT:inty, LN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   WT:paty, NU:panu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:prna1, LN:loc1, TR:ter1, PC:pc
+   UN:prna1, LN:loc1, LQ:locql, LN:loc2, TR:ter1, PC:pc
+   WN:prna1, LQ:prna2, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, UN:loc1, PC:pc
+   UN:prna1, UN:prna2, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, ST:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   UN:prna1, LN:loc1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   ST:inna1, VB:rubb, LQ:inna1, IT:inty, LN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc
+   WN:prna1, LQ:prna1, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, UN:loc1, PC:pc
+   IT:inty, TR:ter1, NU:pc
+   AN:unnu, UN:inna1, UN:inna2, CO:coma, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   AN:unnu, WN:prna1, UN:prna2, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   AN:wfnu, WT:wfna1, WN:wfna2, UN:wfna2, CO:coma, LN:loc1, N4:pc
+   AN:wfnu, WN:wfna1, LN:wfna2, WT:wfty, LN:loc1, PC:pc
+   AN:unnu, LN:inna1, UT:inty, CO:coma, UN:wfna1, WT:wfty, PC:loc1
+   TR:ter1, NU:rubb
+   IT:inty, TR:ter1, NU:rubb
+   UT:unty, NU:unnu, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, UN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, WT:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, LN:loc2, PC:pc
+   NU:wfnu, WN:wfna1, UN:wfna2, CO:coma, LN:loc1, TR:ter1, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, LQ:locql, LN:loc2, PC:pc
+   LN:prna1, CO:coma, LN:loc1, PC:pc
+   WT:wfty, UN:wfna1, LQ:wfql, UN:wfna2, WT:wfty, LN:loc1, PC:pc
+   WN:wfna1, LN:loc1, PC:pc
+   VB:opbr, UN:prna1, VB:clbr, LN:loc1, LQ:locql, LN:loc2, PC:pc
+   UN:prna1, LN:loc1, LQ:locql, LN:loc2, TR:ter1, PC:pc
+   UN:prna1, LN:loc1, LQ:locql, LN:loc2, PC:pc
+   UN:prna1, UN:prna2, LQ:inty, LN:loc1, TR:ter1, PC:pc
+   UN:inna1, IT:inty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, UN:loc1, CO:coma, TR:ter1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, UN:loc1, CO:coma, TR:ter1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, CO:coma, LQ:loc1, UN:loc1, TR:ter1, PC:pc
+   LQ:loc1, UN:loc1, LN:loc2, PC:pc
+   LN:wfna1, WT:wfty, LN:loc1, LQ:locql, LN:loc2, TR:ter1, PC:pc
+   LN:prna1, LN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   LN:prna1, LN:loc1, LQ:locql, LN:loc2, TR:ter1, PC:pc
+   LN:inna1, WT:inna2, IT:inty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, UN:loc1, LN:loc2, PC:pc
+   ST:prna1, LN:loc1, PC:pc
+   ST:inna1, VB:rubb, LQ:rubb, IT:inty, LN:loc1, PC:pc
+   ST:inna1, VB:rubb, LQ:rubb, IT:inty, LN:loc1, PC:pc
+   WT:wfty, UN:wfna1, LQ:wfql, UN:wfna2, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   WT:wfty, UN:wfna1, LQ:wfql, UN:wfna2, WT:wfty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   WN:wfna1, LN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   VB:opbr, VB:opbr, UN:prna1, VB:clbr, VB:clbr, CO:coma, LN:loc1, LQ:locql, LN:loc2, TR:ter1, PC:pc
+   VB:opbr, VB:opbr, UN:prna1, VB:clbr, VB:clbr, CO:coma, LN:loc1, CO:coma, LN:loc2, TR:ter1, PC:pc
+   UN:wfna1, WT:wfty, LN:loc1, LQ:locql, LN:loc2, PC:pc
+   UN:wfna1, WT:wfty, CO:coma, LN:loc1, LQ:locql, LN:loc2, PC:pc
+   UN:prna1, LN:loc1, LN:loc2, TR:ter1, PC:pc
+   UN:prna1, UN:loc1, TR:ter1, PC:pc
+   UN:prna1, UN:loc1, TR:ter1, NU:rubb
+   UN:inna1, UN:inna2, IT:inty, UN:wfna1, LN:loc1, TR:ter1, PC:pc
+   PA:paty, LN:loc1, TR:ter1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, LQ:locql, CO:coma, TR:ter1, N4:pc
+   NU:wfnu, UN:wfna1, WT:wfty, NU:wfnu, UN:wfna2, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, UN:loc1, TR:ter1, TR:ter2, N4:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LQ:locql, UN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, CO:coma, LQ:locql, LN:loc1, PC:pc
+   NU:unnu, WN:wfna1, UN:wfna2, CO:coma, LN:loc1, PC:pc
+   LN:prna1, LN:wfna2, WT:wfty, LN:loc1, PC:pc
+   LN:inna1, IT:inty, CO:coma, LN:loc1, TR:ter1, PC:pc
+   IT:unty, NU:rubb
+   LN:inna1, IT:inty, CO:coma, UN:wfna1, LQ:locql, LN:loc1, TR:ter1, N4:pc
+   LN:inna1, IT:inty, LN:loc1, LQ:locql, LN:loc2, PC:pc
+   LN:inna1, IT:inty, TR:wfna1, LN:loc1, TR:ter1, PC:pc
+   LN:inna1, IT:inty, UT:unty, LN:loc1, TR:ter1, PC:pc
+   LN:loc1, PA:paty, LN:loc2, TR:ter1, PC:pc
+   LN:inna1, UN:inna2, IT:inty, CO:coma, WT:wfty, TR:ter1, PC:pc
+   LQ:locql, LN:loc1, LQ:locql, LN:loc2, TR:ter1, PC:pc
+   NU:unnu, CO:coma, UN:inna1, WT:inty, CO:coma, UN:wfna2, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   AN:unnu, IT:inty, UN:inna2, LN:inna2, IT:inty, LN:loc1, PC:pc
+   AN:unnu, UN:prna1, UN:prna2, CO:coma, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, TR:ter1, PC:pc
+   AN:wfnu, WN:prna1, UN:prna2, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, ST:loc1, WT:loc2, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, CO:coma, LN:loc1, LQ:locql, LN:loc2, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, CO:coma, LQ:locql, UN:loc1, TR:ter1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, LN:loc2, PC:pc
+   NU:wfnu, UN:wfna1, UN:loc1, CR:cntr1
+
+# =============================================================================
+# Training data for geocode/locality components
+# Use this to train a locality HMM using pyTrainHMM.py
+#
+# Created 31/08/2002, Peter Christen
+#
+# Based on training records from the NSW MDC
+#
+# Contains 1000 training examples
+   AN:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, LQ:wfql, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, TR:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, LQ:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, WT:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   AN:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   LN:inna1, UN:inna2, UN:inty, LN:loc1, PC:pc, TR:ter1
+   LN:inna1, UN:inna2, UT:inty, LN:loc1, PC:pc, TR:ter1
+   LN:loc1, LQ:locql, LN:loc2, PC:pc, TR:ter1
+   LN:loc1, PC:pc, TR:ter1
+   LN:prna1, LN:loc1, PC:pc, TR:ter1
+   LN:prna1, LN:loc1, PC:pc, TR:ter1
+   LN:prna1, LN:loc1, PC:pc, TR:ter1
+   LN:prna1, LN:loc1, PC:pc, TR:ter1
+   LN:prna1, UN:prna2, LN:loc1, PC:pc, TR:ter1
+   LN:prna1, UT:inty, LN:loc1, PC:pc, TR:ter1
+   LN:prna1, UT:unty, LN:loc1, PC:pc, TR:ter1
+   LN:wfna1, LN:loc1, PC:pc, TR:ter1
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   LQ:prna1, LN:prna2, LN:loc1, PC:pc, TR:ter1
+   N4:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   N4:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   N4:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, AN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, AN:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, AN:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, CR:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LN:wfna1, WT:wfty, UN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LQ:wfna1, WT:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, LQ:wfql, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, UN:wfna1, LQ:wfql, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, UN:wfna1, PA:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, WT:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, TR:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, TR:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, UN:wfna2, LN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, UN:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, UN:loc2, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, N4:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, UT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, WN:wfna1, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, WN:wfna1, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, WN:wfna1, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, WN:wfna1, UN:wfna2, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, WN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:unnu, SL:sla, NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, IT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, IT:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfna2, WT:wfty, LN:loc1, WT:loc2, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, LN:loc2, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, N4:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, N4:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, UN:loc1, WT:loc2, N4:pc, TR:ter1
+   NU:wfnu, LN:wfna1, WT:wfty, UN:wfna2, LN:loc2, PC:pc, TR:ter1
+   NU:wfnu, LQ:wfna1, LN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LQ:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LQ:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LQ:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LQ:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LQ:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LQ:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, LQ:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, ST:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, TR:wfna1, WT:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, TR:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, TR:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, LN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, LN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, LN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, LN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, LN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, CO:rubb, LN:loc1, N4:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UT:wfna2, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UT:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, UT:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfna2, VB:rubb, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, CO:rubb, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, LN:loc2, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, LQ:locql, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, N4:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, N4:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, UN:loc2, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LN:loc1, UN:loc2, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, N4:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, LQ:locql, UN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, N4:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, N4:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, N4:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, WT:loc2, N4:pc, TR:ter1
+   NU:wfnu, UN:wfna1, WT:wfty, UN:loc1, WT:loc2, N4:pc, TR:ter1
+   NU:wfnu, UT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, UT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, VB:opbr, LN:prna1, VB:clbr, WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, WN:wfna1, LN:loc1, LQ:locql, PC:pc, TR:ter1
+   NU:wfnu, WN:wfna1, UN:wfna2, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   NU:wfnu, WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   PA:paty, AN:panu, LN:inna1, LN:loc1, PC:pc, TR:ter1
+   PA:paty, NU:panu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   PA:paty, NU:panu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   PA:paty, NU:panu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   PA:paty, NU:panu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   PA:paty, PC:panu, LN:wfna1, LN:loc1, N4:pc, TR:ter1
+   PA:paty, PC:panu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   PA:paty, PC:panu, UN:prna1, WT:prna2, LN:loc1, PC:pc, TR:ter1
+   PC:pc, TR:ter1
+   PC:pc, TR:ter1
+   PC:pc, TR:ter1
+   PC:pc, TR:ter1
+   UN:inna1, UN:inna2, UT:unty, NU:unnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UN:prna1, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UN:paty, NU:panu, LN:loc1, PC:pc, TR:ter1
+   UN:prna1, LN:loc1, PC:pc, TR:ter1
+   UN:prna1, LN:loc1, PC:pc, TR:ter1
+   UN:prna1, LN:loc1, PC:pc, TR:ter1
+   UN:prna1, LN:loc1, PC:pc, TR:ter1
+   UN:prna1, UN:prna2, LN:loc1, PC:pc, TR:ter1
+   UN:prna1, UT:inty, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UN:prna1, UT:prna2, LN:loc1, LN:loc2, PC:pc, TR:ter1
+   UN:prna1, UT:unty, LN:loc1, PC:pc, TR:ter1
+   UN:prna1, UT:unty, LN:loc1, PC:pc, TR:ter1
+   UN:prna1, WT:prna2, PC:pc, TR:ter1
+   UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UN:wfna1, UT:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UN:wfna1, WT:wfty, LN:loc1, LQ:locql, LN:loc2, PC:pc, TR:ter1
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UN:wfna1, WT:wfty, UN:loc1, PC:pc, TR:ter1
+   UT:unty, NU:unnu, LN:loc1, LN:loc2, PC:pc, TR:ter1
+   UT:unty, NU:unnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UT:unty, NU:unnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UT:unty, NU:unnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UT:unty, NU:unnu, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UT:unty, NU:unnu, LQ:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UT:unty, NU:unnu, LQ:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UT:unty, NU:unnu, UN:wfna1, LN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UT:unty, NU:unnu, UN:wfna1, UN:wfna2, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UT:unty, NU:unnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UT:unty, NU:unnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UT:unty, NU:unnu, UN:wfna1, WT:wfty, UN:loc1, PC:pc, TR:ter1
+   UT:unty, UN:unnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   UT:wfna1, WT:wfty, UN:loc1, N4:pc, TR:ter1
+   VB:opbr, LN:prna1, LQ:prna2, VB:clbr, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   VB:opbr, LN:prna1, VB:clbr, LN:loc1, PC:pc, TR:ter1
+   VB:opbr, LN:prna1, VB:clbr, LN:loc1, PC:pc, TR:ter1
+   VB:opbr, LN:prna1, VB:clbr, LN:loc1, PC:pc, TR:ter1
+   VB:opbr, LN:prna1, VB:clbr, LN:loc1, PC:pc, TR:ter1
+   VB:opbr, UN:prna1, VB:clbr, LN:loc1, PC:pc, TR:ter1
+   VB:opbr, UN:prna1, VB:clbr, LN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   WN:wfna1, LN:loc1, PC:pc, TR:ter1
+   WT:inna1, IT:inty, LN:loc1, PC:pc, TR:ter1
+   WT:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   WT:wfnu, UN:wfna1, WT:wfty, LN:loc1, PC:pc, TR:ter1
+   WT:wfty, UN:wfna1, LQ:wfql, LN:wfna2, UN:wfty, LN:loc1, PC:pc, TR:ter1
