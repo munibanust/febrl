@@ -1,7 +1,7 @@
 # =============================================================================
 # randomselect.py - Auxiliary program to randomly select records
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -84,13 +84,13 @@ def selectrandom():
     print '*****          -perc [percentage_value]'
     print '*****        or'
     print '*****          -num  [num_records]'
-    raise Exception()
+    raise Exception
 
   if (sys.argv[1] == sys.argv[2]):
     print '***** Error: Input and output files must differ'
     print '*****        Input file name:  %s' % (sys.argv[1])
     print '*****        Output file name: %s' % (sys.argv[2])
-    raise Exception()
+    raise Exception
 
   in_file_name = sys.argv[1]
   out_file_name = sys.argv[2]
@@ -106,7 +106,7 @@ def selectrandom():
     print '*****          -perc [percentage_value]'
     print '*****        or'
     print '*****          -num  [num_records]'
-    raise Exception()
+    raise Exception
 
   if (select_mode == 'perc'):
     perc_val = float(sys.argv[4])
@@ -114,7 +114,7 @@ def selectrandom():
       print '***** Error: Illegal value for random percentage: %s' % \
             (sys.argv[4])
       print '*****        Value must be between 0.0 and 100.0'
-      raise Exception()
+      raise Exception
 
   else:  # Number of records given
     num_rec = int(sys.argv[4])
@@ -122,7 +122,7 @@ def selectrandom():
       print '***** Error: Illegal value for number of records: %s' % \
             (sys.argv[4])
       print '*****        Value must be positive.'
-      raise Exception()
+      raise Exception
 
   # Open input file and check number of available records - - - - - - - - - - -
   #
@@ -141,7 +141,7 @@ def selectrandom():
   if (select_mode == 'num') and (num_rec > line_count):  # Illegal value
     print '***** Error: Illegal values for number of records: %i' % (num_rec)
     print '*****        File only contains %i lines/records' % (line_count)
-    raise Exception()
+    raise Exception
 
   # Flag records which have been selected randomly  - - - - - - - - - - - - - -
   #

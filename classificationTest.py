@@ -1,7 +1,7 @@
 # =============================================================================
 # classificationTest.py - Test module for classification.py
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================

@@ -1,7 +1,7 @@
 # =============================================================================
 # dataset.py - Access to various data set implementations (CSV, SQL, etc.)
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -123,11 +123,11 @@ class DataSet:
                                   block of records is read successfully, the
                                   'next_record_num' is set to the number of the
                                   record following the block.
-     write_record(record)         Write (append) one record. Increases the
-                                  'next_record_num' by one.
      write_records(record_list)   For block wise writing of records. Increases
                                   the 'next_record_num' by the number of
                                   records in the block.
+     write_record(record)         Write (append) one record. Increases the
+                                  'next_record_num' by one.
 
    BASE ATTRIBUTES
      name                The name of the data set.
@@ -800,7 +800,7 @@ class DataSetCOL(DataSet):
     """Write one record.
     """
 
-    self.write_records(self, [record])
+    self.write_records([record])
 
 # =============================================================================
 
@@ -1290,7 +1290,7 @@ class DataSetCSV(DataSet):
     """Write one record.
     """
 
-    self.write_records(self, [record])
+    self.write_records([record])
 
 # =============================================================================
 
@@ -1768,7 +1768,7 @@ class DataSetSQL(DataSet):
     """Write one record.
     """
 
-    self.write_records(self, [record])
+    self.write_records([record])
 
 # =============================================================================
 
@@ -1811,14 +1811,14 @@ class RandomDataSet:
                                     in the data set, a warning will be
                                     generated (and nothing will be be appended
                                     to the list of record, i.e. no 'None').
-     write_record(record)           Writes a record given as a dictionary into
-                                    the data set. Uses the hidden field
-                                    '_rec_num_' as a key for direct record
-                                    access.
      write_records(record_list)     Writes a list of records given as
                                     dictionaries into the data set. Uses the
                                     hidden fields '_rec_num_' as keys for
                                     direct record access.
+     write_record(record)           Writes a record given as a dictionary into
+                                    the data set. Uses the hidden field
+                                    '_rec_num_' as a key for direct record
+                                    access.
 
    BASE ATTRIBUTES
      name                The name of the data set.

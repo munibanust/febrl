@@ -1,7 +1,7 @@
 # =============================================================================
 # indexing.py - Classes for indexing and blocking.
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -75,7 +75,7 @@ def get_sublists(alist, length):
 
      http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/66465
 
-     and modified by Ole Nielsen, MSI ANU, November 2002
+     and modified by Ole Nielsen, MSI ANU, November 2002.
   """
 
   sub_lists = []
@@ -93,6 +93,49 @@ def get_sublists(alist, length):
       sub_lists += sub
 
   return sub_lists
+
+# =============================================================================
+
+def bin_search(list, key_val):
+  """Binary search algorithm specialised for a list where each item is
+     made of a (key, values) pair, and sorted according to the values of the
+     keys (and we are searching a specific key value).
+
+     It returns a list with the following three entrie:
+
+       [found_flag, start_index, end_index]
+
+     The found_flag is True if the key value has been found, False if not.
+
+     If the key element has not been found, start_index and end_index are the
+     search indices used by the binary search, if the key index has been found
+     both the start_index and end_index are the index value of the found key
+     value.
+
+     Based on Kalle Svensson's routine from Activestate Python cookbook, see
+
+     http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/81188
+
+     and Lifang Gu's (CSIRO) b2_search() code.
+  """
+
+  start = 0
+  end =   len(list)-1
+
+  while 1:
+    if (end < start):
+      return [False, start, end]
+
+    middle = (start + end) / 2
+    middle_val = list[middle][0]  # Get the key value from thie middle element
+
+    if (middle_val == key_val):  # Found the key value
+      return [True, middle, middle]
+
+    elif (key_val < middle_val):
+      end = middle - 1
+    else:
+      start = middle + 1
 
 # =============================================================================
 
@@ -120,8 +163,8 @@ def linkage_rec_pairs(index_a, index_b):
 
   num_blocks_a = index_a.num_blocks  # Total number of blocks in index A
   num_blocks_b = index_b.num_blocks  # Total number of blocks in index B
-  block_cnt =      0                      # Processed block counter 
-  rec_pair_cnt =   0                  # Number of record pairs
+  block_cnt =    0                   # Processed block counter 
+  rec_pair_cnt = 0                   # Number of record pairs
 
   print '1:  Create record pair dictionary for linkage'
 
@@ -163,7 +206,7 @@ def linkage_rec_pairs(index_a, index_b):
 
     # Report progress every 10% (only if more than 10000 blocks)  - - - - - - -
     #
-    if (num_blocks_a >= 10000) and (block_cnt % int(num_blocks_a / 10) == 0):
+    if (num_blocks_a >= 10000) and ((block_cnt % int(num_blocks_a / 10)) == 0):
       print '1:      %i/%i blocks processed, number of record pairs: %i' % \
             (block_cnt, num_blocks_a, rec_pair_cnt)
 
@@ -244,7 +287,7 @@ def deduplication_rec_pairs(index):
 
     # Report progress every 10% (only if more than 10000 blocks)  - - - - - - -
     #
-    if (num_blocks >= 10000) and (block_cnt % int(num_blocks / 10) == 0):
+    if (num_blocks >= 10000) and ((block_cnt % int(num_blocks / 10)) == 0):
       print '1:      %i/%i blocks processed, number of record pairs: %i' % \
             (block_cnt, num_blocks, rec_pair_cnt)
 
@@ -751,7 +794,7 @@ class BlockingIndex(Indexing):
     """Build the index, insert the given records. Is done by the base class.
     """
 
-    Indexing.build(self, record_list)
+    Indexing.build(self, record_list)  # Call base class method
 
   # ---------------------------------------------------------------------------
 
@@ -819,10 +862,10 @@ class BlockingIndex(Indexing):
 
     if self.compact_index[index_num].has_key(block_var):
       rec_dict= self.compact_index[index_num][block_var]  # Found
-
       return rec_dict.keys()
 
-    return None
+    else:
+      return None
 
 # =============================================================================
 
@@ -958,8 +1001,12 @@ class SortingIndex(Indexing):
     """For a given blocking variable value returns a list with record numbers
        in the corresponding block, or None if this block is not available in
        the index.
-       Returns a 'block' where the given value is the first ...
 
+       Searches the index for all blocks that are within the window given by
+       the blocking variable 'block_var', and returns the record numbers in
+       the found blocks.
+
+       Based on the modifcations done by Lifang Gu (CSIRO, July 2003).
     """
 
     # Check if index has been compacted - - - - - - - - - - - - - - - - - - - -
@@ -969,39 +1016,50 @@ class SortingIndex(Indexing):
       raise Exception
 
     index_num = int(block_var[0])  # Get the number of the index
+    index_len = len(self.compact_index[index_num])  # Number of blocks in index
 
-    [block_var1, block_var2] = block_var.split('...')
+    [block_var_start, block_var_end] = block_var.split('...')
 
-    block_var1 = block_var1[:-1]
-
-    # Find the entry in the index that starts with either 'block_var1' or is
-    # is the one before (alphabetically)
-    # Use binary search as the index is a sorted list
+    # Search if start and end values of this block variable are in the index
     #
-    var_len = len(block_var1)
-    start = 0
-    end = len(self.compact_index[index_num]) - 1
-    found = -1
+    [found_flag, start_index, end_index] = \
+      bin_search(self.compact_index[index_num], block_var_start)
 
-    while (found == -1):
-      if (end < start):
-        found = middle
-      middle = (start + end) / 2
-      middle_index_val = self.compact_index[index_num][middle]
+    if (found_flag == True):  # The key value has been found
+      block_start = start_index
+    else:  # The key value has not been found, get the key value before
+      block_start = max(end_index,0)  # If not found in search then the
+                                      # end_index < start_index, but it might
+                                      # be -1 (so we have to make sure it's 0)
 
-      if (middle_index_val[0][:var_len] < block_var1):
-        start = middle+1
-      elif (middle_index_val[0][:var_len] > block_var1):
-        end = middle-1
-      else:
-        found = middle
+    [found_flag, start_index, end_index] = \
+      bin_search(self.compact_index[index_num], block_var_end)
 
-    #if self.index[index_num].has_key(block_var):
-    #  rec_dict= self.index[index_num][block_var]  # Found
+    if (found_flag == True):  # The key value has been found
+      block_end = start_index
+    else:  # The key value has not been found, get the key value after
+      block_end = min(start_index,index_len-1)  # If not found in search then
+                                                # the end_index < start_index,
+                                                # but start_index might be
+                                                # larger than number of blocks
+
+    # Now check if these blocks are 'overlapping' with the given block variable
     #
-    #  return rec_dict.keys()
+    if (block_var_start > self.compact_index[index_num][block_end][0]) or \
+       (block_var_end < self.compact_index[index_num][block_start][0]):
 
-    return None
+      return None
+
+    # Now extract record numbers from the selected blocks (including end block)
+    #
+    rec_dict = {}
+
+    blocks = self.compact_index[index_num][block_start:block_end+1]
+
+    for block_data in blocks:
+      rec_dict.update(block_data[1])  # Update record number dictionary
+
+    return rec_dict.keys()
 
   # ===========================================================================
 
@@ -1183,6 +1241,38 @@ class BigramIndex(Indexing):
     yield None  # End of iteration, no more blocks available
 
   # ---------------------------------------------------------------------------
+
+  def get_block_records(self, block_var):
+    """For a given blocking variable value returns a list with record numbers
+       in the corresponding block, or None if this block is not available in
+       the index.
+
+       This is the same code as for the BlockingIndex.get_block_records()
+       method.
+
+       Added by Lifang Gu (CSIRO, July 2003)
+    """
+
+    # Check if index has been compacted - - - - - - - - - - - - - - - - - - - -
+    #
+    if (self.compacted == False):
+      print 'error:Index has not been compacted, block iteration not possible'
+      raise Exception
+
+    index_num = int(block_var[0])  # Get the number of the index
+
+    if self.compact_index[index_num].has_key(block_var):
+      rec_dict= self.compact_index[index_num][block_var]  # Found
+      return rec_dict.keys()
+
+    else:
+      return None
+
+# =============================================================================
+# =============================================================================
+# =============================================================================
+
+
   # ---------------------------------------------------------------------------
   # ---------------------------------------------------------------------------
   # ---------------------------------------------------------------------------
@@ -1200,7 +1290,7 @@ class BigramIndex(Indexing):
     else:
       return len(self.index)
 
-# =============================================================================
+
 # =============================================================================
 
   def get_similar(self, value_dict, perc_common):

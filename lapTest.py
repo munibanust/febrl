@@ -1,7 +1,7 @@
 # =============================================================================
 # lapTest.py - Test module for lap.py
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -210,7 +210,7 @@ class TestCase(unittest.TestCase):
                           670: {712:154, 938:161, 711:70},
                           711: {712:231},
                           536: {712:91, 670:140}, \
-                           94: {938:84},
+                           94: {938:54},
                           110: {938:105}})
     self.ass_thre.append(10.0)
     self.pro_type.append('deduplication')

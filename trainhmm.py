@@ -1,7 +1,7 @@
 # =============================================================================
 # trainhmm.py - Main module to train a Hidden Markov Model (HMM)
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================

@@ -1,7 +1,7 @@
 # =============================================================================
 # comparison.py - Classes for field and record comparions.
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -89,7 +89,7 @@ class RecordComparator:
 
     if (not isinstance(field_comparators, list)):
       print 'error:Argument "field_comparators" is not a list'
-      raise Excpetion
+      raise Exception
     self.field_comparators = field_comparators
 
     # Set the data set attributes in the field comparators and check  - - - - -

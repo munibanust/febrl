@@ -1,7 +1,7 @@
 # =============================================================================
 # tcsv.py - Module for parsing malformed CSV and other delimited files
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -36,7 +36,10 @@ import re  # Regular expression module
 class delimited_parser:
   """A parser for comma-separated value (CSV) and other delimited strings.
 
-  # Maybe change 'null_value' to 'missing' ?? (PC, 22/8/2002)
+  Maybe change 'null_value' to 'missing' ?? (PC, 22/8/2002)
+
+  Using the escape character '\' ('\\' in Python) makes the re module crash.
+
   """
 
   def __init__(self, delimiter_chars=',', quote_chars='"', escape_chars='/', \
@@ -84,29 +87,42 @@ class delimited_parser:
     """Returns an appropriate type of value depending on contents of fld,
        which should be a string. Utility function used by parse_delimited().
 
+       If a string is a number but starts with a '0' it is handled as a
+       normal string (useful for e.g. postcodes like '0200'). Thanks to
+       Marion Sturtevant for pointing this out.
+
     ARGUMENTS:
       fld  A string to be returned as the appropriate type
     """
 
-    try:
-      return int(fld) 
-    except:
+    fld = fld.strip()
+
+    # Check if it's a number not starting with a '0'
+    #
+    if (len(fld) > 0) and \
+       (fld[0] in ['.','1','2','3','4','5','6','7','8','9']):
       try:
-        return long(fld)
+        return int(fld) 
       except:
         try:
-          return float(fld)
+          return long(fld)
         except:
-          fld = fld.strip()
-          # print "fld:", fld
-          if (fld == ''):
-            return self.null_value
-          elif (fld in self.null_strings):
-            return self.null_value
-          elif (len(fld) == 1) and (fld in self.null_chars):
-            return self.null_value
-          else: 
-            return fld
+          try:
+            return float(fld)
+          except:
+            pass
+
+    # Assume it's a string (handle numbers starting with a '0' as strings)
+    #
+    # print "fld:", fld
+    if (fld == ''):
+      return self.null_value
+    elif (fld in self.null_strings):
+      return self.null_value
+    elif (len(fld) == 1) and (fld in self.null_chars):
+      return self.null_value
+    else: 
+      return fld
 
   # ---------------------------------------------------------------------------
 

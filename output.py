@@ -2,7 +2,7 @@
 # output.py - Classes for extracting output data sets for matches, non-matches,
 #             and clerical reviews.
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -55,7 +55,8 @@ def histogram(results_dict, file_name=None):
 
   min_histo_x_val = 9999  # Minimum X axis value in the histogram
   max_histo_x_val = -999  # Maximum X axis value in the histogram
-  max_histo_y_val = -999  # Maximal Y axis value in the histogram
+  max_histo_y_val =    1  # Maximal Y axis value in the histogram
+                          # Bug-fix by Marion Sturtevant (thanks!)
 
   # Loop over all record dictionaries - - - - - - - - - - - - - - - - - - - - -
   #
@@ -157,17 +158,17 @@ def rec_pair_details(dataset_a, dataset_b, results_dict, assigned_dict,
 
     f.write('Resulting record pairs:' + os.linesep)
     f.write('-----------------------' + os.linesep)
-    f.write('  Threshold:  %f' % (threshold) + os.linesep)
-    f.write('  Data set A: %s' % (dataset_a.name) + os.linesep)
-    f.write('  Data set B: %s' % (dataset_b.name) + os.linesep)
+    f.write('  Output threshold:  %f' % (threshold) + os.linesep)
+    f.write('  Data set A:        %s' % (dataset_a.name) + os.linesep)
+    f.write('  Data set B:        %s' % (dataset_b.name) + os.linesep)
 
   else:  # Print a header for the histogram - - - - - - - - - - - - - - - - - -
     print '1:'
     print '1:Resulting record pairs:'
     print '1:-----------------------'
-    print '1:  Threshold:  %f' % (threshold)
-    print '1:  Data set A: %s' % (dataset_a.name)
-    print '1:  Data set B: %s' % (dataset_b.name)
+    print '1:  Output threshold:  %f' % (threshold)
+    print '1:  Data set A:        %s' % (dataset_a.name)
+    print '1:  Data set B:        %s' % (dataset_b.name)
 
   if (threshold == None):  # Set threshold to a very negative number
     threshold == -9999999.9
@@ -306,18 +307,18 @@ def rec_pair_weights(dataset_a_name, dataset_b_name, results_dict,
 
     f.write('Resulting record pairs:' + os.linesep)
     f.write('-----------------------' + os.linesep)
-    f.write('  Threshold:  %f' % (threshold) + os.linesep)
-    f.write('  Data set A: %s' % (dataset_a_name) + os.linesep)
-    f.write('  Data set B: %s' % (dataset_b_name) + os.linesep)
+    f.write('  Output threshold:  %f' % (threshold) + os.linesep)
+    f.write('  Data set A:        %s' % (dataset_a_name) + os.linesep)
+    f.write('  Data set B:        %s' % (dataset_b_name) + os.linesep)
     f.write(os.linesep)
 
   else:  # Print a header for the histogram - - - - - - - - - - - - - - - - - -
     print '1:'
     print '1:Resulting record pairs:'
     print '1:-----------------------'
-    print '1:  Threshold:  %f' % (threshold)
-    print '1:  Data set A: %s' % (dataset_a_name)
-    print '1:  Data set B: %s' % (dataset_b_name)
+    print '1:  Output threshold:  %f' % (threshold)
+    print '1:  Data set A:        %s' % (dataset_a_name)
+    print '1:  Data set B:        %s' % (dataset_b_name)
     print '1:'
 
   if (threshold == None):  # Set threshold to a very negative number
@@ -359,8 +360,8 @@ def rec_pair_weights(dataset_a_name, dataset_b_name, results_dict,
         else:
           assigned = ''
 
-        rec_line_print.append('   '+str(rec).rjust(max_len)+':  '+ \
-                                str(weight)+assigned)
+        rec_line_print.append('   '+str(rec).rjust(max_len)+':  %f%s' % \
+                              (weight, assigned))
         num_rec_pairs_saved += 1
 
     rec_line_print.append('')  # Append an empty line

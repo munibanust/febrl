@@ -1,7 +1,7 @@
 # =============================================================================
 # classification.py - Record linkage classifiers
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -509,7 +509,8 @@ class FlexibleClassifier(Classifier):
     elif (self.final_funct == 'mult'):
       final = 1.0
       for calc_elem in calc_res:
-        final += calc_elem
+        final *= calc_elem   # Bug fixed 29/10/2003
+                             # Thanks to (Thoetsak T.) thoetsak@ar.co.th
 
     # Now insert into the two result dictionaries if the sum is - - - - - - - -
     # higher than the lower threshold

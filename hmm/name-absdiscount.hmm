@@ -1,7 +1,7 @@
 # =============================================================================
 # name-absdiscount.hmm - Name hidden Markov model
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -27,7 +27,7 @@
 #
 # Created Sat Aug 31 11:05:39 2002
 #
-# File name: hmm/mdc_name-absdiscount.hmm
+# File name: hmm/name-absdiscount.hmm
 #----------------------------------------------------------------------
 
 # HMM name

@@ -1,7 +1,7 @@
 # =============================================================================
 # tagdata.py - Main module to tag elements in a training data file
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -103,14 +103,14 @@
      If the '-hmm' option is given the output will be something like this:
 
        # 0: |dr peter baxter dea|
-         TI:titl, GM:gname1, GM:gname2:, GF:sname1:
-         TI:titl, GM:gname1, SN:sname1:, GF:sname2:
-         TI:titl, GM:gname1, GM:gname2:, SN:sname1:
-         TI:titl, GM:gname1, SN:sname1:, SN:sname2:
+         TI:titl, GM:gname1, GM:gname2, GF:sname1
+         TI:titl, GM:gname1, SN:sname1, GF:sname2
+         TI:titl, GM:gname1, GM:gname2, SN:sname1
+         TI:titl, GM:gname1, SN:sname1, SN:sname2
 
        # 1: |miss monica mitchell meyer|
-         TI:titl, UN:gname1:, GM:sname1, SN:sname2
-         TI:titl, UN:gname1:, SN:sname1, SN:sname2
+         TI:titl, UN:gname1, GM:sname1, SN:sname2
+         TI:titl, UN:gname1, SN:sname1, SN:sname2
 
        # 2: |phd tim william jones harris|
          TI:titl, GM:gname1, GM:gname2, UN:sname1, SN:sname2
@@ -158,29 +158,22 @@ tag_log = ProjectLog(file_name = 'tag_data.log',
 
 # Define your original input data set - - - - - - - - - - - - - - - - - - - - -
 #
-input_data = DataSetCSV(name = 'MDC',
-                 description = 'NSW Midwifes Data Collection, 1990-2000, ' + \
-                               'source: NSW Department of Health',
+input_data = DataSetCSV(name = 'example1in',
+                 description = 'Example data set 1',
                  access_mode = 'read',
                 header_lines = 1,
-                   file_name = '../../data/nswhealth_mdc/mdc.csv',
-                      fields = {'year':0,
-                                'rseqnum':1,
-                                'ohoscode':2,
-                                'omrn':3,
-                                'gname':4,
-                                'sname':5,
-                                'omdob':6,
-                                'ocob':7,
-                                'wfarenum':8,
-                                'wayfare':9,
-                                'locality':10,
-                                'pcode':11,
-                                'state':12,
-                                'obmrn':13,
-                                'bdob':14,
-                                'plural':15,
-                                'plurnum':16},
+                   file_name = './dbgen/dataset1.csv',
+                      fields = {'rec_id':0,
+                                'given_name':1,
+                                'surname':2,
+                                'street_num':3,
+                                'address_part_1':4,
+                                'address_part_2':5,
+                                'suburb':6,
+                                'postcode':7,
+                                'state':8,
+                                'date_of_birth':9,
+                                'soc_sec_id':10},
               fields_default = '',
                 strip_fields = True,
               missing_values = ['','missing'])
@@ -188,11 +181,11 @@ input_data = DataSetCSV(name = 'MDC',
 # Define block of records to be used for tagging  - - - - - - - - - - - - - - -
 #
 start_rec_number = 0
-end_rec_number =   10000 # input_data.num_records
+end_rec_number =   input_data.num_records
 
 # Define number of records to be selected randomly  - - - - - - - - - - - - - -
 #
-num_rec_to_select = 1000
+num_rec_to_select = (input_data.num_records / 2)  # Use 50% for tagging
 
 # Define name of output data set  - - - - - - - - - - - - - - - - - - - - - - -
 #
@@ -204,7 +197,7 @@ tag_component = 'name'
 
 # Define a list with field namess from the input data set in the component  - -
 #
-tag_component_fields = ['gname', 'sname']
+tag_component_fields = ['given_name', 'surname']
 
 # Define if word spilling should be checked or not  - - - - - - - - - - - - - -
 #
@@ -495,9 +488,10 @@ while (rec_count < num_rec_to_select):  # Loop until 'num_rec_to_select'
 
   while (rec_count < num_rec_to_select) and (line_read <= end_rec_number):
 
-    if ((retag_file_name != None) and (line_read in tagged_recs_keys)) or \
-       ((retag_file_name == None) and \
-        (num_rec_left >= random.randrange(0,rec_range, 1))):
+    if (record != None) and \
+       (((retag_file_name != None) and (line_read in tagged_recs_keys)) or \
+        ((retag_file_name == None) and \
+         (num_rec_left >= random.randrange(0,rec_range, 1)))):
 
       record_id =  '[RecID: '+str(record['_rec_num_'])+'/'+ \
                    record['_dataset_name_']+'] '

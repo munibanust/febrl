@@ -1,7 +1,7 @@
 # =============================================================================
 # simplehmm.py - Routines for simple Hidden Markov Model (HMM) functionality.
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================

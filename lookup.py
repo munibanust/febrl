@@ -1,7 +1,7 @@
 # =============================================================================
 # lookup.py - Classes for various types of look-up tables.
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -353,7 +353,7 @@ class FrequencyLookupTable(LookupTable):
     # A log message for low volume log output (level 1) - - - - - - - - - - - -
     #
     print '1:'
-    print '1:Loaded frequency look-up table "%s"' + (str(self.name))
+    print '1:Loaded frequency look-up table "%s"' % (str(self.name))
     print '1:  From files:        %s' % (str(self.file_names))
     print '1:  Number of entries: %i' % (self.length)
     print '1:  Sum of all value:  %i' % (self.sum)
@@ -474,7 +474,7 @@ class GeocodeLookupTable(LookupTable):
     # A log message for low volume log output (level 1) - - - - - - - - - - - -
     #
     print '1:'
-    print '1:Loaded geocode look-up table "%s"' + (str(self.name))
+    print '1:Loaded geocode look-up table "%s"' % (str(self.name))
     print '1:  From files:        %s' % (str(self.file_names))
     print '1:  Number of entries: %i' % (self.length)
 

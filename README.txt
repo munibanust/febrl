@@ -1,4 +1,4 @@
-Febrl (Freely extensible biomedical record linkage) Version 0.2.1
+Febrl (Freely extensible biomedical record linkage) Version 0.2.2
 
 Copyright 2002, 2003 Australian National University and others.
 All Rights reserved.

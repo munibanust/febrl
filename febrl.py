@@ -1,7 +1,7 @@
 # =============================================================================
 # febrl.py - Main module and classes for febrl projects.
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -68,7 +68,7 @@ class Febrl:
     """Constructor - Set attributes and load list of available projects.
     """
 
-    self.version_major =      '0.2.1'
+    self.version_major =      '0.2.2'
     self.version_minor =      ''
     self.version =            self.version_major+'.'+self.version_minor
     self.license =            'ANUOS Version 1.1'
@@ -242,7 +242,7 @@ class Project:
       elif (keyword == 'block_size'):
         if (not isinstance(value, int)) and (value > 0):
           print 'error:Argument "block_size" is not a positive integer'
-          raise Esception
+          raise Exception
         self.block_size = value
 
       elif (keyword == 'parallel_write'):
@@ -2249,7 +2249,7 @@ def do_load_standard_indexing(input_dataset, output_dataset,
 def do_comparison(dataset_a, dataset_b, record_comparator, classifier,
                   record_pair_dict, num_rec_pairs, febrl_block_size):
   """The main routine that does the comparison of record pairs given in the
-     record pair list and the two data sets using the given record comparator.
+     record pair dict and the two data sets using the given record comparator.
      The resulting weight vectors are then inserted into the given classifier.
   """
 
@@ -2293,7 +2293,10 @@ def do_comparison(dataset_a, dataset_b, record_comparator, classifier,
       #
       if ((rec_pair_cnt % febrl_block_size) == 0):
         used_time =       time.time() - start_time
-        perc_done =       100.0 * rec_pair_cnt / num_rec_pairs
+        if (num_rec_pairs > 0):
+          perc_done =       100.0 * rec_pair_cnt / num_rec_pairs
+        else:
+          perc_done = 100.0  # No record pairs to process, so we're done
         rec_pair_time =   used_time / rec_pair_cnt
         todo_time =       (num_rec_pairs - rec_pair_cnt) * rec_pair_time
         avrg_comp_time =  (compare_time / rec_pair_cnt)
@@ -2317,7 +2320,11 @@ def do_comparison(dataset_a, dataset_b, record_comparator, classifier,
   # Print final time for record pair comparison
   #
   total_time =    time.time() - start_time  # Calculate total time
-  rec_pair_time = (total_time / rec_pair_cnt)
+
+  if (rec_pair_cnt > 0):  # Bug-fix (div by 0) by Marion Sturtevant (thanks!)
+    rec_pair_time = (total_time / rec_pair_cnt)
+  else:
+    rec_pair_time = 0
 
   total_time_string =    output.time_string(total_time)
   rec_pair_time_string = output.time_string(rec_pair_time)

@@ -1,7 +1,7 @@
 # =============================================================================
 # project-linkage.py - Configuration for a record linkage project.
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -95,7 +95,6 @@ indata_a = DataSetCSV(name = 'example4a-in',
                description = 'Example data set 4a',
                access_mode = 'read',
               header_lines = 1,
-              write_header = True,
                file_name = './dbgen/dataset4a.csv',
                   fields = {'rec_id':0,
                             'given_name':1,

@@ -1,7 +1,7 @@
 # =============================================================================
 # project-deduplicate.py - Configuration for a deduplication project.
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -93,7 +93,6 @@ indata = DataSetCSV(name = 'example2in',
              description = 'Example data set 2',
              access_mode = 'read',
             header_lines = 1,
-            write_header = True,
                file_name = './dbgen/dataset2.csv',
                   fields = {'rec_id':0,
                             'given_name':1,

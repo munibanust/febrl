@@ -2,7 +2,7 @@
 # encode.py - Routines for Soundex, NYSIIS and Double-Metaphone string
 #             encodings.
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
@@ -172,6 +172,8 @@ def phonex(s, maxlen=4):
     Available at: 
       http://www.cs.ncl.ac.uk/~brian.randell/home.informal/
              Genealogy/NameMatching.pdf
+
+    Bug-fixes regarding 'h','ss','hss' etc. strings thanks to Marion Sturtevant
   """
 
   if (not s):
@@ -179,8 +181,11 @@ def phonex(s, maxlen=4):
 
   # Preprocess input string - - - - - - - - - - - - - - - - - - - - - - - - - -
   #
-  while s[-1] == 's':  # Remove all 's' at the end
+  while (s and s[-1] == 's'):  # Remove all 's' at the end
     s = s[:-1]
+
+  if (not s):
+    return maxlen*'0'
 
   if (s[:2] == 'kn'):  # Remove 'k' from beginning if followed by 'n'
     s = s[1:]
@@ -191,6 +196,9 @@ def phonex(s, maxlen=4):
 
   if (s[0] == 'h'):  # Remove 'h' from beginning
     s = s[1:]
+
+  if (not s):
+    return maxlen*'0'
 
   # Make phonetic equivalence of first character
   #
@@ -481,7 +489,7 @@ def dmetaphone(s, maxlen=4):
       else:
         current=current+1
 
-    # elif (s == 'c'):  # Å«
+    # elif (s == 'c'):  # C
     #    primary = primary+'s'
     #    primary_len = primary_len+1
     #    secondary = secondary+'s'

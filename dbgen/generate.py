@@ -2,25 +2,24 @@
 # generate.py - Auxiliary program to create records using various frequency
 #               tables and introduce duplicates with errors
 #
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.1
+# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
 # See http://datamining.anu.edu.au/projects/linkage.html
 #
 # =============================================================================
 # AUSTRALIAN NATIONAL UNIVERSITY OPEN SOURCE LICENSE (ANUOS LICENSE)
-# VERSION 1.0
+# VERSION 1.1
 #
-# The contents of this file are subject to the ANUOS License Version 1.0 (the
+# The contents of this file are subject to the ANUOS License Version 1.1 (the
 # "License"); you may not use this file except in compliance with the License.
 # Software distributed under the License is distributed on an "AS IS" basis,
 # WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
 # the specific language governing rights and limitations under the License.
 # The Original Software is "generate.py".
 # The Initial Developers of the Original Software are Dr Peter Christen
-# (Department of Computer Science, Australian National University), Dr Tim
+# (Department of Computer Science, Australian National University) and Dr Tim
 # Churches (Centre for Epidemiology and Research, New South Wales Department
-# of Health) and Drs Markus Hegland, Stephen Roberts and Ole Nielsen
-# (Mathematical Sciences Insitute, Australian National University). Copyright
-# (C) 2002 the Australian National University and others. All Rights Reserved.
+# of Health). Copyright (C) 2002, 2003 the Australian National University and
+# others. All Rights Reserved.
 # Contributors:
 #
 # =============================================================================
@@ -117,7 +116,8 @@ VERBOSE_OUTPUT = True
 #                  another character
 # - trans_prob     Probability to transpose two characters in a field
 # - val_swap_prob  Probability to swap the value in a field with another
-#                  (randomly selected) value for this field
+#                  (randomly selected) value for this field (taken from this
+#                  field's look-up table)
 # - spc_ins_prob   Probability to insert a space into a field (thus splitting
 #                  a word)
 # - spc_del_prob   Probability to delete a space (if available) in a field (and
@@ -258,14 +258,14 @@ ssid_dict = {'name':'soc_sec_id',
 
 # -----------------------------------------------------------------------------
 # Now add all field dictionaries into a list according to how they should be
-# save in the output file
+# saved in the output file
 
 field_list = [givenname_dict, surname_dict, streetnumber_dict, address1_dict,
               address2_dict, suburb_dict, postcode_dict, state_dict,
               dob_dict, ssid_dict]
 
 # -----------------------------------------------------------------------------
-# Flag for writing a header line (keys 'name' of dictionaries)
+# Flag for writing a header line (keys 'name' of field dictionaries)
 
 save_header = True  # Set to 'False' if no header should be written
 
