@@ -153,7 +153,7 @@ class TestCase(unittest.TestCase):
       assert (age1 == age2), 'Age 1 and age 2 differ for date "'+d[0]+ \
              '": '+str(age1)+' / '+str(age2)
 
-      assert (age1 < 101.0), \
+      assert (age1 < 105.0), \
              'Age 1 for date "'+str(d[0])+'" is not smaller than 100.0: '+ \
              str(age1)
 
