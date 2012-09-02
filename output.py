@@ -1,151 +1,231 @@
 # =============================================================================
-# output.py - Classes for extracting output data sets for matches, non-matches,
-#             and clerical reviews.
-#
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
-# See http://datamining.anu.edu.au/projects/linkage.html
-#
-# =============================================================================
 # AUSTRALIAN NATIONAL UNIVERSITY OPEN SOURCE LICENSE (ANUOS LICENSE)
-# VERSION 1.1
-#
-# The contents of this file are subject to the ANUOS License Version 1.1 (the
-# "License"); you may not use this file except in compliance with the License.
-# Software distributed under the License is distributed on an "AS IS" basis,
-# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
-# the specific language governing rights and limitations under the License.
-# The Original Software is "output.py".
-# The Initial Developers of the Original Software are Dr Peter Christen
-# (Department of Computer Science, Australian National University) and Dr Tim
-# Churches (Centre for Epidemiology and Research, New South Wales Department
-# of Health). Copyright (C) 2002, 2003 the Australian National University and
+# VERSION 1.3
+# 
+# The contents of this file are subject to the ANUOS License Version 1.3
+# (the "License"); you may not use this file except in compliance with
+# the License. You may obtain a copy of the License at:
+# 
+#   https://sourceforge.net/projects/febrl/
+# 
+# Software distributed under the License is distributed on an "AS IS"
+# basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See
+# the License for the specific language governing rights and limitations
+# under the License.
+# 
+# The Original Software is: "output.py"
+# 
+# The Initial Developer of the Original Software is:
+#   Dr Peter Christen (Research School of Computer Science, The Australian
+#                      National University)
+# 
+# Copyright (C) 2002 - 2011 the Australian National University and
 # others. All Rights Reserved.
+# 
 # Contributors:
+# 
+# Alternatively, the contents of this file may be used under the terms
+# of the GNU General Public License Version 2 or later (the "GPL"), in
+# which case the provisions of the GPL are applicable instead of those
+# above. The GPL is available at the following URL: http://www.gnu.org/
+# If you wish to allow use of your version of this file only under the
+# terms of the GPL, and not to allow others to use your version of this
+# file under the terms of the ANUOS License, indicate your decision by
+# deleting the provisions above and replace them with the notice and
+# other provisions required by the GPL. If you do not delete the
+# provisions above, a recipient may use your version of this file under
+# the terms of any one of the ANUOS License or the GPL.
+# =============================================================================
+#
+# Freely extensible biomedical record linkage (Febrl) - Version 0.4.2
+#
+# See: http://datamining.anu.edu.au/linkage.html
 #
 # =============================================================================
 
-"""Module output.py - Classes for preparing output data sets.
+"""Module output.py - Functions for output of linkage and deduplication.
 
-   This module contains functions for printing and savinf to text files of
-   record pairs (detailed and weights), and histograms,  compiling output data
-   sets, etc.
+   This module provides several functions that allow saving the linkage or
+   deduplication results into files of various formats. It also contains
+   various output (and input) related auxiliary functions.
 
-   Still under development, the current version allows printing and saving of
-   record pairs and histograms, and saving of simple text files containing
-   record pair numbers and corresponding weights.
+   The following functions are provided:
+
+     GenerateHistogram    Convert the summed weight vectors into a (ASCII text
+                          based) histogram and return as a list of text (for
+                          printing into a terminal window), and possibly write
+                          into a text file.
+     SaveMatchStatusFile  Save the matched record identifiers into a CVS file.
+     SaveMatchDataSet     Save the original data set(s) with an additional
+                          field (attribute) that contains match identifiers.
+
+  The following auxiliary functions are also provided:
+
+    LoadWeightVectorFile  Load a CSV file assumed to contain record identifier
+                          tuples and their corresponding weight vectors as
+                          written with a run() method from indexing.py
 """
 
 # =============================================================================
-# Imports go here
+# Import necessary modules (Febrl modules first, then Python standard modules)
 
+import auxiliary
+import dataset
+
+import csv
+import gzip
+import logging
+import math
 import os
 
 # =============================================================================
 
-def histogram(results_dict, file_name=None):
-  """Print or save a histogram for the data stored in the results dictionary.
+def GenerateHistogram(w_vec_dict, bin_width, file_name=None, match_sets=None):
+  """Print and/or save a histogram of the weight vectors stored in the given
+     dictionary, and according to the match sets (if given).
 
-     The routine sums up the number of record pairs with matching weights for
-     each integer value of matching weights.
+     The histogram is rotated 90 degrees clockwise, i.e. up to down instead of
+     left to right.
+
+     This function sums up the number of weight vectors with a matching weight
+     in a given bin (according to the given bin width).
+
+     If given, the match sets must be a tuple containing three sets, the first
+     being a set with matches, the second with non-matches, and the third with
+     possible matches, as generated by classifiers in the classification.py
+     Febrl module.
+
+     For each bin, the number of weight vectors in this bin is printed as well,
+     and if the match sets are given the number of matches, non-matches and
+     possible matches in this bin.
 
      If a file name is given, the output will be written into this text file.
+
+     This function returns a list of containing the histogram as text strings.
   """
 
-  histo = {}  # Start with an empty histogram dictionary
+  MAX_HISTO_WIDTH = 80  # maximum width in characters
 
-  min_histo_x_val = 9999  # Minimum X axis value in the histogram
-  max_histo_x_val = -999  # Maximum X axis value in the histogram
-  max_histo_y_val =    1  # Maximal Y axis value in the histogram
-                          # Bug-fix by Marion Sturtevant (thanks!)
-
-  # Loop over all record dictionaries - - - - - - - - - - - - - - - - - - - - -
-  #
-  for (rec_num, rec_dict) in results_dict.items():
-
-    weights = rec_dict.values()  # Only the weight values are needed
-
-    for w in weights:
-      w_int = int(round(w))  # Round to closest integer
-
-      w_count = histo.get(w_int,0)
-      histo[w_int] = w_count+1  # Increase count by one
-
-      if (w_count > max_histo_y_val):
-        max_histo_y_val = w_count
-
-  # Sort histogram according to X axis values
-  #
-  x_vals = histo.keys()
-  y_vals = histo.values()
-
-  histo_list = map(None, x_vals, y_vals)
-  histo_list.sort()
-
-  scale_factor_y = 70.0 / max_histo_y_val
-
-  # If a file name is given open it for writing - - - - - - - - - - - - - - - -
-  #
+  auxiliary.check_is_dictionary('w_vec_dict', w_vec_dict)
+  auxiliary.check_is_number('bin_width', bin_width)
+  auxiliary.check_is_positive('bin_width', bin_width)
   if (file_name != None):
-    try:
-      f = open(file_name, 'w')
-    except:
-      print 'error:Can not open file "%s" for writing' % (str(file_name))
-      raise IOError
+    auxiliary.check_is_string('file_name', file_name)
+  if (match_sets != None):
+    auxiliary.check_is_tuple('match_sets', match_sets)
+    if (len(match_sets) != 3):
+      logging.exception('Match sets must be a tuple containing three sets.')
+      raise Exception
+    auxiliary.check_is_set('match_sets[0]', match_sets[0])
+    auxiliary.check_is_set('match_sets[1]', match_sets[1])
+    auxiliary.check_is_set('match_sets[2]', match_sets[2])
+    if (len(w_vec_dict) != (len(match_sets[0]) + len(match_sets[1]) + \
+                            len(match_sets[2]))):
+      logging.exception('Lengths of weight vector dictionary differs from' + \
+                        'summed lengths of match sets.')
+      raise Exception
 
-    f.write('Weight histogram:' + os.linesep)
-    f.write('-----------------' + os.linesep)
-    f.write(os.linesep)
-
-  else:  # Print a header for the histogram - - - - - - - - - - - - - - - - - -
-    print '1:'
-    print '1:Weight histogram:'
-    print '1:-----------------'
-    print '1:'
-
-  # Print or save the histogram (using ASCII characters) rotated 90 degrees - -
-  # so the X axis is going downwards
+  # Check if weight vector dictionary is empty, if so return empty list
   #
-  for (x,y) in histo_list:
-    hist_str = str(x).rjust(5)+' *'+'*'*int(y*scale_factor_y)+'  %i' % (y)
+  if (w_vec_dict == {}):
+    logging.warn('Empty weight vector dictionary given for histogram ' + \
+                 'generation')
+    return []
 
-    if (file_name != None):
-      f.write(hist_str + os.linesep)
+  # Get a random vector dictionary element to get dimensionality of vectors
+  #
+  (rec_id_tuple, w_vec) = w_vec_dict.popitem()
+  v_dim = len(w_vec)
+  w_vec_dict[rec_id_tuple] = w_vec  # Put back in
+
+  histo_dict = {}  # A combined histogram dictionary
+
+  if (match_sets != None):  #  Also matches, non-matches and possible matches
+    match_histo_dict =      {}
+    non_match_histo_dict =  {}
+    poss_match_histo_dict = {}
+
+  max_bin_w_count = -1 # Maximal count for one binned weight entry
+
+  # Loop over weight vectors - - - - - - - - - - - - - - - - - - - - - - - - -
+  #
+  for (rec_id_tuple, w_vec) in w_vec_dict.iteritems():
+
+    w_sum = sum(w_vec)  # Sum all weight vector elements
+    binned_w = w_sum - (w_sum % bin_width)
+
+    binned_w_count = histo_dict.get(binned_w,0) + 1  # Increase count by one
+    histo_dict[binned_w] = binned_w_count
+
+    if (binned_w_count > max_bin_w_count): # Check if this is new maximum count
+      max_bin_w_count = binned_w_count
+
+    if (match_sets != None):
+      if (rec_id_tuple in match_sets[0]):
+        binned_w_count = match_histo_dict.get(binned_w,0) + 1
+        match_histo_dict[binned_w] = binned_w_count
+      elif (rec_id_tuple in match_sets[1]):
+        binned_w_count = non_match_histo_dict.get(binned_w,0) + 1
+        non_match_histo_dict[binned_w] = binned_w_count
+      else: # A possible match
+        binned_w_count = poss_match_histo_dict.get(binned_w,0) + 1
+        poss_match_histo_dict[binned_w] = binned_w_count
+
+  # Sort histogram according to X axis values - - - - - - - - - - - - - - - - -
+  #
+  x_vals = histo_dict.keys()
+  x_vals.sort()
+
+  assert sum(histo_dict.values()) == len(w_vec_dict)
+
+  if (match_sets == None):  # Can use 68 characters for histogram
+    scale_factor_y = float(MAX_HISTO_WIDTH-19) / max_bin_w_count
+  elif (len(poss_match_histo_dict) == 0):  # No possible matches
+    scale_factor_y = float(MAX_HISTO_WIDTH-30) / max_bin_w_count
+  else:  # All three set non-empty
+    scale_factor_y = float(MAX_HISTO_WIDTH-41) / max_bin_w_count
+
+  # Generate the histogram as a list of strings - - - - - - - - - - - - - - - -
+  #
+  histo_list = []
+  histo_list.append('Weight histogram:')
+  histo_list.append('-----------------')
+
+  if (match_sets == None):
+    histo_list.append('  Counts  | w_sum |')
+    histo_list.append('-------------------')
+  elif (len(poss_match_histo_dict) == 0):  # No possible matches
+    histo_list.append('       Counts        |')
+    histo_list.append('  Match   | Non-Match| w_sum |')
+    histo_list.append('------------------------------')
+  else:
+    histo_list.append('              Counts            |')
+    histo_list.append('  Match   | Non-Match|Poss-Match| w_sum |')
+    histo_list.append('-----------------------------------------')
+  for x_val in x_vals:
+    this_count = histo_dict[x_val]
+
+    if (match_sets == None):
+      line_str = '%9d | %5.2f |' % (this_count, x_val)
+    elif (len(poss_match_histo_dict) == 0):  # No possible matches
+      this_match_count =     match_histo_dict.get(x_val, 0)
+      this_non_match_count = non_match_histo_dict.get(x_val, 0)
+
+      line_str = '%9d |%9d | %5.2f |' % (this_match_count,
+                                          this_non_match_count, x_val)
     else:
-      print '1:'+hist_str
+      this_match_count =      match_histo_dict.get(x_val, 0)
+      this_non_match_count =  non_match_histo_dict.get(x_val, 0)
+      this_poss_match_count = poss_match_histo_dict.get(x_val, 0)
 
-  if (file_name != None):
-    f.close()
-    print '1:Histogram written to file "%s"' % (file_name)
+      line_str = '%9d |%9d |%9d | %5.2f |' % (this_match_count,
+                                                this_non_match_count,
+                                                this_poss_match_count, x_val)
 
-  else:
-    print '1:'
+    line_str += '*'*int(this_count*scale_factor_y)
+    histo_list.append(line_str)
 
-# =============================================================================
-
-def rec_pair_details(dataset_a, dataset_b, results_dict, assigned_dict,
-                     threshold, file_name=None):
-  """Print or save the record pairs in details (all stored fields) as stored in
-     the given results dictionary.
-
-     Takes as input references to two data sets (the ones that were used for
-     the classifcation task), a results dictionary, a threshold and a
-     dictionary that contains the assigned record pairs.
-
-     Both the threshold and the assigned record pairs dictionary can be set to
-     None.
-
-     If a threshold is given, only record pairs with weights equal to or above
-     this threshold are printed.
-
-     If assigned record pairs are given then these record pairs are printed
-     with a comment "[assigned]".
-
-     If a file name is given, the output will be written into this text file.
-  """
-
-  key_print_length = 12  # Maximal number of characters for keys
-                         # (should be an even number)
-  rec_print_length = (70 - key_print_length) / 2
+  histo_list.append('')
 
   # If a file name is given open it for writing - - - - - - - - - - - - - - - -
   #
@@ -153,274 +233,344 @@ def rec_pair_details(dataset_a, dataset_b, results_dict, assigned_dict,
     try:
       f = open(file_name, 'w')
     except:
-      print 'error:Can not open file "%s" for writing' % (str(file_name))
+      logging.exception('Cannot open file "%s" for writing' % (str(file_name)))
       raise IOError
 
-    f.write('Resulting record pairs:' + os.linesep)
-    f.write('-----------------------' + os.linesep)
-    f.write('  Output threshold:  %f' % (threshold) + os.linesep)
-    f.write('  Data set A:        %s' % (dataset_a.name) + os.linesep)
-    f.write('  Data set B:        %s' % (dataset_b.name) + os.linesep)
+    for line in histo_list:
+      f.write(line + os.linesep)
 
-  else:  # Print a header for the histogram - - - - - - - - - - - - - - - - - -
-    print '1:'
-    print '1:Resulting record pairs:'
-    print '1:-----------------------'
-    print '1:  Output threshold:  %f' % (threshold)
-    print '1:  Data set A:        %s' % (dataset_a.name)
-    print '1:  Data set B:        %s' % (dataset_b.name)
-
-  if (threshold == None):  # Set threshold to a very negative number
-    threshold == -9999999.9
-
-  # Create a dictionary with record pairs and sort them according to weight - -
-  #
-  rec_pair_dict = {}
-
-  for rec_num in results_dict:
-    rec_dict = results_dict[rec_num]
-
-    for rec_num2 in rec_dict:
-      weight = rec_dict[rec_num2]
-      rec_pair = (rec_num, rec_num2)
-
-      if (rec_pair_dict.has_key(rec_pair)):
-        print 'warning:Record pair %s more than once in results dictionary' % \
-              (str(rec_pair))
-      else:
-        rec_pair_dict[rec_pair] = weight
-
-  # Now sort record pairs according to their weight
-  #
-  rec_pair_numbers = rec_pair_dict.keys()
-  rec_pair_weights = rec_pair_dict.values()
-
-  rec_pair_list = map(None, rec_pair_weights, rec_pair_numbers)
-  rec_pair_list.sort()
-  rec_pair_list.reverse()  # Large weights first
-
-  # Loop over all record pairs  - - - - - - - - - - - - - - - - - - - - - - - -
-  #
-  for (rec_pair_weight, rec_pair_numbers) in rec_pair_list:
-
-    # Filter out record pairs with weight less than the threshold
-    #
-    if (rec_pair_weight >= threshold):
-
-      rec_num_a = rec_pair_numbers[0]
-      rec_num_b = rec_pair_numbers[1]
-
-      rec_a = dataset_a.read_record(rec_num_a)  # Get the first record
-      rec_b = dataset_b.read_record(rec_num_b)  # Get the second record
-
-      rec_a_id = '[RecID A: %s/%s]' % \
-                 (str(rec_a['_rec_num_']), str(rec_a['_dataset_name_']))
-      rec_b_id = '[RecID B: %s/%s]' % \
-                 (str(rec_b['_rec_num_']), str(rec_b['_dataset_name_']))
-
-      # Check if this record pair is assigned
-      #
-      if (assigned_dict != None) and \
-         (assigned_dict.has_key(rec_pair_numbers)):
-        assigned = '[assigned]'
-      else:
-        assigned = ''
-
-      # Build the union of all keys in both record dictionaries
-      #
-      tmp_dict = rec_a.copy()
-      tmp_dict.update(rec_b)
-      key_union = tmp_dict.keys()
-      key_union.sort()
-
-      if (file_name != None):
-        f.write(os.linesep)
-        f.write('-'*77 + os.linesep)
-        f.write('Weight: %f %s' % (rec_pair_weight, assigned) + os.linesep)
-        f.write('Fields '+(key_print_length-7)*' '+' | '+ \
-                rec_a_id.ljust(rec_print_length)[:rec_print_length]+' | '+ \
-                rec_b_id.ljust(rec_print_length)[:rec_print_length] + \
-                os.linesep)
-      else:
-        print '1:'
-        print '1:'+'-'*77
-        print '1:Weight: %f %s' % (rec_pair_weight, assigned)
-
-        print '1:Fields '+(key_print_length-7)*' '+' | '+ \
-                rec_a_id.ljust(rec_print_length)[:rec_print_length]+' | '+ \
-                rec_b_id.ljust(rec_print_length)[:rec_print_length]
-
-      for key in key_union:
-        key_str = str(key)
-        if (key_str[0] != '_'):
-          str_a = str(rec_a.get(key,''))
-          str_b = str(rec_b.get(key,''))
-
-          if (file_name != None):
-            f.write(str(key).ljust(key_print_length)[:key_print_length] + \
-                  ' | '+str_a.ljust(rec_print_length)[:rec_print_length] + \
-                  ' | '+str_b.ljust(rec_print_length)[:rec_print_length] + \
-                  os.linesep)
-          else:
-            print '1:'+str(key).ljust(key_print_length)[:key_print_length] + \
-                  ' | '+str_a.ljust(rec_print_length)[:rec_print_length] + \
-                  ' | '+str_b.ljust(rec_print_length)[:rec_print_length]
-
-  if (file_name != None):
     f.close()
-    print '1:Detailed record pairs written to file "%s"' % (file_name)
+    logging.info('Histogram written to file: %s' % (file_name))
 
+  if (match_sets != None):
+    print match_histo_dict.items()
+    print non_match_histo_dict.items()
+
+  return histo_list
+
+# -----------------------------------------------------------------------------
+
+def SaveMatchStatusFile(w_vec_dict, match_set, file_name):
+  """Save the matched record identifiers into a CVS file.
+
+     This function saves the record identifiers of all record pairs that are in
+     the given match set into a CSV file with four columns:
+     - First record identifier
+     - Second record identifier
+     - Summed matching weight from the corresponding weight vector
+     - A unique match identifier (generated in the same way as the ones in the
+       function SaveMatchDataSet below).
+  """
+
+  auxiliary.check_is_dictionary('w_vec_dict', w_vec_dict)
+  auxiliary.check_is_set('match_set', match_set)
+  auxiliary.check_is_string('file_name', file_name)
+
+  match_rec_id_list = list(match_set)  # Make a list so it can be sorted
+  match_rec_id_list.sort()
+
+  if (len(match_set) > 0):
+    num_digit = max(1,int(math.ceil(math.log(len(match_set), 10))))
   else:
-    print '1:'
+    num_digit = 1
+  mid_count = 1  # Counter for match identifiers
 
-# =============================================================================
+  # Try to open the file for writing
+  #
+  try:
+    f = open(file_name, 'w')
+  except:
+    logging.exception('Cannot open file "%s" for writing' % (str(file_name)))
+    raise IOError
 
-def rec_pair_weights(dataset_a_name, dataset_b_name, results_dict,
-         assigned_dict, threshold, file_name=None):
-  """Print or save the results  as record number pairs with corresponding
-     weights.
+  for rec_id_tuple in match_rec_id_list:
+    w_vec = w_vec_dict[rec_id_tuple]
+    w_sum = sum(w_vec)
 
-     Takes as input the names of the two datasets, a file name, a results
-     dictionary, a threshold and a dictionary that contains the assigned
-     record pairs.
+    mid_count_str = '%s' % (mid_count)
+    this_mid = 'mid%s' % (mid_count_str.zfill(num_digit))
 
-     Both the threshold and the assigned record pairs dictionary can be set to
+    rec_id1 = rec_id_tuple[0]
+    rec_id2 = rec_id_tuple[1]
+
+    f.write('%s,%s,%f,%s' % (rec_id1, rec_id2, w_sum, this_mid) + os.linesep)
+
+    mid_count += 1
+
+  f.close()
+
+# -----------------------------------------------------------------------------
+
+def SaveMatchDataSet(match_set, dataset1, id_field1, new_dataset_name1,
+                     dataset2=None, id_field2=None, new_dataset_name2=None):
+  """Save the original data set(s) with an additional field (attribute) that
+     contains match identifiers.
+
+     This functions creates unique match identifiers (one for each matched pair
+     of record identifiers in the given match set), and inserts them into a new
+     attribute (field) of a data set(s) which will be written.
+
+     If the record identifier field is not one of the fields in the input data
+     set, then additionally such a field will be added to the output data set
+     (with the name of the record identifier from the input data set).
+
+     Currently the output data set(s) to be written will be CSV type data sets.
+
+     Match identifiers as or the form 'mid00001', 'mid0002', etc. with the
+     number of digits depending upon the total number of matches in the match
+     set. If a record is involved in several matches, then the match
+     identifiers will be separated by a semi-colon (;).
+
+     Only one new data set will be created for deduplication, and two new data
+     sets for linkage.
+
+     For a deduplication, it is assumed that the second data set is set to
      None.
-
-     If a threshold is given, only record pairs with weights equal to or above
-     this threshold are saved.
-
-     If assigned record pairs are given then these record pairs are saved with
-     a comment "[assigned]".
-
-     If a file name is given, the output will be written into this text file.
   """
 
-  # If a file name is given open it for writing - - - - - - - - - - - - - - - -
-  #
-  if (file_name != None):
-    try:
-      f = open(file_name, 'w')
-    except:
-      print 'error:Can not open file "%s" for writing' % (file_name)
-      raise IOError
+  auxiliary.check_is_set('match_set', match_set)
+  auxiliary.check_is_not_none('dataset1', dataset1)
+  auxiliary.check_is_string('id_field1', id_field1)
+  auxiliary.check_is_string('new_dataset_name1', new_dataset_name1)
 
-    f.write('Resulting record pairs:' + os.linesep)
-    f.write('-----------------------' + os.linesep)
-    f.write('  Output threshold:  %f' % (threshold) + os.linesep)
-    f.write('  Data set A:        %s' % (dataset_a_name) + os.linesep)
-    f.write('  Data set B:        %s' % (dataset_b_name) + os.linesep)
-    f.write(os.linesep)
-
-  else:  # Print a header for the histogram - - - - - - - - - - - - - - - - - -
-    print '1:'
-    print '1:Resulting record pairs:'
-    print '1:-----------------------'
-    print '1:  Output threshold:  %f' % (threshold)
-    print '1:  Data set A:        %s' % (dataset_a_name)
-    print '1:  Data set B:        %s' % (dataset_b_name)
-    print '1:'
-
-  if (threshold == None):  # Set threshold to a very negative number
-    threshold == -9999999.9
-
-  num_rec_pairs_saved = 0  # Count the number of record pairs saved
-  num_rec_pairs_assig = 0  # Number of assigned record pairs
-
-  rec_numbers = results_dict.keys()
-  rec_numbers.sort()
-
-  # For nice output, get the length (in digits) of the largest number
-  #
-  max_len = len(str(rec_numbers[-1]))
-
-  for rec_num in rec_numbers:  # Loop over all records in results - - - - - - -
-
-    # Save all print lines for this record into a list
-    #
-    rec_line_print = [str(rec_num)]
-
-    rec_dict = results_dict[rec_num]
-    rec_nums = rec_dict.keys()
-    weights  = rec_dict.values()
-
-    rec_list = map(None, weights, rec_nums)  # Sort according to weights
-    rec_list.sort()
-    rec_list.reverse()  # High weights first
-
-    for (weight, rec) in rec_list:  # Filter out records
-
-      # Filter out record pairs with weight less than the threshold
-      #
-      if (weight >= threshold):
-
-        if (assigned_dict != None) and (assigned_dict.has_key((rec_num, rec))):
-          assigned = '  [assigned]'
-          num_rec_pairs_assig += 1
-        else:
-          assigned = ''
-
-        rec_line_print.append('   '+str(rec).rjust(max_len)+':  %f%s' % \
-                              (weight, assigned))
-        num_rec_pairs_saved += 1
-
-    rec_line_print.append('')  # Append an empty line
-
-    if (len(rec_line_print) > 2):  # There were record pairs for this record
-      for l in rec_line_print:
-
-        if (file_name != None):
-          f.write(l + os.linesep)
-        else:
-          print '1:' + l
-
-  if (file_name != None):
-    f.write(os.linesep)
-    f.write('  Number of record pairs saved:    %i' % (num_rec_pairs_saved) + \
-            os.linesep)
-    f.write('  Number of record pairs assigned: %i' % (num_rec_pairs_assig) + \
-            os.linesep)
-    f.close()
-    print '1:Record pair with weights written to file "%s"' % (file_name)
-
+  if (dataset2 != None):  # A linkage, check second set of parameters
+    auxiliary.check_is_not_none('dataset2', dataset2)
+    auxiliary.check_is_string('id_field2', id_field2)
+    auxiliary.check_is_string('new_dataset_name2', new_dataset_name2)
+    do_link = True
   else:
-    print '1:'
-    print '1:  Number of record pairs printed:  %i' % (num_rec_pairs_saved)
-    print '1:  Number of record pairs assigned: %i' % (num_rec_pairs_assig)
-    print '1:'
+    do_link = False
+
+  match_rec_id_list = list(match_set)  # Make a list so it can be sorted
+  match_rec_id_list.sort()
+
+  if (len(match_set) > 0):
+    num_digit = max(1,int(math.ceil(math.log(len(match_set), 10))))
+  else:
+    num_digit = 1
+  mid_count = 1  # Counter for match identifiers
+
+  # Generate a dictionary with record identifiers as keys and lists of match
+  # identifiers as values
+  #
+  match_id_dict1 = {}  # For first data set
+  match_id_dict2 = {}  # For second data set, not required for deduplication
+
+  for rec_id_tuple in match_rec_id_list:
+    rec_id1, rec_id2 = rec_id_tuple
+
+    mid_count_str = '%s' % (mid_count)
+    this_mid = 'mid%s' % (mid_count_str.zfill(num_digit))
+
+    rec_id1_mid_list = match_id_dict1.get(rec_id1, [])
+    rec_id1_mid_list.append(this_mid)
+    match_id_dict1[rec_id1] = rec_id1_mid_list
+
+    if (do_link == True):  # Do the same for second data set
+      rec_id2_mid_list = match_id_dict2.get(rec_id2, [])
+      rec_id2_mid_list.append(this_mid)
+      match_id_dict2[rec_id2] = rec_id2_mid_list
+
+    else:  # Same dicionary for deduplication
+      rec_id2_mid_list = match_id_dict1.get(rec_id2, [])
+      rec_id2_mid_list.append(this_mid)
+      match_id_dict1[rec_id2] = rec_id2_mid_list
+
+    mid_count += 1
+
+  # Now initialise new data set(s) for output based on input data set(s) - - -
+
+  # First need to generate field list from input data set
+  #
+  if (dataset1.dataset_type == 'CSV'):
+    new_dataset1_field_list = dataset1.field_list[:]  # Make a copy of list
+    last_col_index = new_dataset1_field_list[-1][1]+1
+
+  elif (dataset1.dataset_type == 'COL'):
+    new_dataset1_field_list = []
+    col_index = 0
+    for (field, col_width) in dataset1.field_list:
+      new_dataset1_field_list.append((field, col_index))
+      col_index += 1
+    last_col_index = col_index
+
+  # Check if the record identifier is not a normal input field (in which case
+  # it has to be written into the output data set as well)
+  #
+  rec_ident_name = dataset1.rec_ident
+
+  add_rec_ident = True
+  for (field_name, field_data) in dataset1.field_list:
+    if (field_name == rec_ident_name):
+      add_rec_ident = False
+      break
+
+  if (add_rec_ident == True):  # Put record identifier into first column
+    new_dataset1_field_list.append((rec_ident_name, last_col_index))
+    last_col_index += 1
+
+  # Append match id field
+  #
+  new_dataset1_field_list.append((id_field1, last_col_index))
+
+  new_dataset1_description =  dataset1.description+' with match identifiers'
+
+  new_dataset1 = dataset.DataSetCSV(description=new_dataset1_description,
+                                    access_mode='write',
+                                    rec_ident=dataset1.rec_ident,
+                                    header_line=True,
+                                    write_header=True,
+                                    strip_fields = dataset1.strip_fields,
+                                    miss_val = dataset1.miss_val,
+                                    field_list = new_dataset1_field_list,
+                                    delimiter = dataset1.delimiter,
+                                    file_name = new_dataset_name1)
+
+  # Read all records, add match identifiers and write into new data set
+  #
+  for (rec_id, rec_list) in dataset1.readall():
+    if (add_rec_ident == True):  # Add record identifier
+      rec_list.append(rec_id)
+
+    mid_list = match_id_dict1.get(rec_id, [])
+    mid_str = ';'.join(mid_list)
+    rec_list.append(mid_str)
+    new_dataset1.write({rec_id:rec_list})
+
+  new_dataset1.finalise()
+
+  if (do_link == True):  # Second data set for linkage only - - - - - - - - - -
+
+    if (dataset2.dataset_type == 'CSV'):
+      new_dataset2_field_list = dataset2.field_list[:]  # Make a copy of list
+      last_col_index = new_dataset2_field_list[-1][1]+1
+
+    elif (dataset2.dataset_type == 'COL'):
+      new_dataset2_field_list = []
+      col_index = 0
+      for (field, col_width) in dataset2.field_list:
+        new_dataset2_field_list.append((field, col_index))
+        col_index += 1
+      last_col_index = col_index
+
+    # Check if the record identifier is not an normal input field (in which
+    # case it has to be written into the output data set as well)
+    #
+    rec_ident_name = dataset2.rec_ident
+
+    add_rec_ident = True
+    for (field_name, field_data) in dataset2.field_list:
+      if (field_name == rec_ident_name):
+        add_rec_ident = False
+        break
+
+    if (add_rec_ident == True):  # Put record identifier into first column
+      new_dataset2_field_list.append((rec_ident_name, last_col_index))
+      last_col_index += 1
+
+    # Append match id field
+    #
+    new_dataset2_field_list.append((id_field2, last_col_index))
+
+    new_dataset2_description =  dataset2.description+' with match identifiers'
+
+    new_dataset2 = dataset.DataSetCSV(description=new_dataset2_description,
+                                      access_mode='write',
+                                      rec_ident=dataset2.rec_ident,
+                                      header_line=True,
+                                      write_header=True,
+                                      strip_fields = dataset2.strip_fields,
+                                      miss_val = dataset2.miss_val,
+                                      field_list = new_dataset2_field_list,
+                                      file_name = new_dataset_name2)
+
+    # Read all records, add match identifiers and write into new data set
+    #
+    for (rec_id, rec_list) in dataset2.readall():
+
+      if (add_rec_ident == True):  # Add record identifier
+        rec_list.append(rec_id)
+
+      mid_list = match_id_dict2.get(rec_id, [])
+      mid_str = ';'.join(mid_list)
+      rec_list.append(mid_str)
+      new_dataset2.write({rec_id:rec_list})
+
+    new_dataset2.finalise()
 
 # =============================================================================
 
-def time_string(seconds):
-  """Helper function which returns a time in hours, minutes or seconds
-     according to the value of the argument 'seconds':
+def LoadWeightVectorFile(file_name):
+  """Function to load a weight vector dictionary from a file, assumed to be of
+     type CSV (comma separated values), with the first line being a header line
+     containing the field comparison names.
 
-     - in milliseconds if less than one second
-     - in seconds if the value is less than 60 seconds
-     - in minutes and seconds if the value is less than one hour
-     - in hours and minutes otherwiese
+     Such files were normally written withhin the run() method of index
+     implementations, see the Febrl module indexing.py.
 
-     Returned is a string.
+     The first two columns in each line are assumed to be the two record
+     identifiers which (together as a tuple) will become the keys in the weight
+     vector dictionary that is returned.
+
+     The function first checks if a gzipped version of the file is available
+     (with file ending '.gz' or '.GZ').
+
+     This function returns a list with the field comparison names and a weight
+     vector dictionary.
   """
 
-  if (seconds < 0.01):  # Less than 10 milli seconds
-    stringtime = '%.2f milli sec' % (seconds*1000)
-  elif (seconds < 1.0):
-    stringtime = '%i milli sec' % (int(seconds*1000))
-  elif (seconds < 10):
-    stringtime = '%.2f sec' % (seconds)
-  elif (seconds < 60):
-    stringtime = '%i sec' % (int(seconds))
-  elif (seconds < 3600):
-    min = int(seconds / 60)
-    sec = seconds - min*60
-    stringtime = '%i min and %i sec' % (min, sec)
-  else:
-    hrs = int(seconds / 3600)
-    min = int((seconds - hrs *3600) / 60)
-    sec = seconds - hrs *3600 - min*60
-    stringtime = '%i hrs, %i min and %i sec' % (hrs, min, sec)
+  auxiliary.check_is_string('file_name', file_name)
 
-  return stringtime
+  if (file_name[-3:] not in ['.gz','.GZ']):  # Check for gzipped versions
+    if (os.access(file_name+'.gz', os.F_OK) == True):
+      file_name = file_name+'.gz'
+    elif (os.access(file_name+'.GZ', os.F_OK) == True):
+      file_name = file_name+'.GZ'
+
+  if (file_name.endswith('.gz')) or (file_name.endswith('.GZ')):
+    try:
+      in_file = gzip.open(file_name) # Open gzipped file
+    except:
+      logging.exception('Cannot open gzipped CSV file "%s" for reading' % \
+                        (file_name))
+      raise IOError
+
+  else:  # Open normal file for reading
+    try:  # Try to open the file in read mode
+      in_file = open(file_name)
+    except:
+      logging.exception('Cannot open CSV file "%s" for reading' % \
+                        (file_name))
+      raise IOError
+
+  # Initialise the CSV parser - - - - - - - - - - - - - - - - - - - - - - -
+  #
+  csv_parser = csv.reader(in_file)
+
+  header_line = csv_parser.next()  # Read header line
+
+  # Generate field names list
+  #
+  field_names_list = header_line[2:]  # Remove record identifier names
+
+  weight_vec_dict = {}  # Fill weight vector dictionary with data from file
+
+  for line in csv_parser:
+    rec_id_tuple = (line[0], line[1])
+
+    if (rec_id_tuple in weight_vec_dict):  # Check for unique record ids
+      logging.warn('Record identifier tuple %s already in weight vector ' % \
+                   (str(rec_id_tuple))+'dictionary')
+
+    w_vec = []
+
+    for w in line[2:]:
+      w_vec.append(float(w))
+
+    weight_vec_dict[rec_id_tuple] = w_vec
+
+  in_file.close()
+
+  return [field_names_list, weight_vec_dict]
 
 # =============================================================================

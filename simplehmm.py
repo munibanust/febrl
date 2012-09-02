@@ -1,34 +1,55 @@
 # =============================================================================
-# simplehmm.py - Routines for simple Hidden Markov Model (HMM) functionality.
-#
-# Freely extensible biomedical record linkage (Febrl) Version 0.2.2
-# See http://datamining.anu.edu.au/projects/linkage.html
-#
-# =============================================================================
 # AUSTRALIAN NATIONAL UNIVERSITY OPEN SOURCE LICENSE (ANUOS LICENSE)
-# VERSION 1.1
-#
-# The contents of this file are subject to the ANUOS License Version 1.1 (the
-# "License"); you may not use this file except in compliance with the License.
-# Software distributed under the License is distributed on an "AS IS" basis,
-# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
-# the specific language governing rights and limitations under the License.
-# The Original Software is "simplehmm.py".
-# The Initial Developers of the Original Software are Dr Peter Christen
-# (Department of Computer Science, Australian National University) and Dr Tim
-# Churches (Centre for Epidemiology and Research, New South Wales Department
-# of Health). Copyright (C) 2002, 2003 the Australian National University and
+# VERSION 1.3
+# 
+# The contents of this file are subject to the ANUOS License Version 1.3
+# (the "License"); you may not use this file except in compliance with
+# the License. You may obtain a copy of the License at:
+# 
+#   https://sourceforge.net/projects/febrl/
+# 
+# Software distributed under the License is distributed on an "AS IS"
+# basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See
+# the License for the specific language governing rights and limitations
+# under the License.
+# 
+# The Original Software is: "simplehmm.py"
+# 
+# The Initial Developer of the Original Software is:
+#   Dr Peter Christen (Research School of Computer Science, The Australian
+#                      National University)
+# 
+# Copyright (C) 2002 - 2011 the Australian National University and
 # others. All Rights Reserved.
+# 
 # Contributors:
+# 
+# Alternatively, the contents of this file may be used under the terms
+# of the GNU General Public License Version 2 or later (the "GPL"), in
+# which case the provisions of the GPL are applicable instead of those
+# above. The GPL is available at the following URL: http://www.gnu.org/
+# If you wish to allow use of your version of this file only under the
+# terms of the GPL, and not to allow others to use your version of this
+# file under the terms of the ANUOS License, indicate your decision by
+# deleting the provisions above and replace them with the notice and
+# other provisions required by the GPL. If you do not delete the
+# provisions above, a recipient may use your version of this file under
+# the terms of any one of the ANUOS License or the GPL.
+# =============================================================================
+#
+# Freely extensible biomedical record linkage (Febrl) - Version 0.4.2
+#
+# See: http://datamining.anu.edu.au/linkage.html
 #
 # =============================================================================
 
-"""Module simplehmm.py - Routines for simple HMM functionality.
+"""Module simplehmm.py - Routines for simple Hidden Markov Model (HMM)
+                         functionality.
 
    DESCRIPTION:
      This module implements a class 'hmm' for simple Hidden Markov Models
      (HMM).
-     
+
    PUBLIC FUNCTIONS:
      initialisation (__init__)  Initialise a new Hidden Markov Model
      set_trans_prob             Set transition probability
@@ -49,54 +70,55 @@
 """
 
 # =============================================================================
-# Imports go here
+# Import necessary modules (Python standard modules first, then Febrl modules)
 
+import logging
 import os
-import string
 import time
 
 # =============================================================================
 
 class hmm:
-  """Routines for simple HMM functionality
+  """Routines for simple HMM functionality.
   """
 
-  def __init__(self, name, state_list, obser_list, \
-               inita_prob=None, trans_prob=None, obser_prob=None):
+  def __init__(self, description, state_list, obser_list,  inita_prob=None,
+               trans_prob=None, obser_prob=None):
     """Initialise a new Hidden Markov Model.
 
     USAGE:
-      myhmm = hmm(name, states, observ)
+      myhmm = hmm(description, states, observ)
 
     ARGUMENTS:
-      name        A name for the HMM
-      state_list  List of states of the HMM
-      obser_list  List of observations
-      inita_prob  Initial state probabilities (default: None)
-      trans_prob  Transition probabilities (default: None)
-      obser_prob  Observation probabilities (default: None)
+      description  A description for the HMM
+      state_list   List of states of the HMM
+      obser_list   List of observations
+      inita_prob   Initial state probabilities (default: None)
+      trans_prob   Transition probabilities (default: None)
+      obser_prob   Observation probabilities (default: None)
 
     DESCRIPTION:
-      This routine initialises a new HMM data structure using the given
-      state and observation list.
+      This routine initialises a new HMM data structure using the given state
+      and observation list.
 
       Optional arguments are initial state probabilities, transition
       probabilities and observation probabilities. If they are not given
       (default) they are set to zero.
     """
 
-    if (not isinstance(name, str)):
-      print 'error:Argument "name" is not a string'
+    if (not isinstance(description, str)):
+      logging.exception('Argument "description" is not a string')
       raise Exception
 
     if (not isinstance(state_list, list)):
-      print 'error:Argument "state_list" is not a list'
+      logging.exception('Argument "state_list" is not a list')
       raise Exception
     if (not isinstance(obser_list, list)):
-      print 'error:Argument "obser_list" is not a list'
+      logging.exception('Argument "obser_list" is not a list')
       raise Exception
 
-    self.name = name
+    self.description = description
+
     self.N = len(state_list)
     self.M = len(obser_list)
     self.S = state_list
@@ -113,14 +135,15 @@ class hmm:
       self.A.append(tmp[:])
     if (trans_prob != None):  # Transition probabilities given as input
       if (not isinstance(trans_prob, list)):
-        print 'error:Argument "trans_prob" is not a list'
+        logging.exception('Argument "trans_prob" is not a list')
         raise Exception
       for i in range(self.N):
         for j in range(self.N):
           if (not isinstance(trans_prob[i][j],float)) or \
              (trans_prob[i][j] < 0.0) or (trans_prob[i][j] > 1.0):
-            print 'error:Argument "trans_prob" at index [%i,%i]' % (i,j) + \
-                  ' is not a valid number between 0.0 and 1.0'
+            logging.exception('Argument "trans_prob" at index [%i,%i]' % \
+                              (i,j) + ' is not a valid number between 0.0 ' + \
+                              'and 1.0')
             raise Exception
           self.A[i][j] = trans_prob[i][j]
 
@@ -129,13 +152,13 @@ class hmm:
     self.pi = tmp[:]
     if (inita_prob != None):  # Initial state probabilities given as input
       if (not isinstance(inita_prob, list)):
-        print 'error:Argument "inita_prob" is not a list'
+        logging.exception('Argument "inita_prob" is not a list')
         raise Exception
       for i in range(self.N):
         if (not isinstance(inita_prob[i],float)) or \
            (inita_prob[i] < 0.0) or (inita_prob[i] > 1.0):
-          print 'error:Argument "inita_prob" at index [%i] is not ' % (i) + \
-                'a valid number between 0.0 and 1.0'
+          logging.exception('Argument "inita_prob" at index [%i] is not ' % \
+                            (i) + 'a valid number between 0.0 and 1.0')
           raise Exception
         self.pi[i] = inita_prob[i]
 
@@ -150,14 +173,15 @@ class hmm:
       self.B.append(tmp[:])
     if (obser_prob != None):  # Observation probabilities given as input
       if (not isinstance(obser_prob, list)):
-        print 'error:Argument "obser_prob" is not a list'
+        logging.exception('Argument "obser_prob" is not a list')
         raise Exception
       for i in range(self.N):
         for j in range(self.M):
           if (not isinstance(obser_prob[i][j],float)) or \
              (obser_prob[i][j] < 0.0) or (obser_prob[i][j] > 1.0):
-            print 'error:Argument "obser_prob" at index [%i,%i]' % (i,j) + \
-                  ' is not a valid number between 0.0 and 1.0'
+            logging.exception('Argument "obser_prob" at index [%i,%i]' % \
+                              (i,j) + ' is not a valid number between 0.0 ' + \
+                              'and 1.0')
             raise Exception
           self.B[i][j] = obser_prob[i][j]
 
@@ -170,12 +194,12 @@ class hmm:
     for i in range(self.M):
       self.O_ind[self.O[i]] = i
 
-    # A log message for low volume log output (level 1) - - - - - - - - - - - -
+    # A log message - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     #
-    print '1:'
-    print '1:Initialised HMM with'
-    print '1:  States:       %s' % (str(state_list))
-    print '1:  Observations: %s' % (str(obser_list))
+    logging.info('Initialised HMM:')
+    logging.info('  Description:  %s' % (self.description))
+    logging.info('  States:       %s' % (str(state_list)))
+    logging.info('  Observations: %s' % (str(obser_list)))
 
   # ---------------------------------------------------------------------------
 
@@ -196,17 +220,17 @@ class hmm:
     """
 
     if (from_state not in self.S):
-      print 'error:Illegal "from" state: %s' % (str(from_state))
+      logging.exception('Illegal "from" state: %s' % (str(from_state)))
       raise Exception
 
     if (to_state not in self.S):
-      print 'error:Illegal "to" state: %s' % (str(to_state))
+      logging.exception('Illegal "to" state: %s' % (str(to_state)))
       raise Exception
 
     if (not isinstance(trans_prob,float)) or (trans_prob < 0.0) or \
        (trans_prob > 1.0):
-      print 'error:Argument "trans_prob" is not a valid number between 0.0'+ \
-            ' and 1.0'
+      logging.exception('Argument "trans_prob" is not a valid number ' + \
+                        'between 0.0 and 1.0')
       raise Exception
 
     self.A[self.S_ind[from_state]][self.S_ind[to_state]] = trans_prob
@@ -231,17 +255,17 @@ class hmm:
      """
 
     if (state not in self.S):
-      print 'error:Illegal state: %s ' (str(state))
+      logging.exception('Illegal state: %s ' (str(state)))
       raise Exception
 
     if (obser not in self.O):
-      print 'error:Illegal observation: %s' % (str(obser))
+      logging.exception('Illegal observation: %s' % (str(obser)))
       raise Exception
 
     if (not isinstance(obser_prob,float)) or (obser_prob < 0.0) or \
        (obser_prob > 1.0):
-      print 'error:Argument "obser_prob" is not a valid number between 0.0 '+ \
-            'and 1.0'
+      logging.exception('Argument "obser_prob" is not a valid number ' + \
+                        'between 0.0 and 1.0')
       raise Exception
 
     self.B[self.S_ind[state]][self.O_ind[obser]] = obser_prob
@@ -263,13 +287,13 @@ class hmm:
     """
 
     if (state not in self.S):
-      print 'error:Illegal state: %s' % (str(state))
+      logging.exception('Illegal state: %s' % (str(state)))
       raise Exception
 
     if (not isinstance(init_prob,float)) or (init_prob < 0.0) or \
        (init_prob > 1.0):
-      print 'error:Argument "init_prob" is not a valid number between 0.0 '+ \
-            'and 1.0'
+      logging.exception('Argument "init_prob" is not a valid number ' + \
+                        'between 0.0 and 1.0')
       raise Exception
 
     self.pi[self.S_ind[state]] = init_prob
@@ -300,8 +324,7 @@ class hmm:
     for i in range(self.N):
       sum = sum+self.pi[i]
     if (abs(sum - 1.0) > delta):
-      print 'warning:HMM initial state probabilities sum is not 1.0: %f' % \
-            (sum)
+      logging.warn('HMM initial state probabilities sum is not 1: %f' % (sum))
       ret -= 1
 
     for i in range(self.N):
@@ -309,8 +332,8 @@ class hmm:
       for j in range(self.N):
         sum = sum+self.A[i][j]
       if (abs(sum - 1.0) > delta):
-        print 'warning:HMM state "%s" has transition ' % (self.S[i])  + \
-              'probabilities sum not 1.0: %f' % (sum)
+        logging.warn('HMM state "%s" has transition ' % (self.S[i])  + \
+                     'probabilities sum not 1.0: %f' % (sum))
         ret -= 1
 
     for i in range(self.N):
@@ -318,8 +341,8 @@ class hmm:
       for j in range(self.M):
         sum = sum+self.B[i][j]
       if (abs(sum - 1.0) > delta):
-        print 'warning:HMM state "%s" has observation ' % (self.S[i]) + \
-              'probabilities sum not 1.0: '+str(sum)
+        logging.warn('HMM state "%s" has observation ' % (self.S[i]) + \
+                     'probabilities sum not 1.0: '+str(sum))
         ret -= 1
 
     return ret
@@ -355,8 +378,9 @@ class hmm:
     """
 
     if (smoothing not in [None, 'laplace', 'absdiscount']):
-      print 'error:Illegal value for "smoothing" argument: %s' % (smoothing)+ \
-            ', possible are: None, "laplace" or "absdiscount"'
+      logging.exception('Illegal value for "smoothing" argument: %s' % \
+                        (smoothing)+ ', possible are: None, "laplace" or ' + \
+                        '"absdiscount"')
       raise Exception
 
     # Reset initial state, transition and observation probabilities - - - - - -
@@ -367,7 +391,7 @@ class hmm:
         self.A[i][j] = 0.0
       for j in range(self.M):
         self.B[i][j] = 0.0
-    
+
     # Sum up probabilities from training data - - - - - - - - - - - - - - - - -
     #
     for train_rec in train_data:
@@ -447,11 +471,10 @@ class hmm:
 
     self.check_prob()  # Check if probabilities are OK
 
-    # A log message for low volume log output (level 1) - - - - - - - - - - - -
+    # A log message - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     #
-    print '1:'
-    print '1:Trained HMM with %i training records' % (len(train_data))
-    print '2:  Smooting technique used: %s' % (str(smoothing))
+    logging.info('Trained HMM with %i training records' % (len(train_data)))
+    logging.info('  Smooting technique used: %s' % (str(smoothing)))
 
   # ---------------------------------------------------------------------------
 
@@ -486,7 +509,7 @@ class hmm:
 
     phi = [tmp[:]]
 
-    for obs in obs_ind[1:]:  # For all observations except the inital one    
+    for obs in obs_ind[1:]:  # For all observations except the inital one
       delta_t = tmp[:]
       phi_t = tmp[:]
       for j in range(self.N):   # Following formula 33 in Rabiner'89
@@ -535,12 +558,12 @@ class hmm:
       seq_prob *= self.B[ind][obs]
       prev_ind = ind
 
-    # A log message for high volume log output (level 3)  - - - - - - - - - - -
+    # A log message - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     #
-    print '3:  Viterbi analysis'
-    print '3:    Input observation sequence: %s' % (str(obser_seq))
-    print '3:    Output state sequence:      %s' % (str(sequence))
-    print '3:    Output probability: %f' % (seq_prob)
+    logging.debug('  Viterbi analysis')
+    logging.debug('    Input observation sequence: %s' % (str(obser_seq)))
+    logging.debug('    Output state sequence:      %s' % (str(sequence)))
+    logging.debug('    Output probability: %f' % (seq_prob))
 
     return [sequence, seq_prob]
 
@@ -549,28 +572,34 @@ class hmm:
   def save_hmm(self, file_name):
     """Save the HMM into a text file.
 
-    USAGE:
-      myhmm.save_hmm(file_name)
+       USAGE:
+         myhmm.save_hmm(file_name)
 
-    ARGUMENTS:
-      file_name  The name of the text file into which the HMM is written
+       ARGUMENTS:
+         file_name  The name of the text file into which the HMM is written
 
-    DESCRIPTION:
-      Writes comments into the text file in Python style, i.e. lines beginning
-      with a hash character '#'.
+       DESCRIPTION:
+         Writes comments into the text file in Python style, i.e. lines
+         beginning with a hash character '#'.
+
+         If the file name does not end with "hmm" and does not contain a "."
+         then ".hmm" will be appended to the file name.
     """
+
+    if ((not file_name.endswith('hmm')) and ('.' not in file_name)):
+      file_name = file_name+'.hmm'
 
     # Open file for writing - - - - - - - - - - - - - - - - - - - - - - - - - -
     #
     try:
       f = open(file_name, 'w')
     except:
-      print 'error:Cannot write to file: %s' % (file_name)
+      logging.exception('Cannot write to file: %s' % (file_name))
       raise IOError
 
     # Write header  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     #
-    f.write("# Hidden Markov Model written by 'simplehmm.py - Version 0.1'"+ \
+    f.write("# Hidden Markov Model written by 'simplehmm.py'"+ \
             os.linesep)
     f.write("#"+os.linesep)
     f.write("# Created "+time.ctime(time.time())+os.linesep)
@@ -579,36 +608,37 @@ class hmm:
     f.write('#'+'-'*70+os.linesep)
     f.write(os.linesep)
 
-    # Write HMM name  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Write HMM description - - - - - - - - - - - - - - - - - - - - - - - - - -
     #
-    f.write("# HMM name"+os.linesep)
-    f.write(self.name+os.linesep)
+    f.write("# HMM description"+os.linesep)
+    f.write("#"+os.linesep)
+    f.write(self.description+os.linesep)
     f.write(os.linesep)
 
     # Write HMM states  - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     #
     f.write("# HMM states"+os.linesep)
     f.write("#"+os.linesep)
-    state_string = string.join(self.S, ', ')
-    f.write(state_string+os.linesep)
+    state_str = ', '.join(self.S)
+    f.write(state_str+os.linesep)
     f.write(os.linesep)
 
     # Write HMM observations  - - - - - - - - - - - - - - - - - - - - - - - - -
     #
     f.write("# HMM observations"+os.linesep)
     f.write("#"+os.linesep)
-    obser_string = string.join(self.O, ', ')
-    f.write(obser_string+os.linesep)
+    obser_str = ', '.join(self.O)
+    f.write(obser_str+os.linesep)
     f.write(os.linesep)
 
     # Write HMM initial probabilities - - - - - - - - - - - - - - - - - - - - -
     #
     f.write("# HMM initial probabilities"+os.linesep)
     f.write("#"+os.linesep)
-    inital_prob_string = ''
+    inital_prob_str = ''
     for i in range(self.N):
-      inital_prob_string += '%f' %(self.pi[i])+', '
-    f.write(inital_prob_string[:-2]+os.linesep)  # Strip of trailing ', '
+      inital_prob_str += '%f' %(self.pi[i])+', '
+    f.write(inital_prob_str[:-2]+os.linesep)  # Strip of trailing ', '
     f.write(os.linesep)
 
     # Write HMM transition probabilities  - - - - - - - - - - - - - - - - - - -
@@ -616,10 +646,10 @@ class hmm:
     f.write("# HMM transition probabilities (from state row-wise)"+os.linesep)
     f.write("#"+os.linesep)
     for i in range(self.N):
-      trans_prob_string = ''
+      trans_prob_str = ''
       for j in range(self.N):
-        trans_prob_string +=  '%f' %(self.A[i][j])+', '
-      f.write(trans_prob_string[:-2]+os.linesep) # Strip of trailing ', '
+        trans_prob_str +=  '%f' %(self.A[i][j])+', '
+      f.write(trans_prob_str[:-2]+os.linesep) # Strip of trailing ', '
     f.write(os.linesep)
 
     # Write HMM observation probabilities - - - - - - - - - - - - - - - - - - -
@@ -627,18 +657,17 @@ class hmm:
     f.write("# HMM observation probabilities (state row-wise)"+os.linesep)
     f.write("#"+os.linesep)
     for i in range(self.N):
-      obser_prob_string = ''
+      obser_prob_str = ''
       for j in range(self.M):
-        obser_prob_string +=  '%f' %(self.B[i][j])+', '
-      f.write(obser_prob_string[:-2]+os.linesep) # Strip of trailing ', '
+        obser_prob_str +=  '%f' %(self.B[i][j])+', '
+      f.write(obser_prob_str[:-2]+os.linesep) # Strip of trailing ', '
     f.write(os.linesep)
 
     f.close()
 
-    # A log message for low volume log output (level 1) - - - - - - - - - - - -
+    # A log message - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     #
-    print '1:'
-    print '1:HMM save to file: %s' % (file_name)
+    logging.info('HMM save to file: %s' % (file_name))
 
   # ---------------------------------------------------------------------------
 
@@ -666,7 +695,7 @@ class hmm:
     try:
       f = open(file_name, 'r')
     except:
-      print 'error:Cannot read from file: %s' % (file_name)
+      logging.exception('Cannot read from file: %s' % (file_name))
       raise IOError
 
     # Skip over header and empty lines  - - - - - - - - - - - - - - - - - - - -
@@ -675,10 +704,9 @@ class hmm:
     while (line[0] == '#') or (line.strip() == ''):
       line = f.readline()
 
-    # Read HMM name - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Read HMM description - - - - - - - - - - - - - - - - - - - - - - - - - -
     #
-    line = line.strip()  # Remove line separators
-    self.name = line
+    self.description = line.strip()  # Remove line separators
 
     # Skip over empty line(s) and comments for states
     #
@@ -718,7 +746,7 @@ class hmm:
     init_probs = line.split(', ')
 
     if (len(init_probs) != self.N):
-      print 'error:Illegal number of initial probabilities in file'
+      logging.exception('Illegal number of initial probabilities in file')
       raise Exception
 
     self.pi = []
@@ -739,7 +767,7 @@ class hmm:
       trans_probs = line.split(', ')
 
       if (len(trans_probs) != self.N):
-        print 'error:Illegal number of transition probabilities in file'
+        logging.exception('Illegal number of transition probabilities in file')
         raise Exception
 
       tmp_trans_prob = []
@@ -762,7 +790,8 @@ class hmm:
       obser_probs = line.split(', ')
 
       if (len(obser_probs) != self.M):
-        print 'error:Illegal number of observation probabilities in file'
+        logging.exception('Illegal number of observation probabilities in' + \
+                          ' file')
         raise Exception
 
       tmp_obser_prob = []
@@ -782,10 +811,9 @@ class hmm:
     for i in range(self.M):
       self.O_ind[self.O[i]] = i
 
-    # A log message for low volume log output (level 1) - - - - - - - - - - - -
+    # A log message - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     #
-    print '1:'
-    print '1:HMM loaded from file: %s' % (file_name)
+    logging.info('HMM loaded from file: %s' % (file_name))
 
   # ---------------------------------------------------------------------------
 
@@ -799,44 +827,48 @@ class hmm:
       None
 
     DESCRIPTION:
-      prints a HMM with all its parameters. Only probabilities with values
+      Prints a HMM with all its parameters. Only probabilities with values
       larger than 0.0 are printed.
-
-      A message of logging level 1 (low output) is produced and printed/logged.
     """
 
     msg = []  # Compose a message
 
-    msg.append('1:Hidden Markov Model')
-    msg.append('1:  Name::       '+str(self.name))
-    msg.append('1:  States:      '+str(self.S))
-    msg.append('1:  Observations:'+str(self.O))
+    state_list = self.S[:]  # Make a copy
+    state_list.sort()
+    obser_list = self.O[:]  # Make a copy
+    obser_list.sort()
 
-    msg.append('1:')
-    msg.append('1:  Inital state probabilities:')
+    msg.append('Hidden Markov Model')
+    msg.append('  Description:  %s' % (str(self.description)))
+    msg.append('  States:       %s' % (str(state_list)))
+    msg.append('  Observations: %s' % (str(obser_list)))
+
+    msg.append('')
+    msg.append('  Inital state probabilities:')
     for i in range(self.N):
       if (self.pi[i] > 0.0):
-        msg.append('1:    State: '+self.S[i]+': '+str(self.pi[i]))
+        msg.append('    State: '+self.S[i]+': '+str(self.pi[i]))
 
-    msg.append('1:')
-    msg.append('1:  Transition probabilities:')
+    msg.append('')
+    msg.append('  Transition probabilities:')
     for i in range(self.N):
-      msg.append('1:    From state: '+self.S[i])
+      msg.append('    From state: '+self.S[i])
       for j in range(self.N):
         if (self.A[i][j] > 0.0):
-          msg.append('1:      to state: '+self.S[j]+': '+str(self.A[i][j]))
+          msg.append('      to state: '+self.S[j]+': '+str(self.A[i][j]))
 
-    msg.append('1:')
-    msg.append('1:  Observation probabilities:')
+    msg.append('')
+    msg.append('  Observation probabilities:')
     for i in range(self.N):
-      msg.append('1:    In state: '+self.S[i])
+      msg.append('    In state: '+self.S[i])
       for j in range(self.M):
         if (self.B[i][j] > 0.0):
-          msg.append('1:      Symbol: '+self.O[j]+': '+str(self.B[i][j]))
+          msg.append('      Symbol: '+self.O[j]+': '+str(self.B[i][j]))
 
-    msg.append('1:')
+    msg.append('')
 
     for line in msg:
       print line
+      logging.info(line)
 
 # =============================================================================
